@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://iosclash.github.io/news/article-19667.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>layer-layui的select更改选项后使用form.render()并没能够刷新所选择的元素</title>
+        <meta name="description" content="问题：select更改选项后，使用form.render();并没能够刷新所选择的元素。 在进入页面后会访问服务端加载一些数据，然后根据数据去更改下拉框的选项，第一次加载是对的，而后续加载下拉框的选择" />
+        <link rel="icon" href="__ADDON__/img/iosclash/favicon.ico" type="image/x-icon"/>
+    <!-- Bootstrap -->
+    <link href="/assets/website/css/iosclash/bootstrap.min.css" rel="stylesheet">
+    <!-- Style CSS -->
+    <link href="/assets/website/css/iosclash/style.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link href="/assets/website/css/iosclash/owl.carousel.css" rel="stylesheet">
+    <link href="/assets/website/css/iosclash/owl.theme.default.css" rel="stylesheet">
+    <!-- FontAwesome CSS -->
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/iosclash/fontello.css">
+    <link href="/assets/website/css/iosclash/font-awesome.min.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6QH28Z9CLQ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-6QH28Z9CLQ');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!-- top-bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                    <div class="logo">
+                                                <a href="/">IOS Clash</a>
+                                            </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.top-bar -->
+    <!-- header-section-->
+    <div class="header-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <!-- navigations-->
+                    <div class="navigation">
+                        <div id="navigation">
+                            <ul>
+                                                                <li><a href="/">首页</a></li>
+                                                                <li><a href="/free-nodes/">免费节点</a></li>
+                                                                <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                                                <li><a href="/news/">新闻资讯</a></li>
+                                                                <li><a href="#">关于</a></li>
+                                <li><a href="#">联系</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- /.navigations-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /. header-section-->
+    <!-- page-header -->
+    <div class="page-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
+                    <div class="page-section">
+                        <h1 class="page-title">layer-layui的select更改选项后使用form.render()并没能够刷新所选择的元素</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="page-breadcrumb">
+                        <ol class="breadcrumb">
+                            <li><a href="/">首页</a></li>
+                            <li><a href="/news/">新闻资讯</a></li>
+                            <li>正文</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.page-header-->
+    <!-- /.page-header-->
+    <div class="space-medium">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                      				  				  				<div id="content_views" class="markdown_views prism-atom-one-light"> <p>问题：select更改选项后，使用form.render();并没能够刷新所选择的元素。</p> <p>在进入页面后会访问服务端加载一些数据，然后根据数据去更改下拉框的选项，第一次加载是对的，而后续加载下拉框的选择就是错误的了。代码如下：</p> <pre><code class="prism language-javascript"><span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"#payType"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span><span class="token string">'option'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">attr</span><span class="token punctuation">(</span><span class="token string">"selected"</span><span class="token punctuation">,</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"#payType"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span><span class="token string">'option[value="'</span><span class="token operator">+</span> model<span class="token punctuation">.</span>payType<span class="token operator">+</span><span class="token string">'"]'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">attr</span><span class="token punctuation">(</span><span class="token string">"selected"</span><span class="token punctuation">,</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span> form<span class="token punctuation">.</span><span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre> <p>如下页面，支付类型中"未现付"虽然是selected，但是在其后跟随的div中，layui-this的样式仍然在"现付"选项上：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220608/8ab5e4034b12a9c5dfbb26a7a9e1e650.jpg" alt="layer-layui的select更改选项后使用form.render()并没能够刷新所选择的元素"></p> <p>为什么select中已经选择了“未现付”并且也已经调用了form.render()了但结果不是期望的？初步估计是不是form.render()没有起效果？所以修改代码，其中手动去修改div中的样式，并且在2秒后再调用form.render()，代码如下：</p> <pre><code class="prism language-javascript"><span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"#payType"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span><span class="token string">'option'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">attr</span><span class="token punctuation">(</span><span class="token string">"selected"</span><span class="token punctuation">,</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"#payType"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span><span class="token string">'option[value="'</span><span class="token operator">+</span> model<span class="token punctuation">.</span>payType<span class="token operator">+</span><span class="token string">'"]'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">attr</span><span class="token punctuation">(</span><span class="token string">"selected"</span><span class="token punctuation">,</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token keyword">var</span> $selectDiv<span class="token operator">=</span><span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"#payType + div"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> $selectDiv<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span><span class="token string">"dl dd"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">removeClass</span><span class="token punctuation">(</span><span class="token string">"layui-this"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token keyword">var</span> $selectDD<span class="token operator">=</span> $selectDiv<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span><span class="token string">'dl dd[lay-value="'</span><span class="token operator">+</span> model<span class="token punctuation">.</span>payType<span class="token operator">+</span><span class="token string">'"]'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> $selectDD<span class="token punctuation">.</span><span class="token function">addClass</span><span class="token punctuation">(</span><span class="token string">"layui-this"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> $selectDiv<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span><span class="token string">"div input"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">val</span><span class="token punctuation">(</span>$selectDD<span class="token punctuation">.</span><span class="token function">text</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span>     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"xxx"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>     form<span class="token punctuation">.</span><span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token number">2000</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre> <p>更改后在form.render()之前是对的，如下：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220608/5143356b4af990afa08b11c69ca947e1.jpg" alt="layer-layui的select更改选项后使用form.render()并没能够刷新所选择的元素"></p> <p>而在2秒后触发setTimeout中的form.render()之后反而变成错的了，如下：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220608/136a4deb8812005a54383b8efec44231.jpg" alt="layer-layui的select更改选项后使用form.render()并没能够刷新所选择的元素"></p> <p>看来不是form.render()没有执行而且里面有bug吧？所以暂时的解决方案是不使用form.render()，而是如上直接另写代码使选择框成为正常的状态。</p> <p>对于radio也是有同样的问题，但是因为radio只能有一个选中，所以使用click()事件就可以了。</p> <pre><code class="prism language-javascript"><span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"#multiCheckbox"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span><span class="token string">'input[value="'</span><span class="token operator">+</span> model<span class="token punctuation">.</span>payWay<span class="token operator">+</span><span class="token string">'"]'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">click</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre> <p>但是对于checkbox，估计也是要另写代码了。这样感觉挺困扰的，本来是用框架就是要快速构建，反而因为复选框的问题要去调。</p> <p>后续版本应该会更新吧？ &gt;_&lt;</p> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-19213.htm">小动物医院游戏（小动物医院活动目标）</a></p>
+                                        <p>下一个：<a href="/news/article-19668.htm">猫打疫苗要打多少次疫苗（猫打疫苗要打多少针）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2024-7-6-shadowrocket-node.htm" title="「7月6日」最高速度22.4M/S，2024年V2ray/SSR/Shadowrocket/Clash每天更新免费节点订阅链接">「7月6日」最高速度22.4M/S，2024年V2ray/SSR/Shadowrocket/Clash每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-11-clash-windows.htm" title="「9月11日」最高速度19.1M/S，2024年Clash/V2ray/Shadowrocket/SSR每天更新免费节点订阅链接">「9月11日」最高速度19.1M/S，2024年Clash/V2ray/Shadowrocket/SSR每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-4-clash-windows.htm" title="「10月4日」最高速度20.8M/S，2024年SSR/Clash/V2ray/Shadowrocket每天更新免费节点订阅链接">「10月4日」最高速度20.8M/S，2024年SSR/Clash/V2ray/Shadowrocket每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-5-1-free-v2ray.htm" title="「5月1日」最高速度20.1M/S，2024年SSR/Clash/Shadowrocket/V2ray每天更新免费节点订阅链接">「5月1日」最高速度20.1M/S，2024年SSR/Clash/Shadowrocket/V2ray每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-7-26-shadowrocket-node.htm" title="「7月26日」最高速度20.8M/S，2024年Shadowrocket/V2ray/Clash/SSR每天更新免费节点订阅链接">「7月26日」最高速度20.8M/S，2024年Shadowrocket/V2ray/Clash/SSR每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-8-free-ssr-subscribe.htm" title="「10月8日」最高速度18.1M/S，2024年V2ray/SSR/Clash/Shadowrocket每天更新免费节点订阅链接">「10月8日」最高速度18.1M/S，2024年V2ray/SSR/Clash/Shadowrocket每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-18-free-node-subscribe-links.htm" title="「10月18日」最高速度20.5M/S，2024年SSR/Shadowrocket/V2ray/Clash每天更新免费节点订阅链接">「10月18日」最高速度20.5M/S，2024年SSR/Shadowrocket/V2ray/Clash每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-8-15-free-node-subscribe-links.htm" title="「8月15日」最高速度21.8M/S，2024年V2ray/SSR/Clash/Shadowrocket每天更新免费节点订阅链接">「8月15日」最高速度21.8M/S，2024年V2ray/SSR/Clash/Shadowrocket每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-18637.htm" title="宠物粮食店铺名称怎么起 宠物粮食店铺名称怎么起好听">宠物粮食店铺名称怎么起 宠物粮食店铺名称怎么起好听</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-6-5-node-share.htm" title="「6月5日」最高速度20.3M/S，2024年V2ray/Clash/SSR/Shadowrocket每天更新免费节点订阅链接">「6月5日」最高速度20.3M/S，2024年V2ray/Clash/SSR/Shadowrocket每天更新免费节点订阅链接</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">3</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-09/" title="2024-09 归档">2024-09</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-08/" title="2024-08 归档">2024-08</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">27</span> <a href="/date/2024-07/" title="2024-07 归档">2024-07</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">29</span> <a href="/date/2024-06/" title="2024-06 归档">2024-06</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-05/" title="2024-05 归档">2024-05</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">2</span> <a href="/date/2024-04/" title="2024-04 归档">2024-04</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+        <!-- footer -->
+    <div class="footer">
+        <!-- tiny-footer -->
+        <div class="container">
+            <div class="row">
+                <div class="tiny-footer">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <p class="tiny-footer-para">
+                            <a href="/">IOS Clash节点订阅站</a> 版权所有 Powered by WordPress
+                        </p>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <div class="tiny-section-social">
+                            <div class="">
+                                <ul>
+                                    <li><a href="#"><i class="fa fa-facebook-square"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-twitter-square"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-google-plus-square"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-linkedin-square"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /. tiny-footer -->
+        </div>
+    </div>
+    <!-- /.footer -->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="/assets/website/js/frontend/iosclash/jquery.min.js" type="text/javascript"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="/assets/website/js/frontend/iosclash/bootstrap.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/iosclash/menumaker.js" type="text/javascript"></script>
+    <script type="text/javascript" src="/assets/website/js/frontend/iosclash/jquery.sticky.js"></script>
+    <script type="text/javascript" src="/assets/website/js/frontend/iosclash/sticky-header.js"></script>
+    <script type="text/javascript" src="/assets/website/js/frontend/iosclash/owl.carousel.min.js"></script>
+    <script type="text/javascript" src="/assets/website/js/frontend/iosclash/multiple-carousel.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
