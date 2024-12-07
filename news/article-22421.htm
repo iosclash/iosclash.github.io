@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://iosclash.github.io/news/article-22421.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Docker极简入门：使用Docker-Compose 运行网站浏览量统计Demo</title>
+        <meta name="description" content="Docker-Compose 是一个可以对 Docker 容器集群的快速编排的工具，能够减轻您心智和手指的负担。 简单的来说 Docker-Compose 就是将你运行多个容器的命令编写到了一起，类似" />
+        <link rel="icon" href="__ADDON__/img/iosclash/favicon.ico" type="image/x-icon"/>
+    <!-- Bootstrap -->
+    <link href="/assets/website/css/iosclash/bootstrap.min.css" rel="stylesheet">
+    <!-- Style CSS -->
+    <link href="/assets/website/css/iosclash/style.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link href="/assets/website/css/iosclash/owl.carousel.css" rel="stylesheet">
+    <link href="/assets/website/css/iosclash/owl.theme.default.css" rel="stylesheet">
+    <!-- FontAwesome CSS -->
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/iosclash/fontello.css">
+    <link href="/assets/website/css/iosclash/font-awesome.min.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6QH28Z9CLQ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-6QH28Z9CLQ');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!-- top-bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                    <div class="logo">
+                                                <a href="/">IOS Clash</a>
+                                            </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.top-bar -->
+    <!-- header-section-->
+    <div class="header-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <!-- navigations-->
+                    <div class="navigation">
+                        <div id="navigation">
+                            <ul>
+                                                                <li><a href="/">首页</a></li>
+                                                                <li><a href="/free-nodes/">免费节点</a></li>
+                                                                <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                                                <li><a href="/news/">新闻资讯</a></li>
+                                                                <li><a href="#">关于</a></li>
+                                <li><a href="#">联系</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- /.navigations-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /. header-section-->
+    <!-- page-header -->
+    <div class="page-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
+                    <div class="page-section">
+                        <h1 class="page-title">Docker极简入门：使用Docker-Compose 运行网站浏览量统计Demo</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="page-breadcrumb">
+                        <ol class="breadcrumb">
+                            <li><a href="/">首页</a></li>
+                            <li><a href="/news/">新闻资讯</a></li>
+                            <li>正文</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.page-header-->
+    <!-- /.page-header-->
+    <div class="space-medium">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                      				  				  				<p>Docker-Compose 是一个可以对 Docker 容器集群的快速编排的工具，能够减轻您心智和手指的负担。</p> <p>简单的来说 Docker-Compose 就是将你运行多个容器的命令编写到了一起，类似于你会为一系列重复操作写一个 doSomething.sh 文件，只不过 Docker-Compose 提供了更简便的语法。</p> <p>当然如果想管理多主机多容器还是推荐使用 k8s。</p> <p>我们的 demo 是一个基于 node.js 的网站服务，当用户访问当前服务器的根目录时，将 redis 中的浏览量计数增加1。</p> <p>先不看具体的业务代码，这其实无关紧要。假设我们已经写好了 node 服务，那么我们下一步就是写一个<code>Dockerfile</code>文件去构建镜像，然后执行<code>docker run</code> 命令，这样整个服务就启动了。</p> <pre><code class="language-dockerfile">FROM node:18-alpine  WORKDIR '/app'  COPY package.json . RUN npm install COPY . . CMD ["npm","start"]</code></pre> <p>这个<code>Dockerfile</code> 做的事情就是</p> <ul> <li>在容器中创建一个 app 目录，并切换到该目录。</li> <li>将宿主机当前目录下的 package.json 文件拷贝到容器中的当前目录(/app)下</li> <li>执行命令<code>npm install</code></li> <li>将宿主机当前目录下的所有文件拷贝到容器中(因为主体程序index.js还没有拷贝到容器中)</li> <li>运行命令<code>npm start</code>启动服务</li> </ul> <p>因为我们的 node 服务用到了 redis，所以我们还需要启动一个 redis 容器。</p> <p>但 docker 的机制使得这两个容器是互相隔离的，所以想要通信的话</p> <ul> <li>将 redis 端口与宿主机端口做映射，通过宿主机的端口访问 redis</li> <li>创建 docker network，将两个容器放在同一个 docker network下</li> <li>编写 docker-compose.yml 文件，让Docker-Compose帮我们创建 docker network 搞定一切</li> </ul> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/237e3c67902add9c2cccbb4034d59d54.jpg" alt="Docker极简入门：使用Docker-Compose 运行网站浏览量统计Demo"></p> <p><code>docker-compose.yml</code></p> <pre><code class="language-yaml">version: '3' services:   ## 容器名   redis-server:     ## 指定镜像    image: 'redis:6.0.16-alpine'    ## 容器重启策略    restart: 'always'   ## 容器名   node-app:    ## 当前目录执行 docker build    build: .    ## 端口映射    ports:       - "8888:8081"</code></pre> <p>虽然我们在文件中没有写任何有关 network 的代码，但 Docker-Compose会自动帮我们创建一个network</p> <p>运行命令</p> <pre><code class="language-shell">sudo docker-compose up --build ## 会执行yaml文件中的build命令</code></pre> <p>访问 localhost:8888 你应该能看到类似这样的界面</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/46ce7fb120ee188748fe0521b1515e5e.jpg" alt="Docker极简入门：使用Docker-Compose 运行网站浏览量统计Demo"></p> <p>docker-compose 的命令跟 docker类似</p> <pre><code class="language-shell">docker-compose up -d ## 后台运行 docker-compose down ## 停止</code></pre> <p>最后是文件目录结构和 index.js 以及 package.json的具体代码</p> <pre><code class="language-shell">. ├── docker-compose.yml ├── Dockerfile ├── index.js ├── package.json</code></pre> <p><code>package.json</code></p> <pre><code class="language-json">{     "dependencies": {         "express": "^4.17.3",         "redis": "^4.0.6"     },     "scripts": {         "start": "node index.js"     } }</code></pre> <p><code>index.js</code></p> <pre><code class="language-javascript">const express = require('express');  const redis = require('redis');  const app = express();  const client = redis.createClient({   url : 'redis://redis-server:6379' // redis-server会被docker解析并转发 });  const db = {   async set(key,value){     return fun(async()=&gt;{       return await client.set(key,value)     },key,value)   },   async get(key){     return fun(async()=&gt;{       return await client.get(key)     },key)   } }  async function fun(callback,key,value){   return new Promise(async (res,rej)=&gt;{     await client.connect();     let ok = callback(key,value);     await client.quit();     res(ok);   }) }  db.set("visits",0);  async function cntVisits(){   let cnt = await db.get("visits");   await db.set("visits",parseInt(cnt)+1);   return parseInt(cnt)+1; }  app.get('/', (req, res) =&gt; {      cntVisits().then( result =&gt; {         res.send('Number of visits is ' + result);      }); }); // 8081是容器内部的端口，我们需要访问的是8888,因为在docker-compose.yml文件中已经做过端口映射了 app.listen(8081, () =&gt; { console.log('Listening on port 8081'); });</code></pre> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-21962.htm">动物医院好评语30字通用句子 动物医院好评语30字通用句子怎么写</a></p>
+                                        <p>下一个：<a href="/news/article-22422.htm">疫苗玻璃瓶回收（疫苗瓶子回收）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2024-10-29-free-v2ray.htm" title="「10月29日」最高速度19.6M/S，2024年Shadowrocket/Clash/V2ray/SSR每天更新免费节点订阅链接">「10月29日」最高速度19.6M/S，2024年Shadowrocket/Clash/V2ray/SSR每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-6-2-free-shadowrocket-node.htm" title="「6月2日」最高速度18.9M/S，2024年Shadowrocket/Clash/SSR/V2ray每天更新免费节点订阅链接">「6月2日」最高速度18.9M/S，2024年Shadowrocket/Clash/SSR/V2ray每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-11-clash-windows.htm" title="「9月11日」最高速度19.1M/S，2024年Clash/V2ray/Shadowrocket/SSR每天更新免费节点订阅链接">「9月11日」最高速度19.1M/S，2024年Clash/V2ray/Shadowrocket/SSR每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-14-free-ssr-subscribe.htm" title="「9月14日」最高速度22.1M/S，2024年Clash/Shadowrocket/V2ray/SSR每天更新免费节点订阅链接">「9月14日」最高速度22.1M/S，2024年Clash/Shadowrocket/V2ray/SSR每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-23-free-node-subscribe.htm" title="「10月23日」最高速度22.5M/S，2024年Shadowrocket/SSR/V2ray/Clash每天更新免费节点订阅链接">「10月23日」最高速度22.5M/S，2024年Shadowrocket/SSR/V2ray/Clash每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-30-free-ssr-node.htm" title="「11月30日」最高速度18.6M/S，2024年V2ray/Shadowrocket/SSR/Clash每天更新免费节点订阅链接">「11月30日」最高速度18.6M/S，2024年V2ray/Shadowrocket/SSR/Clash每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-5-2-clash-v2ray-ss-ssr.htm" title="「5月2日」最高速度18.4M/S，2024年Clash/Shadowrocket/SSR/V2ray每天更新免费节点订阅链接">「5月2日」最高速度18.4M/S，2024年Clash/Shadowrocket/SSR/V2ray每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-8-13-clash-v2ray-ss-ssr.htm" title="「8月13日」最高速度21.1M/S，2024年SSR/V2ray/Clash/Shadowrocket每天更新免费节点订阅链接">「8月13日」最高速度21.1M/S，2024年SSR/V2ray/Clash/Shadowrocket每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-8-free-ssr-subscribe.htm" title="「10月8日」最高速度18.1M/S，2024年V2ray/SSR/Clash/Shadowrocket每天更新免费节点订阅链接">「10月8日」最高速度18.1M/S，2024年V2ray/SSR/Clash/Shadowrocket每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-6-24-free-shadowrocket-node.htm" title="「6月24日」最高速度20M/S，2024年Clash/Shadowrocket/SSR/V2ray每天更新免费节点订阅链接">「6月24日」最高速度20M/S，2024年Clash/Shadowrocket/SSR/V2ray每天更新免费节点订阅链接</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">21</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-09/" title="2024-09 归档">2024-09</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-08/" title="2024-08 归档">2024-08</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">27</span> <a href="/date/2024-07/" title="2024-07 归档">2024-07</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">29</span> <a href="/date/2024-06/" title="2024-06 归档">2024-06</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-05/" title="2024-05 归档">2024-05</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">2</span> <a href="/date/2024-04/" title="2024-04 归档">2024-04</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+        <!-- footer -->
+    <div class="footer">
+        <!-- tiny-footer -->
+        <div class="container">
+            <div class="row">
+                <div class="tiny-footer">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <p class="tiny-footer-para">
+                            <a href="/">IOS Clash节点订阅站</a> 版权所有 Powered by WordPress
+                        </p>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <div class="tiny-section-social">
+                            <div class="">
+                                <ul>
+                                    <li><a href="#"><i class="fa fa-facebook-square"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-twitter-square"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-google-plus-square"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-linkedin-square"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /. tiny-footer -->
+        </div>
+    </div>
+    <!-- /.footer -->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="/assets/website/js/frontend/iosclash/jquery.min.js" type="text/javascript"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="/assets/website/js/frontend/iosclash/bootstrap.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/iosclash/menumaker.js" type="text/javascript"></script>
+    <script type="text/javascript" src="/assets/website/js/frontend/iosclash/jquery.sticky.js"></script>
+    <script type="text/javascript" src="/assets/website/js/frontend/iosclash/sticky-header.js"></script>
+    <script type="text/javascript" src="/assets/website/js/frontend/iosclash/owl.carousel.min.js"></script>
+    <script type="text/javascript" src="/assets/website/js/frontend/iosclash/multiple-carousel.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
