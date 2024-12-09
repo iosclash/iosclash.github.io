@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://iosclash.github.io/news/article-23330.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Springboot2整合activemq</title>
+        <meta name="description" content="小结 这两天过一下springboot中的一些东西，居然看到有结合队列的内容，顺便拿来学一下。但是感觉自己学+做之后，掌握还是不太到位，具体是哪里不到位，是流程吗，还是操作细节。MQ就是消息缓存中间件" />
+        <link rel="icon" href="__ADDON__/img/iosclash/favicon.ico" type="image/x-icon"/>
+    <!-- Bootstrap -->
+    <link href="/assets/website/css/iosclash/bootstrap.min.css" rel="stylesheet">
+    <!-- Style CSS -->
+    <link href="/assets/website/css/iosclash/style.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link href="/assets/website/css/iosclash/owl.carousel.css" rel="stylesheet">
+    <link href="/assets/website/css/iosclash/owl.theme.default.css" rel="stylesheet">
+    <!-- FontAwesome CSS -->
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/iosclash/fontello.css">
+    <link href="/assets/website/css/iosclash/font-awesome.min.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6QH28Z9CLQ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-6QH28Z9CLQ');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!-- top-bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                    <div class="logo">
+                                                <a href="/">IOS Clash</a>
+                                            </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.top-bar -->
+    <!-- header-section-->
+    <div class="header-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <!-- navigations-->
+                    <div class="navigation">
+                        <div id="navigation">
+                            <ul>
+                                                                <li><a href="/">首页</a></li>
+                                                                <li><a href="/free-nodes/">免费节点</a></li>
+                                                                <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                                                <li><a href="/news/">新闻资讯</a></li>
+                                                                <li><a href="#">关于</a></li>
+                                <li><a href="#">联系</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- /.navigations-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /. header-section-->
+    <!-- page-header -->
+    <div class="page-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
+                    <div class="page-section">
+                        <h1 class="page-title">Springboot2整合activemq</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="page-breadcrumb">
+                        <ol class="breadcrumb">
+                            <li><a href="/">首页</a></li>
+                            <li><a href="/news/">新闻资讯</a></li>
+                            <li>正文</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.page-header-->
+    <!-- /.page-header-->
+    <div class="space-medium">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                      				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> <h3><a id="_0" rel="nofollow"></a>小结</h3> <p>这两天过一下springboot中的一些东西，居然看到有结合队列的内容，顺便拿来学一下。但是感觉自己学+做之后，掌握还是不太到位，具体是哪里不到位，是流程吗，还是操作细节。MQ就是消息缓存中间件，为了避免同步执行导致浪费之间，很多时候只需要把主流程执行完，这个任务就算完成，类似于下单结算和下单之后的短信通知，两个业务可以分开，降低了服务器压力，松耦合。同时也提高了系统的处理能力。</p> <h3><a id="01_8" rel="nofollow"></a>代码01</h3> <h5><a id="_10" rel="nofollow"></a>消息发送实现类</h5> <pre><code class="prism language-java"><span class="token annotation punctuation">@Service</span><span class="token keyword">public</span><span class="token keyword">class</span><span class="token class-name">MessageServiceActiveImpl</span><span class="token keyword">implements</span><span class="token class-name">MessageService</span><span class="token punctuation">{<!-- --></span><span class="token annotation punctuation">@Autowired</span><span class="token keyword">private</span><span class="token class-name">JmsMessagingTemplate</span> messagingTemplate<span class="token punctuation">;</span><span class="token annotation punctuation">@Override</span><span class="token keyword">public</span><span class="token keyword">void</span><span class="token function">sendMessage</span><span class="token punctuation">(</span><span class="token class-name">String</span> id<span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"待发送短信的订单已纳入队列：id:"</span><span class="token operator">+</span>id<span class="token punctuation">)</span><span class="token punctuation">;</span>         messagingTemplate<span class="token punctuation">.</span><span class="token function">convertAndSend</span><span class="token punctuation">(</span><span class="token string">"order.queue.id"</span><span class="token punctuation">,</span>id<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token annotation punctuation">@Override</span><span class="token keyword">public</span><span class="token class-name">String</span><span class="token function">doMessage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token class-name">String</span> id<span class="token operator">=</span> messagingTemplate<span class="token punctuation">.</span><span class="token function">receiveAndConvert</span><span class="token punctuation">(</span><span class="token string">"order.queue.id"</span><span class="token punctuation">,</span><span class="token class-name">String</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"已完成短信发送业务。id:"</span><span class="token operator">+</span> id<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token keyword">return</span> id<span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token punctuation">}</span></code></pre> <h5><a id="_36" rel="nofollow"></a>监听器</h5> <pre><code class="prism language-java"><span class="token annotation punctuation">@Component</span><span class="token keyword">public</span><span class="token keyword">class</span><span class="token class-name">MessagerListener</span><span class="token punctuation">{<!-- --></span><span class="token annotation punctuation">@JmsListener</span><span class="token punctuation">(</span>destination<span class="token operator">=</span><span class="token string">"order.queue.id"</span><span class="token punctuation">)</span><span class="token annotation punctuation">@SendTo</span><span class="token punctuation">(</span><span class="token string">"order.other.queue.demo"</span><span class="token punctuation">)</span><span class="token keyword">public</span><span class="token class-name">String</span><span class="token function">receive</span><span class="token punctuation">(</span><span class="token class-name">String</span> id<span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"已完成短信发送业务，id"</span><span class="token operator">+</span>id<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token keyword">return</span><span class="token string">"new"</span><span class="token operator">+</span>id<span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token punctuation">}</span></code></pre> <h5><a id="pomxml_54" rel="nofollow"></a>依赖pom.xml</h5> <pre><code class="prism language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">&gt;</span></span>org.springframework.boot<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">&gt;</span></span>spring-boot-starter-activemq<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">&gt;</span></span>2.5.4<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">&gt;</span></span></code></pre> <h5><a id="yaml_72" rel="nofollow"></a>配置文件yaml</h5> <pre><code class="prism language-yaml"><span class="token key atrule">server</span><span class="token punctuation">:</span><span class="token key atrule">port</span><span class="token punctuation">:</span><span class="token number">9300</span><span class="token key atrule">spring</span><span class="token punctuation">:</span><span class="token key atrule">activemq</span><span class="token punctuation">:</span><span class="token key atrule">broker-url</span><span class="token punctuation">:</span> tcp<span class="token punctuation">:</span>//localhost<span class="token punctuation">:</span><span class="token number">61616</span><span class="token key atrule">jms</span><span class="token punctuation">:</span><span class="token key atrule">template</span><span class="token punctuation">:</span><span class="token key atrule">default-destination</span><span class="token punctuation">:</span> itheima<span class="token key atrule">pub-sub-domain</span><span class="token punctuation">:</span><span class="token boolean important">true</span></code></pre> <p>此外就是通过两个控制器的接口，利用postman发送请求，进行调用。</p> <p>这两天另外找时间去优化下自己以前写的代码，试试java8stream流写法。</p> <p>整理清除业务逻辑，降低后期运维成本。</p> <p>爱自己，come on!</p> <h3><a id="git_98" rel="nofollow"></a>git地址</h3> <pre><code>git@gitee.com:shenjhhh/black-horse-spring-boot2-black.git</code></pre> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-22876.htm">广州市猫咪领养中心电话（广州去哪领养猫）</a></p>
+                                        <p>下一个：<a href="/news/article-23331.htm">Vue.js 3.x 双向绑定原理_在线工具</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2024-9-25-free-high-speed-nodes.htm" title="「9月25日」最高速度22.3M/S，2024年Clash/SSR/Shadowrocket/V2ray每天更新免费节点订阅链接">「9月25日」最高速度22.3M/S，2024年Clash/SSR/Shadowrocket/V2ray每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-6-8-node-share.htm" title="「6月8日」最高速度20.9M/S，2024年Clash/V2ray/SSR/Shadowrocket每天更新免费节点订阅链接">「6月8日」最高速度20.9M/S，2024年Clash/V2ray/SSR/Shadowrocket每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-8-30-clash-windows.htm" title="「8月30日」最高速度18M/S，2024年SSR/V2ray/Shadowrocket/Clash每天更新免费节点订阅链接">「8月30日」最高速度18M/S，2024年SSR/V2ray/Shadowrocket/Clash每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-7-25-node-share.htm" title="「7月25日」最高速度22.6M/S，2024年Shadowrocket/Clash/V2ray/SSR每天更新免费节点订阅链接">「7月25日」最高速度22.6M/S，2024年Shadowrocket/Clash/V2ray/SSR每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-13-free-shadowrocket-node.htm" title="「11月13日」最高速度20.2M/S，2024年V2ray/SSR/Clash/Shadowrocket每天更新免费节点订阅链接">「11月13日」最高速度20.2M/S，2024年V2ray/SSR/Clash/Shadowrocket每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-24-free-v2ray-subscribe.htm" title="「9月24日」最高速度21.9M/S，2024年V2ray/Clash/SSR/Shadowrocket每天更新免费节点订阅链接">「9月24日」最高速度21.9M/S，2024年V2ray/Clash/SSR/Shadowrocket每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-8-9-clash-node.htm" title="「8月9日」最高速度20.6M/S，2024年Shadowrocket/SSR/Clash/V2ray每天更新免费节点订阅链接">「8月9日」最高速度20.6M/S，2024年Shadowrocket/SSR/Clash/V2ray每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-22422.htm" title="疫苗玻璃瓶回收（疫苗瓶子回收）">疫苗玻璃瓶回收（疫苗瓶子回收）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-8-2-clash-node.htm" title="「8月2日」最高速度18.8M/S，2024年SSR/Clash/Shadowrocket/V2ray每天更新免费节点订阅链接">「8月2日」最高速度18.8M/S，2024年SSR/Clash/Shadowrocket/V2ray每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-19668.htm" title="猫打疫苗要打多少次疫苗（猫打疫苗要打多少针）">猫打疫苗要打多少次疫苗（猫打疫苗要打多少针）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">27</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-09/" title="2024-09 归档">2024-09</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-08/" title="2024-08 归档">2024-08</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">27</span> <a href="/date/2024-07/" title="2024-07 归档">2024-07</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">29</span> <a href="/date/2024-06/" title="2024-06 归档">2024-06</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-05/" title="2024-05 归档">2024-05</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">2</span> <a href="/date/2024-04/" title="2024-04 归档">2024-04</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+        <!-- footer -->
+    <div class="footer">
+        <!-- tiny-footer -->
+        <div class="container">
+            <div class="row">
+                <div class="tiny-footer">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <p class="tiny-footer-para">
+                            <a href="/">IOS Clash节点订阅站</a> 版权所有 Powered by WordPress
+                        </p>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <div class="tiny-section-social">
+                            <div class="">
+                                <ul>
+                                    <li><a href="#"><i class="fa fa-facebook-square"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-twitter-square"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-google-plus-square"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-linkedin-square"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /. tiny-footer -->
+        </div>
+    </div>
+    <!-- /.footer -->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="/assets/website/js/frontend/iosclash/jquery.min.js" type="text/javascript"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="/assets/website/js/frontend/iosclash/bootstrap.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/iosclash/menumaker.js" type="text/javascript"></script>
+    <script type="text/javascript" src="/assets/website/js/frontend/iosclash/jquery.sticky.js"></script>
+    <script type="text/javascript" src="/assets/website/js/frontend/iosclash/sticky-header.js"></script>
+    <script type="text/javascript" src="/assets/website/js/frontend/iosclash/owl.carousel.min.js"></script>
+    <script type="text/javascript" src="/assets/website/js/frontend/iosclash/multiple-carousel.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>

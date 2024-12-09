@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://iosclash.github.io/news/article-23331.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Vue.js 3.x 双向绑定原理_在线工具</title>
+        <meta name="description" content="什么是双向绑定？ 废话不多说，我们先来看一个 v-model 基本的示例： &lt;input type="text" v-model="search"&gt;  首先，我们要明白一点的是：v-mod" />
+        <link rel="icon" href="__ADDON__/img/iosclash/favicon.ico" type="image/x-icon"/>
+    <!-- Bootstrap -->
+    <link href="/assets/website/css/iosclash/bootstrap.min.css" rel="stylesheet">
+    <!-- Style CSS -->
+    <link href="/assets/website/css/iosclash/style.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link href="/assets/website/css/iosclash/owl.carousel.css" rel="stylesheet">
+    <link href="/assets/website/css/iosclash/owl.theme.default.css" rel="stylesheet">
+    <!-- FontAwesome CSS -->
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/iosclash/fontello.css">
+    <link href="/assets/website/css/iosclash/font-awesome.min.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6QH28Z9CLQ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-6QH28Z9CLQ');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!-- top-bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                    <div class="logo">
+                                                <a href="/">IOS Clash</a>
+                                            </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.top-bar -->
+    <!-- header-section-->
+    <div class="header-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <!-- navigations-->
+                    <div class="navigation">
+                        <div id="navigation">
+                            <ul>
+                                                                <li><a href="/">首页</a></li>
+                                                                <li><a href="/free-nodes/">免费节点</a></li>
+                                                                <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                                                <li><a href="/news/">新闻资讯</a></li>
+                                                                <li><a href="#">关于</a></li>
+                                <li><a href="#">联系</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- /.navigations-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /. header-section-->
+    <!-- page-header -->
+    <div class="page-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
+                    <div class="page-section">
+                        <h1 class="page-title">Vue.js 3.x 双向绑定原理_在线工具</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="page-breadcrumb">
+                        <ol class="breadcrumb">
+                            <li><a href="/">首页</a></li>
+                            <li><a href="/news/">新闻资讯</a></li>
+                            <li>正文</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.page-header-->
+    <!-- /.page-header-->
+    <div class="space-medium">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                      				  				  				<h2 id="什么是双向绑定">什么是双向绑定？</h2> <p>废话不多说，我们先来看一个 <code>v-model</code> 基本的示例：</p> <pre><code class="language-html">&lt;input type="text" v-model="search"&gt; </code></pre> <p>首先，我们要明白一点的是：<strong><code>v-model</code> 的本质是指令</strong>。因此，它跟我们一般的自定义指令是一样的，需要实现 <code>Vue.js</code> 生命周期的钩子函数。</p> <p>其次，<code>v-model</code> 实现了双向绑定，也就是：<strong>数据到 DOM 的单向流动</strong>、<strong>DOM 到数据的单向流动</strong>。</p> <p>明白了上面这两点，再来看代码就清晰多了。</p> <pre><code class="language-typescript">// packages/runtime-dom/src/directives/vModel.ts  export const vModelText: ModelDirective&lt;   HTMLInputElement | HTMLTextAreaElement &gt; = {   created() {},   mounted() {},   beforeUpdate() {} } </code></pre> <p>打开 <code>v-model</code> 的源码我们可以看到，它实现了对应的 <code>Vue.js</code> 生命周期钩子函数，实际上它就是一个内置的自定义指令。</p> <p>那么，<code>v-model</code> 如何实现双向绑定的呢？具体来说，<strong>数据到 DOM 的单向流动</strong>以及<strong>DOM 到数据的单向流动</strong>是如何实现的。</p> <h2 id="数据到-dom-的单向流动">数据到 DOM 的单向流动</h2> <pre><code class="language-typescript">// packages/runtime-dom/src/directives/vModel.ts  export const vModelText: ModelDirective&lt;   HTMLInputElement | HTMLTextAreaElement &gt; = {   // set value on mounted so it's after min/max for type="range"   mounted(el, { value }) {     el.value = value == null ? '' : value   } } </code></pre> <p>数据到 DOM 的单向流动实现非常简单，一行代码就搞定了，就是把 <code>v-model</code> 绑定的值赋值给 <code>el.value</code>。</p> <h2 id="dom-到数据的单向流动">DOM 到数据的单向流动</h2> <pre><code class="language-typescript">// packages/runtime-dom/src/directives/vModel.ts  export const vModelText: ModelDirective&lt;   HTMLInputElement | HTMLTextAreaElement &gt; = {   created(el, { modifiers: { lazy, trim, number } }, vnode) {     el._assign = getModelAssigner(vnode)          // see: https://github.com/vuejs/core/issues/3813     const castToNumber = number || (vnode.props &amp;&amp; vnode.props.type === 'number')          // 实现 lazy 功能     addEventListener(el, lazy ? 'change' : 'input', e =&gt; {       // `composing=true` 时不把 DOM 的值赋值给数据       if ((e.target as any).composing) return              let domValue: string | number = el.value       if (trim) {         domValue = domValue.trim()       } else if (castToNumber) {         domValue = toNumber(domValue)       }              // DOM 的值改变时，同时改变对应的数据（即改变 v-model 上绑定的变量的值）       el._assign(domValue)     })          // 实现 trim 功能     if (trim) {       addEventListener(el, 'change', () =&gt; {         el.value = el.value.trim()       })     }          // 不配置 lazy 时，监听的是 input 的 input 事件，它会在用户实时输入的时候触发。     // 此外，还会多监听 compositionstart 和 compositionend 事件。     if (!lazy) {     	// 这是因为，用户使用拼音输入法开始输入汉字时，这个事件会被触发，     	// 此时，设置 `composing=true`，在 input 事件回调里可以进行判断，避免将 DOM 的值赋值给数据，       // 因为此时并未输入完成。       addEventListener(el, 'compositionstart', onCompositionStart)              // 当用户从输入法中确定选中了一些数据完成输入后（如中文输入法常见的按空格确认输入的文字），       // 设置 `composing=false`，在 onCompositionEnd 中手动触发 input 事件，完成数据的赋值。       addEventListener(el, 'compositionend', onCompositionEnd)              // Safari &lt; 10.2 &amp; UIWebView doesn't fire compositionend when       // switching focus before confirming composition choice       // this also fixes the issue where some browsers e.g. iOS Chrome       // fires "change" instead of "input" on autocomplete.       addEventListener(el, 'change', onCompositionEnd)     }   } }  function onCompositionStart(e: Event) {   (e.target as any).composing = true }  function onCompositionEnd(e: Event) {   const target = e.target as any   if (target.composing) {     target.composing = false     target.dispatchEvent(new Event('input'))   } }  const getModelAssigner = (vnode: VNode): AssignerFn =&gt; {   const fn = vnode.props!['onUpdate:modelValue']   return isArray(fn) ? value =&gt; invokeArrayFns(fn, value) : fn } </code></pre> <p>代码有点多，但原理很简单：</p> <ul> <li>通过自定义监听事件 <code>addEventListener</code> 来监听 <code>input</code> 元素的 <code>input</code> 或 <code>change</code> 事件</li> <li>当用户手动输入数据时执行对应的函数，并通过 <code>el.value</code> 获取 <code>input</code> 的新值</li> <li>调用 <code>el._assign</code> （<code>onUpdate:modelValue</code> 属性对应的函数）方法 <code>v-model</code> 绑定的值</li> </ul> <p>而实现 DOM 到数据的单向流动，关键就在 <code>onUpdate:modelValue</code>。借助 <a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://vue-next-template-explorer.netlify.app/"  target="_blank"  rel="nofollow">Vue 3 Template Explorer</a>，我们可以查看其编译后生成的 <code>render</code> 函数，可以发现它做所的事情并没有什么神奇的地方，就是帮我们自动更新 <code>v-model</code> 上绑定的变量的值。</p> <pre><code class="language-javascript">&lt;input type="text" v-model="search"&gt;  import { vModelText as _vModelText, withDirectives as _withDirectives, openBlock as _openBlock, createElementBlock as _createElementBlock } from "vue"  export function render(_ctx, _cache, $props, $setup, $data, $options) {   return _withDirectives((_openBlock(), _createElementBlock("input", {     type: "text",          // `onUpdate:modelValue` 所做的事，     // 就是自动帮我们更新 `v-model` 上绑定的变量的值。     "onUpdate:modelValue": $event =&gt; ((_ctx.search) = $event)        }, null, 8 /* PROPS */, ["onUpdate:modelValue"])), [     [_vModelText, _ctx.search]   ]) } </code></pre> <p>除此之外，还有对 <code>lazy</code> 的处理、<code>trim</code> 的处理、数字的处理、以及解决正在输入时文本被清空的问题。</p> <p>关于 <code>onCompositionStart</code> 和 <code>onCompositionEnd</code> 两个方法的作用，详见 <a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://github.com/vuejs/core/issues/2302"  target="_blank"  rel="nofollow">text added with IME to input that has v-model is gone when the view is updated #2302</a>。</p> <p><strong>一句话总结：通过使用 <code>addEventListener</code> 来实现 DOM 到数据的单向流动</strong>。</p> <p>最后是 <code>beforeUpdate</code> 的实现，如果数据的值和 DOM 的值不一致，则将数据更新到 DOM：</p> <pre><code class="language-javascript">// packages/runtime-dom/src/directives/vModel.ts  beforeUpdate(el, { value, modifiers: { lazy, trim, number } }, vnode) {     el._assign = getModelAssigner(vnode)     // avoid clearing unresolved text. #2302   	// 输入某些语言如中文，在没有输入完成时，在更新时会自动将已存在的文本清空，具体可见 issue#2302     if ((el as any).composing) return        if (document.activeElement === el) {       if (lazy) {         return       }       if (trim &amp;&amp; el.value.trim() === value) {         return       }       if ((number || el.type === 'number') &amp;&amp; toNumber(el.value) === value) {         return       }     }     const newValue = value == null ? '' : value     if (el.value !== newValue) {       el.value = newValue     }   } </code></pre> <p>以上就是 <code>text</code> 类型的 <code>input</code> 元素双向绑定原理，当然 <code>input</code> 元素类型不止这个，还有诸如 <code>radio</code>、<code>checkbox</code> 等类型，大家有兴趣的话可以自己去看，但是原理都是相同的，就是实现两个功能：<strong>数据到 DOM 的单向流动</strong>、<strong>DOM 到数据的单向流动</strong>。</p> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-23330.htm">Springboot2整合activemq</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2024-8-28-clash-node.htm" title="「8月28日」最高速度18.5M/S，2024年Shadowrocket/Clash/SSR/V2ray每天更新免费节点订阅链接">「8月28日」最高速度18.5M/S，2024年Shadowrocket/Clash/SSR/V2ray每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-26-free-high-speed-nodes.htm" title="「10月26日」最高速度18.9M/S，2024年V2ray/Shadowrocket/Clash/SSR每天更新免费节点订阅链接">「10月26日」最高速度18.9M/S，2024年V2ray/Shadowrocket/Clash/SSR每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-1-clash-v2ray-ss-ssr.htm" title="「9月1日」最高速度22.2M/S，2024年Shadowrocket/SSR/V2ray/Clash每天更新免费节点订阅链接">「9月1日」最高速度22.2M/S，2024年Shadowrocket/SSR/V2ray/Clash每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-6-28-clash-node.htm" title="「6月28日」最高速度21.8M/S，2024年Clash/SSR/V2ray/Shadowrocket每天更新免费节点订阅链接">「6月28日」最高速度21.8M/S，2024年Clash/SSR/V2ray/Shadowrocket每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-2-free-high-speed-nodes.htm" title="「11月2日」最高速度19.1M/S，2024年V2ray/Shadowrocket/SSR/Clash每天更新免费节点订阅链接">「11月2日」最高速度19.1M/S，2024年V2ray/Shadowrocket/SSR/Clash每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-5-20-node-share.htm" title="「5月20日」最高速度22.5M/S，2024年SSR/V2ray/Clash/Shadowrocket每天更新免费节点订阅链接">「5月20日」最高速度22.5M/S，2024年SSR/V2ray/Clash/Shadowrocket每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-6-29-clash-windows.htm" title="「6月29日」最高速度20.6M/S，2024年SSR/Shadowrocket/V2ray/Clash每天更新免费节点订阅链接">「6月29日」最高速度20.6M/S，2024年SSR/Shadowrocket/V2ray/Clash每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-5-5-clash-node.htm" title="「5月5日」最高速度19.3M/S，2024年SSR/V2ray/Clash/Shadowrocket每天更新免费节点订阅链接">「5月5日」最高速度19.3M/S，2024年SSR/V2ray/Clash/Shadowrocket每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-8-7-free-v2ray-subscribe.htm" title="「8月7日」最高速度18M/S，2024年SSR/V2ray/Shadowrocket/Clash每天更新免费节点订阅链接">「8月7日」最高速度18M/S，2024年SSR/V2ray/Shadowrocket/Clash每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-29-free-v2ray.htm" title="「10月29日」最高速度19.6M/S，2024年Shadowrocket/Clash/V2ray/SSR每天更新免费节点订阅链接">「10月29日」最高速度19.6M/S，2024年Shadowrocket/Clash/V2ray/SSR每天更新免费节点订阅链接</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">27</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-09/" title="2024-09 归档">2024-09</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-08/" title="2024-08 归档">2024-08</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">27</span> <a href="/date/2024-07/" title="2024-07 归档">2024-07</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">29</span> <a href="/date/2024-06/" title="2024-06 归档">2024-06</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-05/" title="2024-05 归档">2024-05</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">2</span> <a href="/date/2024-04/" title="2024-04 归档">2024-04</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+        <!-- footer -->
+    <div class="footer">
+        <!-- tiny-footer -->
+        <div class="container">
+            <div class="row">
+                <div class="tiny-footer">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <p class="tiny-footer-para">
+                            <a href="/">IOS Clash节点订阅站</a> 版权所有 Powered by WordPress
+                        </p>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <div class="tiny-section-social">
+                            <div class="">
+                                <ul>
+                                    <li><a href="#"><i class="fa fa-facebook-square"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-twitter-square"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-google-plus-square"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-linkedin-square"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /. tiny-footer -->
+        </div>
+    </div>
+    <!-- /.footer -->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="/assets/website/js/frontend/iosclash/jquery.min.js" type="text/javascript"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="/assets/website/js/frontend/iosclash/bootstrap.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/iosclash/menumaker.js" type="text/javascript"></script>
+    <script type="text/javascript" src="/assets/website/js/frontend/iosclash/jquery.sticky.js"></script>
+    <script type="text/javascript" src="/assets/website/js/frontend/iosclash/sticky-header.js"></script>
+    <script type="text/javascript" src="/assets/website/js/frontend/iosclash/owl.carousel.min.js"></script>
+    <script type="text/javascript" src="/assets/website/js/frontend/iosclash/multiple-carousel.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
