@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://iosclash.github.io/news/article-25663.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Java8新特性-函数式接口（lambda基础）</title>
+        <meta name="description" content="Java 8 函数式接口 - Functional Interface 阅读目录 什么是函数式接口（Functional Interface） 函数式接口用途 关于@FunctionalInterfa" />
+        <link rel="icon" href="/assets/website/img/iosclash/favicon.ico" type="image/x-icon"/>
+    <!-- Bootstrap -->
+    <link href="/assets/website/css/iosclash/bootstrap.min.css" rel="stylesheet">
+    <!-- Style CSS -->
+    <link href="/assets/website/css/iosclash/style.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link href="/assets/website/css/iosclash/owl.carousel.css" rel="stylesheet">
+    <link href="/assets/website/css/iosclash/owl.theme.default.css" rel="stylesheet">
+    <!-- FontAwesome CSS -->
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/iosclash/fontello.css">
+    <link href="/assets/website/css/iosclash/font-awesome.min.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6QH28Z9CLQ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-6QH28Z9CLQ');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!-- top-bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                    <div class="logo">
+                                                <a href="/">IOS Clash</a>
+                                            </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.top-bar -->
+    <!-- header-section-->
+    <div class="header-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <!-- navigations-->
+                    <div class="navigation">
+                        <div id="navigation">
+                            <ul>
+                                                                <li><a href="/">首页</a></li>
+                                                                <li><a href="/free-nodes/">免费节点</a></li>
+                                                                <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                                                <li><a href="/news/">新闻资讯</a></li>
+                                                                <li><a href="#">关于</a></li>
+                                <li><a href="#">联系</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- /.navigations-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /. header-section-->
+    <!-- page-header -->
+    <div class="page-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
+                    <div class="page-section">
+                        <h1 class="page-title">Java8新特性-函数式接口（lambda基础）</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="page-breadcrumb">
+                        <ol class="breadcrumb">
+                            <li><a href="/">首页</a></li>
+                            <li><a href="/news/">新闻资讯</a></li>
+                            <li>正文</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.page-header-->
+    <!-- /.page-header-->
+    <div class="space-medium">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                      				  				  				<div id="content_views" class="markdown_views prism-atom-one-light"> <p>Java 8 函数式接口 - Functional Interface</p> <p>阅读目录<br /> 什么是函数式接口（Functional Interface）<br /> 函数式接口用途<br /> 关于@FunctionalInterface注解<br /> 函数式接口里允许定义默认方法<br /> 函数式接口里允许定义静态方法<br /> 函数式接口里允许定义java.lang.Object里的public方法<br /> JDK中的函数式接口举例<br /> 参考资料</p> <p>什么是函数式接口（Functional Interface）<br /> 其实之前在讲Lambda表达式的时候提到过，所谓的函数式接口，当然首先是一个接口，然后就是在这个接口里面只能有一个抽象方法。</p> <p>这种类型的接口也称为SAM接口，即Single Abstract Method interfaces。</p> <p>函数式接口用途<br /> 它们主要用在Lambda表达式和方法引用（实际上也可认为是Lambda表达式）上。</p> <p>如定义了一个函数式接口如下：</p> <pre><code>@FunctionalInterface interface GreetingService  {     void sayMessage(String message); } </code></pre> <p>那么就可以使用Lambda表达式来表示该接口的一个实现(注：JAVA 8 之前一般是用匿名类实现的)：</p> <p>GreetingService greetService1 = message -&gt; System.out.println("Hello " + message);</p> <p>关于@FunctionalInterface注解<br /> Java 8为函数式接口引入了一个新注解@FunctionalInterface，主要用于编译级错误检查，加上该注解，当你写的接口不符合函数式接口定义的时候，编译器会报错。</p> <p>正确例子，没有报错：</p> <pre><code>@FunctionalInterface interface GreetingService {     void sayMessage(String message); } </code></pre> <p>错误例子，接口中包含了两个抽象方法，违反了函数式接口的定义，Eclipse报错提示其不是函数式接口。</p> <p>Java 8 函数式接口 - Functional Interface</p> <p>提醒：加不加@FunctionalInterface对于接口是不是函数式接口没有影响，该注解只是提醒编译器去检查该接口是否仅包含一个抽象方法</p> <p>函数式接口里允许定义默认方法<br /> 函数式接口里是可以包含默认方法，因为默认方法不是抽象方法，其有一个默认实现，所以是符合函数式接口的定义的；</p> <p>如下代码不会报错：</p> <p>复制代码</p> <pre><code class="prism language-java"><span class="token annotation punctuation">@FunctionalInterface</span>     <span class="token keyword">interface</span> <span class="token class-name">GreetingService</span>     <span class="token punctuation">{<!-- --></span>         <span class="token keyword">void</span> <span class="token function">sayMessage</span><span class="token punctuation">(</span>String message<span class="token punctuation">)</span><span class="token punctuation">;</span>          <span class="token keyword">default</span> <span class="token keyword">void</span> <span class="token function">doSomeMoreWork1</span><span class="token punctuation">(</span><span class="token punctuation">)</span>         <span class="token punctuation">{<!-- --></span>             <span class="token comment">// Method body</span>         <span class="token punctuation">}</span>          <span class="token keyword">default</span> <span class="token keyword">void</span> <span class="token function">doSomeMoreWork2</span><span class="token punctuation">(</span><span class="token punctuation">)</span>         <span class="token punctuation">{<!-- --></span>             <span class="token comment">// Method body</span>         <span class="token punctuation">}</span>     <span class="token punctuation">}</span> </code></pre> <p>复制代码</p> <p>函数式接口里允许定义静态方法<br /> 函数式接口里是可以包含静态方法，因为静态方法不能是抽象方法，是一个已经实现了的方法，所以是符合函数式接口的定义的；</p> <p>如下代码不会报错：</p> <p>复制代码</p> <pre><code class="prism language-bash"> @FunctionalInterface     interface GreetingService      <span class="token punctuation">{<!-- --></span>         void sayMessage<span class="token punctuation">(</span>String message<span class="token punctuation">)</span><span class="token punctuation">;</span>         static void printHello<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span>             System.out.println<span class="token punctuation">(</span><span class="token string">"Hello"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         <span class="token punctuation">}</span>     <span class="token punctuation">}</span> </code></pre> <p>复制代码</p> <p>函数式接口里允许定义java.lang.Object里的public方法<br /> 函数式接口里是可以包含Object里的public方法，这些方法对于函数式接口来说，不被当成是抽象方法（虽然它们是抽象方法）；因为任何一个函数式接口的实现，默认都继承了Object类，包含了来自java.lang.Object里对这些抽象方法的实现；</p> <p>如下代码不会报错：</p> <p>复制代码</p> <pre><code class="prism language-java"><span class="token annotation punctuation">@FunctionalInterface</span>     <span class="token keyword">interface</span> <span class="token class-name">GreetingService</span>       <span class="token punctuation">{<!-- --></span>         <span class="token keyword">void</span> <span class="token function">sayMessage</span><span class="token punctuation">(</span>String message<span class="token punctuation">)</span><span class="token punctuation">;</span>                  <span class="token annotation punctuation">@Override</span>         <span class="token keyword">boolean</span> <span class="token function">equals</span><span class="token punctuation">(</span>Object obj<span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token punctuation">}</span> </code></pre> <p>复制代码</p> <p>JDK中的函数式接口举例<br /> java.lang.Runnable,</p> <p>java.awt.event.ActionListener,</p> <p>java.util.Comparator,</p> <p>java.util.concurrent.Callable</p> <p>java.util.function包下的接口，如Consumer、Predicate、Supplier等</p> <p><strong>转自：https://www.cnblogs.com/runningTurtle/p/7092632.html</strong></p> </p></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-25193.htm">动物打完疫苗可以洗澡吗有影响吗知乎（动物打疫苗后多久能杀了吃）</a></p>
+                                        <p>下一个：<a href="/news/article-25665.htm">梦到抱着小女孩是什么意思（梦见抱着小女孩是什么预兆）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2024-11-3-clash-windows.htm" title="「11月3日」最高速度19.9M/S，2024年V2ray/SSR/Clash/Shadowrocket每天更新免费节点订阅链接">「11月3日」最高速度19.9M/S，2024年V2ray/SSR/Clash/Shadowrocket每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-7-23-clash-windows.htm" title="「7月23日」最高速度20.5M/S，2024年V2ray/Shadowrocket/SSR/Clash每天更新免费节点订阅链接">「7月23日」最高速度20.5M/S，2024年V2ray/Shadowrocket/SSR/Clash每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-11-free-v2ray.htm" title="「11月11日」最高速度18.1M/S，2024年V2ray/SSR/Clash/Shadowrocket每天更新免费节点订阅链接">「11月11日」最高速度18.1M/S，2024年V2ray/SSR/Clash/Shadowrocket每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-17-clash-node-daily-updates.htm" title="「10月17日」最高速度20.9M/S，2024年Clash/SSR/Shadowrocket/V2ray每天更新免费节点订阅链接">「10月17日」最高速度20.9M/S，2024年Clash/SSR/Shadowrocket/V2ray每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-6-1-free-v2ray-subscribe.htm" title="「6月1日」最高速度18.9M/S，2024年Shadowrocket/SSR/Clash/V2ray每天更新免费节点订阅链接">「6月1日」最高速度18.9M/S，2024年Shadowrocket/SSR/Clash/V2ray每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-1-free-ssr-subscribe.htm" title="「11月1日」最高速度20.6M/S，2024年V2ray/Clash/Shadowrocket/SSR每天更新免费节点订阅链接">「11月1日」最高速度20.6M/S，2024年V2ray/Clash/Shadowrocket/SSR每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-7-18-clash-node-daily-updates.htm" title="「7月18日」最高速度18.9M/S，2024年Shadowrocket/Clash/V2ray/SSR每天更新免费节点订阅链接">「7月18日」最高速度18.9M/S，2024年Shadowrocket/Clash/V2ray/SSR每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-5-1-free-v2ray.htm" title="「5月1日」最高速度20.1M/S，2024年SSR/Clash/Shadowrocket/V2ray每天更新免费节点订阅链接">「5月1日」最高速度20.1M/S，2024年SSR/Clash/Shadowrocket/V2ray每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-13-free-shadowrocket-node.htm" title="「11月13日」最高速度20.2M/S，2024年V2ray/SSR/Clash/Shadowrocket每天更新免费节点订阅链接">「11月13日」最高速度20.2M/S，2024年V2ray/SSR/Clash/Shadowrocket每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-15-clash-node.htm" title="「9月15日」最高速度20M/S，2024年Clash/SSR/Shadowrocket/V2ray每天更新免费节点订阅链接">「9月15日」最高速度20M/S，2024年Clash/SSR/Shadowrocket/V2ray每天更新免费节点订阅链接</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">42</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-09/" title="2024-09 归档">2024-09</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-08/" title="2024-08 归档">2024-08</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">27</span> <a href="/date/2024-07/" title="2024-07 归档">2024-07</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">29</span> <a href="/date/2024-06/" title="2024-06 归档">2024-06</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-05/" title="2024-05 归档">2024-05</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">2</span> <a href="/date/2024-04/" title="2024-04 归档">2024-04</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+        <!-- footer -->
+    <div class="footer">
+        <!-- tiny-footer -->
+        <div class="container">
+            <div class="row">
+                <div class="tiny-footer">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <p class="tiny-footer-para">
+                            <a href="/">IOS Clash节点订阅站</a> 版权所有 Powered by WordPress
+                        </p>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <div class="tiny-section-social">
+                            <div class="">
+                                <ul>
+                                    <li><a href="#"><i class="fa fa-facebook-square"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-twitter-square"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-google-plus-square"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-linkedin-square"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /. tiny-footer -->
+        </div>
+    </div>
+    <!-- /.footer -->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="/assets/website/js/frontend/iosclash/jquery.min.js" type="text/javascript"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="/assets/website/js/frontend/iosclash/bootstrap.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/iosclash/menumaker.js" type="text/javascript"></script>
+    <script type="text/javascript" src="/assets/website/js/frontend/iosclash/jquery.sticky.js"></script>
+    <script type="text/javascript" src="/assets/website/js/frontend/iosclash/sticky-header.js"></script>
+    <script type="text/javascript" src="/assets/website/js/frontend/iosclash/owl.carousel.min.js"></script>
+    <script type="text/javascript" src="/assets/website/js/frontend/iosclash/multiple-carousel.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
