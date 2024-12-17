@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://iosclash.github.io/news/article-26592.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>ViewPager倒序并分页功能的显示</title>
+        <meta name="description" content="2019独角兽企业重金招聘Python工程师标准&gt;&gt;&gt;    &nbsp;&nbsp;&nbsp;&nbsp;最近需要做一个功能，就是用ViewPager显示每一天的数据。 &nbs" />
+        <link rel="icon" href="/assets/website/img/iosclash/favicon.ico" type="image/x-icon"/>
+    <!-- Bootstrap -->
+    <link href="/assets/website/css/iosclash/bootstrap.min.css" rel="stylesheet">
+    <!-- Style CSS -->
+    <link href="/assets/website/css/iosclash/style.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link href="/assets/website/css/iosclash/owl.carousel.css" rel="stylesheet">
+    <link href="/assets/website/css/iosclash/owl.theme.default.css" rel="stylesheet">
+    <!-- FontAwesome CSS -->
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/iosclash/fontello.css">
+    <link href="/assets/website/css/iosclash/font-awesome.min.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6QH28Z9CLQ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-6QH28Z9CLQ');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!-- top-bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                    <div class="logo">
+                                                <a href="/">IOS Clash</a>
+                                            </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.top-bar -->
+    <!-- header-section-->
+    <div class="header-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <!-- navigations-->
+                    <div class="navigation">
+                        <div id="navigation">
+                            <ul>
+                                                                <li><a href="/">首页</a></li>
+                                                                <li><a href="/free-nodes/">免费节点</a></li>
+                                                                <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                                                <li><a href="/news/">新闻资讯</a></li>
+                                                                <li><a href="#">关于</a></li>
+                                <li><a href="#">联系</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- /.navigations-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /. header-section-->
+    <!-- page-header -->
+    <div class="page-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
+                    <div class="page-section">
+                        <h1 class="page-title">ViewPager倒序并分页功能的显示</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="page-breadcrumb">
+                        <ol class="breadcrumb">
+                            <li><a href="/">首页</a></li>
+                            <li><a href="/news/">新闻资讯</a></li>
+                            <li>正文</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.page-header-->
+    <!-- /.page-header-->
+    <div class="space-medium">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                      				  				  				<div id="content_views" class="htmledit_views"> <div class="content" id="articleContent"> <div class="ad-wrap"> <p><a style="color:#A00;font-weight:bold;" href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://my.oschina.net/u/2663968/blog/3061697"  rel="nofollow">2019独角兽企业重金招聘Python工程师标准&gt;&gt;&gt; </a> <img decoding="async" src="http://img.555519.xyz/uploads/20221230/8442af966dd825d9f646d2e1f209a86c.jpg" alt="ViewPager倒序并分页功能的显示"></p> </p></div> <p><span style="font-size:14px;">&nbsp;&nbsp;&nbsp;&nbsp;最近需要做一个功能，就是用ViewPager显示每一天的数据。</span></p> <p><span style="font-size:14px;">&nbsp;&nbsp;&nbsp;&nbsp;但是初始化的时候:1、显示最近十条数据 2、默认显示今天的数据&nbsp; 3、向左滑动显示昨天、前天及之前的数据。</span></p> <p><span style="font-size:14px;">&nbsp;&nbsp;&nbsp;&nbsp;例如今天是 6.12。那么显示的顺序如下图所示：</span></p> <p>&nbsp;&nbsp;&nbsp;&nbsp;</p> <table style="border-bottom:#000000 10px;border-left:#000000 10px;border-top:#000000 10px;border-right:#000000 10px;"> <tbody> <tr> <td style="border-bottom:1px;border-left:1px;background:#eeeeee;border-top:1px;border-right:1px;">6.3</td> <td>6.4</td> <td>6.5</td> <td>6.6</td> <td>6.7</td> <td>6.8</td> <td>6.9</td> <td>6.10</td> <td>6.11</td> <td>6.12</td> </tr> </tbody> </table> <p>&nbsp;&nbsp;&nbsp;&nbsp;同时，还需要实现分页，也就是说界面滑动到6.3的时候，需要加载下一页的数据，但是还需要将数据加载到 6.3的前面</p> <p>&nbsp;&nbsp; <img decoding="async" src="http://img.555519.xyz/uploads/20221230/1f71ebd3c5d3c571700edcf828bcf936.jpg" alt="ViewPager倒序并分页功能的显示"></p> <p>下面是具体的逻辑：</p> <p>1、数据倒序查询出来以后，生成对应的View.然后list.add(<strong>0</strong>,view对象)，记得是0</p> <p>2、在OnPageChangeListener的实现类中的onPageSelected</p> <p>&nbsp;&nbsp;&nbsp;&nbsp;方法中，当position为0 的时候，需要查询下一页的数据。</p> <p>&nbsp;&nbsp; 在查询数据之前，需要将viewpager中已经存在的view都destroy掉。</p> <p>&nbsp; 具体的实现代码如下：</p> <pre><code class="language-java"><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//将viewpager中已经存在的view都destroy掉 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;adapter.startUpdate(viewPager); &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for(int&nbsp;i&nbsp;=&nbsp;0;i&lt;adapter.getCount();i++){ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;adapter.destroyItem(viewPager,i,null); &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;adapter.finishUpdate(viewPager);</code></code></pre> <p>&nbsp; destroy后，则需要重新添加数据，代码如下：</p> <pre><code class="language-java"><code>for(;nowCount&nbsp;&lt;&nbsp;allCount;nowCount++){ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;addView(nowCount+"",0); &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;adapter.setViews(temp); &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;adapter.notifyDataSetChanged(); //&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Log.i("test","[结果是]:"+(adapter.getCount()-steps)+"【界面中应该显示的是】:"+((TextView)temp.get(adapter.getCount()-steps)).getText().toString()); &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;viewPager.setCurrentItem(5,false);</code></code></pre> <p>切记：</p> <p>.setCurrentItem(5,false);&nbsp;需要不使用滑动动画，否则会出现空白界面</p> <p>--其实最最重要的是调用 setCurrentItem 不要使用 动画效果</p> <p>&nbsp;</p> <p>demo的下载地址：<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=http://download.csdn.net/detail/u011379195/8800705"  rel="nofollow">http://download.csdn.net/detail/u011379195/8800705</a></p> <p>最近发现有一个问题，就是 在分页完成以后，setCurrentItem(10)紧邻的前面的界面不会显示出来</p> <p>具体的解决方案是：在Adapter中getItemPosition方法的返回值设置成POSITION_NONE。即</p> <pre><code class="language-java"><code>public&nbsp;int&nbsp;getItemPosition(Object&nbsp;object)&nbsp;{ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;POSITION_NONE;//if&nbsp;the&nbsp;item&nbsp;is&nbsp;no&nbsp;longer&nbsp;present&nbsp;in&nbsp;the&nbsp;adapter &nbsp;&nbsp;&nbsp;&nbsp;}</code></code></pre> <p>还有ViewPager的OnPageChangeListener监听，需要在onPageScrollStateChanged方法中设置刷新数据：</p> <p>如下所示：</p> <pre><code class="language-java"><code>public&nbsp;void&nbsp;onPageScrollStateChanged(int&nbsp;state)&nbsp;{//&nbsp;滑动状态改变 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(ViewPager.SCROLL_STATE_IDLE&nbsp;==&nbsp;state){ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(mUpViewPager.getCurrentItem()&nbsp;==&nbsp;0)&nbsp;{//&nbsp;滑动到最后一页 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mUpdatePage++; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//重新查询数据 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;count&nbsp;=&nbsp;refreshStepsData(mUpdatePage,true); &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(count&nbsp;&gt;&nbsp;0){ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mUpViewPagerAdapter.startUpdate(mUpViewPager); &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for(int&nbsp;i&nbsp;=&nbsp;0;i&lt;mUpViewPagerAdapter.getCount();i++){ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mUpViewPagerAdapter.destroyItem(mUpViewPager,i,null); &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mUpViewPagerAdapter.finishUpdate(mUpViewPager); &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mUpViewPagerAdapter.setListViews(mUpViewPagerList);//&nbsp;重构adapter对象 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mUpViewPagerAdapter.notifyDataSetChanged();//&nbsp;刷新 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mUpViewPager.setCurrentItem(count,false); &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}else{ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mUpdatePage--; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</code></code></pre> <p>&nbsp;</p> <div class="ad-wrap"> <div id="blog-title-ad">    <ins class="adsbygoogle"></ins>   </div> </p></div> </div> <p>转载于:https://my.oschina.net/u/2253892/blog/466174</p> </p></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-26131.htm">怀孕了被猫咪抓破了一点皮要紧吗?（怀孕了被猫咪抓破一点血）</a></p>
+                                        <p>下一个：<a href="/news/article-26593.htm">宠物领养需要带什么证件去国外（领养宠物需要办理哪些手续）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2024-9-8-free-clash.htm" title="「9月8日」最高速度19.8M/S，2024年SSR/Shadowrocket/Clash/V2ray每天更新免费节点订阅链接">「9月8日」最高速度19.8M/S，2024年SSR/Shadowrocket/Clash/V2ray每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-23-free-subscribe-node.htm" title="「9月23日」最高速度21.1M/S，2024年V2ray/SSR/Shadowrocket/Clash每天更新免费节点订阅链接">「9月23日」最高速度21.1M/S，2024年V2ray/SSR/Shadowrocket/Clash每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-28-free-node-subscribe.htm" title="「10月28日」最高速度20.2M/S，2024年Shadowrocket/SSR/Clash/V2ray每天更新免费节点订阅链接">「10月28日」最高速度20.2M/S，2024年Shadowrocket/SSR/Clash/V2ray每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-18637.htm" title="宠物粮食店铺名称怎么起 宠物粮食店铺名称怎么起好听">宠物粮食店铺名称怎么起 宠物粮食店铺名称怎么起好听</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-8-31-free-node-subscribe-links.htm" title="「8月31日」最高速度20.5M/S，2024年SSR/Clash/V2ray/Shadowrocket每天更新免费节点订阅链接">「8月31日」最高速度20.5M/S，2024年SSR/Clash/V2ray/Shadowrocket每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-8-9-clash-node.htm" title="「8月9日」最高速度20.6M/S，2024年Shadowrocket/SSR/Clash/V2ray每天更新免费节点订阅链接">「8月9日」最高速度20.6M/S，2024年Shadowrocket/SSR/Clash/V2ray每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-21499.htm" title="Python向hdfs写入文件与hadoop命令向hdfs写入文件">Python向hdfs写入文件与hadoop命令向hdfs写入文件</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-27-node-share-links.htm" title="「9月27日」最高速度18.8M/S，2024年Clash/V2ray/Shadowrocket/SSR每天更新免费节点订阅链接">「9月27日」最高速度18.8M/S，2024年Clash/V2ray/Shadowrocket/SSR每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-8-21-free-clash-subscribe.htm" title="「8月21日」最高速度20.3M/S，2024年V2ray/SSR/Shadowrocket/Clash每天更新免费节点订阅链接">「8月21日」最高速度20.3M/S，2024年V2ray/SSR/Shadowrocket/Clash每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-7-5-node-share.htm" title="「7月5日」最高速度19.7M/S，2024年SSR/Clash/Shadowrocket/V2ray每天更新免费节点订阅链接">「7月5日」最高速度19.7M/S，2024年SSR/Clash/Shadowrocket/V2ray每天更新免费节点订阅链接</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">51</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-09/" title="2024-09 归档">2024-09</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-08/" title="2024-08 归档">2024-08</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">27</span> <a href="/date/2024-07/" title="2024-07 归档">2024-07</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">29</span> <a href="/date/2024-06/" title="2024-06 归档">2024-06</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-05/" title="2024-05 归档">2024-05</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">2</span> <a href="/date/2024-04/" title="2024-04 归档">2024-04</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+        <!-- footer -->
+    <div class="footer">
+        <!-- tiny-footer -->
+        <div class="container">
+            <div class="row">
+                <div class="tiny-footer">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <p class="tiny-footer-para">
+                            <a href="/">IOS Clash节点订阅站</a> 版权所有 Powered by WordPress
+                        </p>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <div class="tiny-section-social">
+                            <div class="">
+                                <ul>
+                                    <li><a href="#"><i class="fa fa-facebook-square"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-twitter-square"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-google-plus-square"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-linkedin-square"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /. tiny-footer -->
+        </div>
+    </div>
+    <!-- /.footer -->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="/assets/website/js/frontend/iosclash/jquery.min.js" type="text/javascript"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="/assets/website/js/frontend/iosclash/bootstrap.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/iosclash/menumaker.js" type="text/javascript"></script>
+    <script type="text/javascript" src="/assets/website/js/frontend/iosclash/jquery.sticky.js"></script>
+    <script type="text/javascript" src="/assets/website/js/frontend/iosclash/sticky-header.js"></script>
+    <script type="text/javascript" src="/assets/website/js/frontend/iosclash/owl.carousel.min.js"></script>
+    <script type="text/javascript" src="/assets/website/js/frontend/iosclash/multiple-carousel.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
