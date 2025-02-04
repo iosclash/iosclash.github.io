@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html xml:lang="zh-CN" lang="zh-CN">
 
 <head>
         <link rel="canonical" href="https://iosclash.github.io/news/article-38501.htm" />
@@ -10,6 +10,34 @@
     <title>golang开发:go并发的建议</title>
         <meta name="description" content="这个是前段时间看到Go语言的贡献者与布道师 Dave Cheney对Go并发的建议或者叫使用的陷阱（不是我自己的建议），结合自己最近几年对gorotine的使用，再回头看这几条建议，真的会茅塞顿开，觉" />
         <link rel="icon" href="/assets/website/img/iosclash/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="IOS Clash节点订阅站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://iosclash.github.io/news/article-38501.htm" />
+    <meta property="og:site_name" content="IOS Clash节点订阅站" />
+    <meta property="og:title" content="golang开发:go并发的建议" />
+    <meta property="og:image" content="https://iosclash.github.io/uploads/20240429/02093435522994e55586e7b5c634015e.webp" />
+        <meta property="og:release_date" content="2025-01-10T10:43:32" />
+    <meta property="og:updated_time" content="2025-01-10T10:43:32" />
+        <meta property="og:description" content="这个是前段时间看到Go语言的贡献者与布道师 Dave Cheney对Go并发的建议或者叫使用的陷阱（不是我自己的建议），结合自己最近几年对gorotine的使用，再回头看这几条建议，真的会茅塞顿开，觉" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="golang开发:go并发的建议">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
     <!-- Bootstrap -->
     <link href="/assets/website/css/iosclash/bootstrap.min.css" rel="stylesheet">
     <!-- Style CSS -->
@@ -122,16 +150,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/news/article-39486.htm" title="【c语言】杨氏矩阵  有一个二维数组. 数组的每行从左到右是递增的，每列从上到下是递增的. 在这样的数组中查找一个数字是否存在。 时间复杂度小于O(N);">【c语言】杨氏矩阵  有一个二维数组. 数组的每行从左到右是递增的，每列从上到下是递增的. 在这样的数组中查找一个数字是否存在。 时间复杂度小于O(N);</a></li>
-                        <li class="py-2"><a href="/news/article-22875.htm" title="Vue3学习之旅&#8211;Vue3组件化开发(二)-非父子组件通信及组件插槽&#8211;细节太多建议反复观看">Vue3学习之旅&#8211;Vue3组件化开发(二)-非父子组件通信及组件插槽&#8211;细节太多建议反复观看</a></li>
-                        <li class="py-2"><a href="/news/article-21501.htm" title="广州宠物领养贴吧论坛（广州宠物领养平台）">广州宠物领养贴吧论坛（广州宠物领养平台）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-12-29-free-v2ray.htm" title="「12月29日」最高速度21.4M/S，2024年Clash/Shadowrocket/V2ray/SSR每天更新免费节点订阅链接">「12月29日」最高速度21.4M/S，2024年Clash/Shadowrocket/V2ray/SSR每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-11-free-v2ray.htm" title="「11月11日」最高速度18.1M/S，2024年V2ray/SSR/Clash/Shadowrocket每天更新免费节点订阅链接">「11月11日」最高速度18.1M/S，2024年V2ray/SSR/Clash/Shadowrocket每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/news/article-31754.htm" title="动物疫苗合格证怎么办理的 动物疫苗合格证怎么办理的呢">动物疫苗合格证怎么办理的 动物疫苗合格证怎么办理的呢</a></li>
-                        <li class="py-2"><a href="/news/article-30798.htm" title="源码中的设计模式&#8211;装饰器模式_在线工具">源码中的设计模式&#8211;装饰器模式_在线工具</a></li>
-                        <li class="py-2"><a href="/news/article-27976.htm" title="违背宠物领养协议的处罚依据（违背宠物领养协议的处罚依据是）">违背宠物领养协议的处罚依据（违背宠物领养协议的处罚依据是）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-12-8-free-high-speed-nodes.htm" title="「12月8日」最高速度19.3M/S，2024年Clash/SSR/V2ray/Shadowrocket每天更新免费节点订阅链接">「12月8日」最高速度19.3M/S，2024年Clash/SSR/V2ray/Shadowrocket每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/news/article-26131.htm" title="怀孕了被猫咪抓破了一点皮要紧吗?（怀孕了被猫咪抓破一点血）">怀孕了被猫咪抓破了一点皮要紧吗?（怀孕了被猫咪抓破一点血）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-14-clash-v2ray-ss-ssr.htm" title="「12月14日」最高速度19.3M/S，2024年Clash/Shadowrocket/SSR/V2ray每天更新免费节点订阅链接">「12月14日」最高速度19.3M/S，2024年Clash/Shadowrocket/SSR/V2ray每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-15-free-node-subscribe-links.htm" title="「12月15日」最高速度18.5M/S，2024年Clash/SSR/V2ray/Shadowrocket每天更新免费节点订阅链接">「12月15日」最高速度18.5M/S，2024年Clash/SSR/V2ray/Shadowrocket每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-27518.htm" title="一片枫叶一片红（一片枫红一叶木落什么意思）">一片枫叶一片红（一片枫红一叶木落什么意思）</a></li>
+                        <li class="py-2"><a href="/news/article-23330.htm" title="Springboot2整合activemq">Springboot2整合activemq</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-19-node-share-links.htm" title="「12月19日」最高速度21.8M/S，2024年Shadowrocket/Clash/SSR/V2ray每天更新免费节点订阅链接">「12月19日」最高速度21.8M/S，2024年Shadowrocket/Clash/SSR/V2ray每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-27517.htm" title="被猫抓出血了一定要***吗多少钱（被猫抓出血了一定要***吗多少钱一针）">被猫抓出血了一定要***吗多少钱（被猫抓出血了一定要***吗多少钱一针）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-2-free-clash.htm" title="「1月2日」最高速度18.7M/S，2025年V2ray/Shadowrocket/Clash/SSR每天更新免费节点订阅链接">「1月2日」最高速度18.7M/S，2025年V2ray/Shadowrocket/Clash/SSR每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-6-free-high-speed-nodes.htm" title="「11月6日」最高速度18.8M/S，2024年SSR/Shadowrocket/V2ray/Clash每天更新免费节点订阅链接">「11月6日」最高速度18.8M/S，2024年SSR/Shadowrocket/V2ray/Clash每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-10-free-clash.htm" title="「12月10日」最高速度22.3M/S，2024年V2ray/Clash/Shadowrocket/SSR每天更新免费节点订阅链接">「12月10日」最高速度22.3M/S，2024年V2ray/Clash/Shadowrocket/SSR每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-21499.htm" title="Python向hdfs写入文件与hadoop命令向hdfs写入文件">Python向hdfs写入文件与hadoop命令向hdfs写入文件</a></li>
                     </ul>
     </div>
 </div>
@@ -143,16 +171,16 @@
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">36</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+                <h4><span class="badge" style="float: right;">6</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
             </li>
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">25</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
             </li>
                     </ul>
     </div>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html xml:lang="zh-CN" lang="zh-CN">
 
 <head>
         <link rel="canonical" href="https://iosclash.github.io/news/article-37994.htm" />
@@ -10,6 +10,34 @@
     <title>ThreadLocal常见使用场景</title>
         <meta name="description" content="文章目录  举例1：作为参数传递的工具 举例2：解决线程安全问题 使用ThreadLocal注意：    ThreadLocal常见的使用场景可以分为两大类：一类是作为参数传递的工具（因为Thread" />
         <link rel="icon" href="/assets/website/img/iosclash/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="IOS Clash节点订阅站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://iosclash.github.io/news/article-37994.htm" />
+    <meta property="og:site_name" content="IOS Clash节点订阅站" />
+    <meta property="og:title" content="ThreadLocal常见使用场景" />
+    <meta property="og:image" content="https://iosclash.github.io/uploads/20240429/bd94d15260753e3a044decd50b56f999.webp" />
+        <meta property="og:release_date" content="2025-01-09T05:59:24" />
+    <meta property="og:updated_time" content="2025-01-09T05:59:24" />
+        <meta property="og:description" content="文章目录  举例1：作为参数传递的工具 举例2：解决线程安全问题 使用ThreadLocal注意：    ThreadLocal常见的使用场景可以分为两大类：一类是作为参数传递的工具（因为Thread" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="ThreadLocal常见使用场景">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
     <!-- Bootstrap -->
     <link href="/assets/website/css/iosclash/bootstrap.min.css" rel="stylesheet">
     <!-- Style CSS -->
@@ -122,16 +150,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2025-1-11-clash-node-daily-updates.htm" title="「1月11日」最高速度20.3M/S，2025年Clash/V2ray/SSR/Shadowrocket每天更新免费节点订阅链接">「1月11日」最高速度20.3M/S，2025年Clash/V2ray/SSR/Shadowrocket每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/news/article-37528.htm" title="动物医院看病流程图怎么画（动物医院接诊流程）">动物医院看病流程图怎么画（动物医院接诊流程）</a></li>
-                        <li class="py-2"><a href="/news/article-33663.htm" title="PHP如何访问全局类">PHP如何访问全局类</a></li>
-                        <li class="py-2"><a href="/news/article-23795.htm" title="十大放心猫粮国产排行榜 十大放心猫粮国产排行榜2023">十大放心猫粮国产排行榜 十大放心猫粮国产排行榜2023</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-12-7-clash-node.htm" title="「12月7日」最高速度19.6M/S，2024年Clash/V2ray/Shadowrocket/SSR每天更新免费节点订阅链接">「12月7日」最高速度19.6M/S，2024年Clash/V2ray/Shadowrocket/SSR每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/news/article-25663.htm" title="Java8新特性-函数式接口（lambda基础）">Java8新特性-函数式接口（lambda基础）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-12-17-free-high-speed-nodes.htm" title="「12月17日」最高速度22.5M/S，2024年V2ray/Clash/Shadowrocket/SSR每天更新免费节点订阅链接">「12月17日」最高速度22.5M/S，2024年V2ray/Clash/Shadowrocket/SSR每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-1-10-free-shadowrocket-node.htm" title="「1月10日」最高速度19.9M/S，2025年Shadowrocket/SSR/Clash/V2ray每天更新免费节点订阅链接">「1月10日」最高速度19.9M/S，2025年Shadowrocket/SSR/Clash/V2ray每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/news/article-34621.htm" title="动物防疫站周末上班吗（动物疫病预防控制中心周末上班吗）">动物防疫站周末上班吗（动物疫病预防控制中心周末上班吗）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-12-clash-node.htm" title="「11月12日」最高速度20.3M/S，2024年Clash/Shadowrocket/V2ray/SSR每天更新免费节点订阅链接">「11月12日」最高速度20.3M/S，2024年Clash/Shadowrocket/V2ray/SSR每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-45946.htm" title="十大动物疫苗公司排名榜最新 十大动物疫苗公司排名榜最新图片">十大动物疫苗公司排名榜最新 十大动物疫苗公司排名榜最新图片</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-13-free-clash-subscribe.htm" title="「1月13日」最高速度21.8M/S，2025年SSR/Shadowrocket/V2ray/Clash每天更新免费节点订阅链接">「1月13日」最高速度21.8M/S，2025年SSR/Shadowrocket/V2ray/Clash每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-36533.htm" title="开宠物店一年的利润有多少（开宠物店一年的利润有多少啊）">开宠物店一年的利润有多少（开宠物店一年的利润有多少啊）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-8-free-high-speed-nodes.htm" title="「12月8日」最高速度19.3M/S，2024年Clash/SSR/V2ray/Shadowrocket每天更新免费节点订阅链接">「12月8日」最高速度19.3M/S，2024年Clash/SSR/V2ray/Shadowrocket每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-19668.htm" title="猫打疫苗要打多少次疫苗（猫打疫苗要打多少针）">猫打疫苗要打多少次疫苗（猫打疫苗要打多少针）</a></li>
+                        <li class="py-2"><a href="/news/article-34146.htm" title="字符集与编码详解">字符集与编码详解</a></li>
+                        <li class="py-2"><a href="/news/article-30800.htm" title="聊城宠物店开门了吗今天（聊城市宠物店）">聊城宠物店开门了吗今天（聊城市宠物店）</a></li>
+                        <li class="py-2"><a href="/news/article-25192.htm" title="宠物领养赠送平台有哪些软件（宠物赠送领养公益平台）">宠物领养赠送平台有哪些软件（宠物赠送领养公益平台）</a></li>
+                        <li class="py-2"><a href="/news/article-44945.htm" title="springBoot的转发和重定向">springBoot的转发和重定向</a></li>
+                        <li class="py-2"><a href="/news/article-40961.htm" title="鱼饲料颗粒机多少钱一台小型的（颗粒机鱼饲料配方）">鱼饲料颗粒机多少钱一台小型的（颗粒机鱼饲料配方）</a></li>
                     </ul>
     </div>
 </div>
@@ -143,16 +171,16 @@
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">33</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+                <h4><span class="badge" style="float: right;">6</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
             </li>
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">25</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
             </li>
                     </ul>
     </div>
