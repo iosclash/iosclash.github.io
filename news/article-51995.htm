@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://iosclash.github.io/news/article-51995.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>我们如何将值添加到MySQL表的列中？</title>
+        <meta name="description" content="INSERT命令用于将值添加到MySQL表的列中。我们需要在INSERT命令中为所有列指定值，如下所示： 语法 INSERT&nbsp;INTO&nbsp;table_name&nbsp;values" />
+        <link rel="icon" href="/assets/website/img/iosclash/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="IOS Clash节点订阅站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://iosclash.github.io/news/article-51995.htm" />
+    <meta property="og:site_name" content="IOS Clash节点订阅站" />
+    <meta property="og:title" content="我们如何将值添加到MySQL表的列中？" />
+    <meta property="og:image" content="https://iosclash.github.io/uploads/20240429/8a2f84ee97e17bb790d6c8d9799f0ffd.webp" />
+        <meta property="og:release_date" content="2025-02-06T05:28:53" />
+    <meta property="og:updated_time" content="2025-02-06T05:28:53" />
+        <meta property="og:description" content="INSERT命令用于将值添加到MySQL表的列中。我们需要在INSERT命令中为所有列指定值，如下所示： 语法 INSERT&nbsp;INTO&nbsp;table_name&nbsp;values" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="我们如何将值添加到MySQL表的列中？">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <!-- Bootstrap -->
+    <link href="/assets/website/css/iosclash/bootstrap.min.css" rel="stylesheet">
+    <!-- Style CSS -->
+    <link href="/assets/website/css/iosclash/style.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link href="/assets/website/css/iosclash/owl.carousel.css" rel="stylesheet">
+    <link href="/assets/website/css/iosclash/owl.theme.default.css" rel="stylesheet">
+    <!-- FontAwesome CSS -->
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/iosclash/fontello.css">
+    <link href="/assets/website/css/iosclash/font-awesome.min.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6QH28Z9CLQ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-6QH28Z9CLQ');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!-- top-bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                    <div class="logo">
+                        <a href="/">
+                                                <span>IOS Clash</span>
+                                                </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.top-bar -->
+    <!-- header-section-->
+    <div class="header-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <!-- navigations-->
+                    <div class="navigation">
+                        <div id="navigation">
+                            <ul>
+                                                                <li><a href="/">首页</a></li>
+                                                                <li><a href="/free-nodes/">免费节点</a></li>
+                                                                <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                                                <li><a href="/news/">新闻资讯</a></li>
+                                                                <li><a href="#">关于</a></li>
+                                <li><a href="#">联系</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- /.navigations-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /. header-section-->
+    <!-- page-header -->
+    <div class="page-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
+                    <div class="page-section">
+                        <h1 class="page-title">我们如何将值添加到MySQL表的列中？</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="page-breadcrumb">
+                        <ol class="breadcrumb">
+                            <li><a href="/">首页</a></li>
+                            <li><a href="/news/">新闻资讯</a></li>
+                            <li>正文</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.page-header-->
+    <!-- /.page-header-->
+    <div class="space-medium">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<p>INSERT命令用于将值添加到MySQL表的列中。我们需要在INSERT命令中为所有列指定值，如下所示：</p> <h2>语法</h2> <pre>INSERT&nbsp;INTO&nbsp;table_name&nbsp;values(value1,value2,…)</pre> <h2>示例</h2> <p>假设我们有一个名为“ Stock”的表，其中有三列“ Item_id”，“ Item_name”和“ Item_rate”，然后借助以下查询，我们可以在这些列中添加值。</p> <pre>mysql&gt;&nbsp;INSERT&nbsp;INTO&nbsp;Stock&nbsp;values(1,'HistoryBook',250);  mysql&gt;&nbsp;INSERT&nbsp;INTO&nbsp;Stock&nbsp;values(2,'DBMSBook',280);  mysql&gt;&nbsp;Select&nbsp;*&nbsp;from&nbsp;Stock; +---------+-------------+-----------+ |&nbsp;item_id&nbsp;|&nbsp;Item_name&nbsp;&nbsp;&nbsp;|&nbsp;Item_rate&nbsp;| +---------+-------------+-----------+ |&nbsp;1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;HistoryBook&nbsp;|&nbsp;250&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| |&nbsp;2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;DBMSBook&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;280&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| +---------+-------------+-----------+ 2&nbsp;rows&nbsp;in&nbsp;set&nbsp;(0.00&nbsp;sec)</pre> <div></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-51469.htm">给动物注射疫苗产生的免疫属于什么（给动物注射疫苗产生的免疫属于什么免疫）</a></p>
+                                        <p>下一个：<a href="/news/article-51996.htm">深圳宠物领养救助站电话（深圳宠物救助领养中心地址）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-26130.htm" title="广州领养宠物在哪里（广州哪里可以领养宠物）">广州领养宠物在哪里（广州哪里可以领养宠物）</a></li>
+                        <li class="py-2"><a href="/news/article-43450.htm" title="一片枫叶打一成语是什么（一片枫叶猜成语）">一片枫叶打一成语是什么（一片枫叶猜成语）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-16-node-share.htm" title="「11月16日」最高速度22.6M/S，2024年V2ray/SSR/Shadowrocket/Clash每天更新免费节点订阅链接">「11月16日」最高速度22.6M/S，2024年V2ray/SSR/Shadowrocket/Clash每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-2-free-clash.htm" title="「1月2日」最高速度18.7M/S，2025年V2ray/Shadowrocket/Clash/SSR每天更新免费节点订阅链接">「1月2日」最高速度18.7M/S，2025年V2ray/Shadowrocket/Clash/SSR每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-30-free-ssr-node.htm" title="「11月30日」最高速度18.6M/S，2024年V2ray/Shadowrocket/SSR/Clash每天更新免费节点订阅链接">「11月30日」最高速度18.6M/S，2024年V2ray/Shadowrocket/SSR/Clash每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-27977.htm" title="附近哪里有领养狗的地方啊（附近有没有免费的狗狗领）">附近哪里有领养狗的地方啊（附近有没有免费的狗狗领）</a></li>
+                        <li class="py-2"><a href="/news/article-33664.htm" title="动物医院实践心得500字内容是什么（动物医院实训总结）">动物医院实践心得500字内容是什么（动物医院实训总结）</a></li>
+                        <li class="py-2"><a href="/news/article-31754.htm" title="动物疫苗合格证怎么办理的 动物疫苗合格证怎么办理的呢">动物疫苗合格证怎么办理的 动物疫苗合格证怎么办理的呢</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-21-free-ssr-subscribe.htm" title="「1月21日」最高速度19.7M/S，2025年Clash/SSR/Shadowrocket/V2ray每天更新免费节点订阅链接">「1月21日」最高速度19.7M/S，2025年Clash/SSR/Shadowrocket/V2ray每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-22-node-share.htm" title="「1月22日」最高速度20.8M/S，2025年SSR/Shadowrocket/Clash/V2ray每天更新免费节点订阅链接">「1月22日」最高速度20.8M/S，2025年SSR/Shadowrocket/Clash/V2ray每天更新免费节点订阅链接</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">21</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+        <!-- footer -->
+    <div class="footer">
+        <!-- tiny-footer -->
+        <div class="container">
+            <div class="row">
+                <div class="tiny-footer">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <p class="tiny-footer-para">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                            <a href="/">IOS Clash节点订阅站</a> 版权所有 Powered by WordPress
+                        </p>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <div class="tiny-section-social">
+                            <div class="">
+                                <ul>
+                                    <li><a href="#"><i class="fa fa-facebook-square"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-twitter-square"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-google-plus-square"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-linkedin-square"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /. tiny-footer -->
+        </div>
+    </div>
+    <!-- /.footer -->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="/assets/website/js/frontend/iosclash/jquery.min.js" type="text/javascript"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="/assets/website/js/frontend/iosclash/bootstrap.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/iosclash/menumaker.js" type="text/javascript"></script>
+    <script type="text/javascript" src="/assets/website/js/frontend/iosclash/jquery.sticky.js"></script>
+    <script type="text/javascript" src="/assets/website/js/frontend/iosclash/sticky-header.js"></script>
+    <script type="text/javascript" src="/assets/website/js/frontend/iosclash/owl.carousel.min.js"></script>
+    <script type="text/javascript" src="/assets/website/js/frontend/iosclash/multiple-carousel.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
