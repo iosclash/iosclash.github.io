@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://iosclash.github.io/news/article-60331.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Bootstrap Blazor 模板使用Layout 组件</title>
+        <meta name="description" content="BootstrapBlazor 官网地址：https://www.blazor.zone 　　Bootstrap Blazor 提供了一个快速创建项目的项目模板，安装方法可参考我这一篇文章：Boots" />
+        <link rel="icon" href="/assets/website/img/iosclash/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="IOS Clash节点订阅站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://iosclash.github.io/news/article-60331.htm" />
+    <meta property="og:site_name" content="IOS Clash节点订阅站" />
+    <meta property="og:title" content="Bootstrap Blazor 模板使用Layout 组件" />
+    <meta property="og:image" content="https://iosclash.github.io/uploads/20240429/c161fa97c14c6f69d6273ae3573261ab.webp" />
+        <meta property="og:release_date" content="2025-02-21T09:19:31" />
+    <meta property="og:updated_time" content="2025-02-21T09:19:31" />
+        <meta property="og:description" content="BootstrapBlazor 官网地址：https://www.blazor.zone 　　Bootstrap Blazor 提供了一个快速创建项目的项目模板，安装方法可参考我这一篇文章：Boots" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Bootstrap Blazor 模板使用Layout 组件">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <!-- Bootstrap -->
+    <link href="/assets/website/css/iosclash/bootstrap.min.css" rel="stylesheet">
+    <!-- Style CSS -->
+    <link href="/assets/website/css/iosclash/style.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link href="/assets/website/css/iosclash/owl.carousel.css" rel="stylesheet">
+    <link href="/assets/website/css/iosclash/owl.theme.default.css" rel="stylesheet">
+    <!-- FontAwesome CSS -->
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/iosclash/fontello.css">
+    <link href="/assets/website/css/iosclash/font-awesome.min.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6QH28Z9CLQ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-6QH28Z9CLQ');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!-- top-bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                    <div class="logo">
+                        <a href="/">
+                                                <span>IOS Clash</span>
+                                                </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.top-bar -->
+    <!-- header-section-->
+    <div class="header-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <!-- navigations-->
+                    <div class="navigation">
+                        <div id="navigation">
+                            <ul>
+                                                                <li><a href="/">首页</a></li>
+                                                                <li><a href="/free-nodes/">免费节点</a></li>
+                                                                <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                                                <li><a href="/client.htm">客户端</a></li>
+                                                                <li><a href="/news/">新闻资讯</a></li>
+                                                            </ul>
+                        </div>
+                    </div>
+                    <!-- /.navigations-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /. header-section-->
+    <!-- page-header -->
+    <div class="page-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
+                    <div class="page-section">
+                        <h1 class="page-title">Bootstrap Blazor 模板使用Layout 组件</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="page-breadcrumb">
+                        <ol class="breadcrumb">
+                            <li><a href="/">首页</a></li>
+                            <li><a href="/news/">新闻资讯</a></li>
+                            <li>正文</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.page-header-->
+    <!-- /.page-header-->
+    <div class="space-medium">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<p><span style="font-size: 1em;">BootstrapBlazor 官网地址：</span><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://www.blazor.zone/"  target="_blank" rel="nofollow" style="font-size: 1em;">https://www.blazor.zone</a></p> <p>　　Bootstrap Blazor 提供了一个快速创建项目的项目模板，安装方法可参考我这一篇文章：<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://www.cnblogs.com/ysmc/p/16101157.html"  rel="nofollow">Bootstrap Blazor 使用模板创建项目 - 一事冇诚 - 博客园 (cnblogs.com)</a></p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/cd1c1a4adab1315ac81f7e7fe03db847.jpg" alt="Bootstrap Blazor 模板使用Layout 组件"></p> <p>　　模板项目默认启用 Tab 多标签模式，你可以在&nbsp;MainLayout.razor 中将&nbsp;UseTabSet 设置成 false 关闭该模式，页面其实使用的是&nbsp;Layout 组件，所以可以自己根据需求，随意开启或关闭一些功能，非常的方便；</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/7ef79768667e2f89a3284494c7aa5738.jpg" alt="Bootstrap Blazor 模板使用Layout 组件"></p> <p>　　很多小伙伴都很喜欢默认的 多标签 模式，这满足了很多需要频繁切换页面的需求，毕竟切换一下，页面就重载了谁都受不了；而使用过程中，就有小伙伴有疑问了，我能不能根据以下需要，动态去改变标签的名字呢，如一些报表，需要我在创建的时候先输入名称，创建后我希望在 标签 中显示我刚刚填写的名称，需要怎么做呢？</p> <p>　　所以我们的组件就兼容了这样的场景，使用联级传参的方法，你就可以轻松的做到。</p> <div class="cnblogs_code"> <pre><span style="color: rgba(0, 0, 0, 1)">[CascadingParameter] [NotNull]</span><span style="color: rgba(0, 0, 255, 1)">private</span> TabItem? TabItem {<span style="color: rgba(0, 0, 255, 1)">get</span>;<span style="color: rgba(0, 0, 255, 1)">set</span><span style="color: rgba(0, 0, 0, 1)">; }</span><span style="color: rgba(0, 0, 255, 1)">private</span><span style="color: rgba(0, 0, 255, 1)">void</span><span style="color: rgba(0, 0, 0, 1)"> ChangeText() {      TabItem.SetText(</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">新的名字</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">); }</span></pre> </div> <p>　　借此，简单介绍一下我们的 Layout 组件</p> <h2>Layout</h2> <p>　　用于布局的容器组件，方便快速搭建页面的基本结构：</p> <p><code>&nbsp; &nbsp;Container</code>：外层容器。当子元素中包含<code>Header</code>&nbsp;或<code>Footer</code>&nbsp;时，全部子元素会垂直上下排列，否则会水平左右排列。</p> <p><code>　　 Header</code>：顶栏容器<br /><code>　　 Side</code>：侧边栏容器<br /><code>　　 Main</code>：主要区域容器<br /><code>　　 Footer</code>：底栏容器</p> <h3>组件概述</h3> <p><code>　　Layout</code>：布局容器，其下可嵌套<code>Header</code><code>Sider</code><code>Main</code><code>Footer</code>&nbsp;或<code>Layout</code>&nbsp;本身，可以放在任何父容器中<br /><code>　　Header</code>：顶部布局，自带默认样式，其下可嵌套任何元素<br /><code>　　Sider</code>：侧边栏，自带默认样式及基本功能，其下可嵌套任何元素<br /><code>　　Main</code>：内容部分，自带默认样式，其下可嵌套任何元素<br /><code>　　Footer</code>：底部布局，自带默认样式，其下可嵌套任何元素</p> <h3><span class="archor-text">上中下布局</span></h3> <p><span class="archor-text"><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/fbc89af9f2bfb4bcea8f9c5199f032bc.jpg" alt="Bootstrap Blazor 模板使用Layout 组件"></span></p> <h3><span class="archor-text">中部左右结构布局</span></h3> <p><span class="archor-text"><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/714b3fade5f0b8ba5e9322d502b3e568.jpg" alt="Bootstrap Blazor 模板使用Layout 组件"></span></p> <h3>&nbsp;左右结构</h3> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/958d1fb81dfa9ea15d672ca31c40b4df.jpg" alt="Bootstrap Blazor 模板使用Layout 组件"></p> <h3 id="CuntomPercent" class="anchor-link" data-title="拷贝成功"><span class="archor-text">自定义侧边栏宽度支持百分比</span></h3> <p>　　通过设置<code>SideWidth</code>&nbsp;属性控制侧边栏宽度，支持百分比写法，设置<code>0</code>&nbsp;时关闭设置宽度功能，采用内部子控件撑满宽度特性</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/27bed8bf186bc28fbd75b9d7fed2698e.jpg" alt="Bootstrap Blazor 模板使用Layout 组件"></p> <h3>Attributes 属性</h3> <div class="table-container"> <div class="table-scroll"> <table class="table"> <colgroup> <col> <col> <col> <col> <col></colgroup> <thead> <tr> <th> <div class="table-cell"><span class="table-text">参数</span></div> </th> <th> <div class="table-cell"><span class="table-text">说明</span></div> </th> <th> <div class="table-cell"><span class="table-text">类型</span></div> </th> <th> <div class="table-cell"><span class="table-text">可选值</span></div> </th> <th> <div class="table-cell"><span class="table-text">默认值</span></div> </th> </tr> </thead> <tbody> <tr> <td> <div class="table-cell">Header</div> </td> <td> <div class="table-cell is-wrap">页头组件模板</div> </td> <td> <div class="table-cell">RenderFragment</div> </td> <td> <div class="table-cell is-wrap">—</div> </td> <td> <div class="table-cell">—</div> </td> </tr> <tr> <td> <div class="table-cell">Side</div> </td> <td> <div class="table-cell is-wrap">侧边栏组件模板</div> </td> <td> <div class="table-cell">RenderFragment</div> </td> <td> <div class="table-cell is-wrap">—</div> </td> <td> <div class="table-cell">—</div> </td> </tr> <tr> <td> <div class="table-cell">SideWidth</div> </td> <td> <div class="table-cell is-wrap">侧边栏宽度，支持百分比，设置 0 时关闭宽度功能</div> </td> <td> <div class="table-cell">string</div> </td> <td> <div class="table-cell is-wrap">—</div> </td> <td> <div class="table-cell">300px</div> </td> </tr> <tr> <td> <div class="table-cell">Main</div> </td> <td> <div class="table-cell is-wrap">内容组件模板</div> </td> <td> <div class="table-cell">RenderFragment</div> </td> <td> <div class="table-cell is-wrap">—</div> </td> <td> <div class="table-cell">—</div> </td> </tr> <tr> <td> <div class="table-cell">Footer</div> </td> <td> <div class="table-cell is-wrap">侧边栏组件模板</div> </td> <td> <div class="table-cell">RenderFragment</div> </td> <td> <div class="table-cell is-wrap">—</div> </td> <td> <div class="table-cell">—</div> </td> </tr> <tr> <td> <div class="table-cell">Menus</div> </td> <td> <div class="table-cell is-wrap">整页面布局时侧边栏菜单数据集合</div> </td> <td> <div class="table-cell">IEnumerable&lt;MenuItem&gt;</div> </td> <td> <div class="table-cell is-wrap">—</div> </td> <td> <div class="table-cell">—</div> </td> </tr> <tr> <td> <div class="table-cell">IsFullSide</div> </td> <td> <div class="table-cell is-wrap">侧边栏是否占满整个左边</div> </td> <td> <div class="table-cell">bool</div> </td> <td> <div class="table-cell is-wrap">true|false</div> </td> <td> <div class="table-cell">false</div> </td> </tr> <tr> <td> <div class="table-cell">IsPage</div> </td> <td> <div class="table-cell is-wrap">是否为整页面布局</div> </td> <td> <div class="table-cell">bool</div> </td> <td> <div class="table-cell is-wrap">true|false</div> </td> <td> <div class="table-cell">false</div> </td> </tr> <tr> <td> <div class="table-cell">IsFixedFooter</div> </td> <td> <div class="table-cell is-wrap">是否固定 Footer 组件</div> </td> <td> <div class="table-cell">bool</div> </td> <td> <div class="table-cell is-wrap">true|false</div> </td> <td> <div class="table-cell">false</div> </td> </tr> <tr> <td> <div class="table-cell">IsFixedHeader</div> </td> <td> <div class="table-cell is-wrap">是否固定 Header 组件</div> </td> <td> <div class="table-cell">bool</div> </td> <td> <div class="table-cell is-wrap">true|false</div> </td> <td> <div class="table-cell">false</div> </td> </tr> <tr> <td> <div class="table-cell">ShowCollapseBar</div> </td> <td> <div class="table-cell is-wrap">是否显示收缩展开 Bar</div> </td> <td> <div class="table-cell">bool</div> </td> <td> <div class="table-cell is-wrap">true|false</div> </td> <td> <div class="table-cell">false</div> </td> </tr> <tr> <td> <div class="table-cell">ShowFooter</div> </td> <td> <div class="table-cell is-wrap">是否显示 Footer 模板</div> </td> <td> <div class="table-cell">bool</div> </td> <td> <div class="table-cell is-wrap">true|false</div> </td> <td> <div class="table-cell">false</div> </td> </tr> <tr> <td> <div class="table-cell">ShowGotoTop</div> </td> <td> <div class="table-cell is-wrap">是否显示返回顶端按钮</div> </td> <td> <div class="table-cell">bool</div> </td> <td> <div class="table-cell is-wrap">true|false</div> </td> <td> <div class="table-cell">false</div> </td> </tr> <tr> <td> <div class="table-cell">UseTabSet</div> </td> <td> <div class="table-cell is-wrap">是否开启多标签模式</div> </td> <td> <div class="table-cell">bool</div> </td> <td> <div class="table-cell is-wrap">true|false</div> </td> <td> <div class="table-cell">false</div> </td> </tr> <tr> <td> <div class="table-cell">AdditionalAssemblies</div> </td> <td> <div class="table-cell is-wrap">额外程序集合，传递给 Tab 组件使用</div> </td> <td> <div class="table-cell">IEnumerable&lt;Assembly&gt;</div> </td> <td> <div class="table-cell is-wrap">—</div> </td> <td> <div class="table-cell">—</div> </td> </tr> <tr> <td> <div class="table-cell">OnCollapsed</div> </td> <td> <div class="table-cell is-wrap">收缩展开回调委托</div> </td> <td> <div class="table-cell">Func&lt;bool, Task&gt;</div> </td> <td> <div class="table-cell is-wrap">—</div> </td> <td> <div class="table-cell">—</div> </td> </tr> <tr> <td> <div class="table-cell">OnClickMenu</div> </td> <td> <div class="table-cell is-wrap">点击菜单项时回调委托</div> </td> <td> <div class="table-cell">Func&lt;bool, MenuItem&gt;</div> </td> <td> <div class="table-cell is-wrap">—</div> </td> <td> <div class="table-cell">—</div> </td> </tr> <tr> <td> <div class="table-cell">TabDefaultUrl</div> </td> <td> <div class="table-cell is-wrap">设置 Tab 组件默认标签页</div> </td> <td> <div class="table-cell">string?</div> </td> <td> <div class="table-cell is-wrap">—</div> </td> <td> <div class="table-cell">—</div> </td> </tr> </tbody> </table> </div> </div> <p>更多详情，请移步至逛网：<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://www.blazor.zone/layouts"  target="_blank" rel="nofollow">传送门......</a></p> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-60330.htm">HCNP Routing&amp;Switching之代理ARP</a></p>
+                                        <p>下一个：<a href="/news/article-60921.htm">动物医院介绍自己的店铺怎么写文案（动物医院招牌图片）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-39973.htm" title="同城宠物领养赠送（有没有同城领养宠物的小程序）">同城宠物领养赠送（有没有同城领养宠物的小程序）</a></li>
+                        <li class="py-2"><a href="/news/article-59752.htm" title="被猫咬了怎么观察有没有事儿（被猫咬了怎么判断有事没事）">被猫咬了怎么观察有没有事儿（被猫咬了怎么判断有事没事）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-10-free-shadowrocket-node.htm" title="「1月10日」最高速度19.9M/S，2025年Shadowrocket/SSR/Clash/V2ray每天更新免费节点订阅链接">「1月10日」最高速度19.9M/S，2025年Shadowrocket/SSR/Clash/V2ray每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-27055.htm" title="女人养猫什么心态（女人养猫有什么坏处）">女人养猫什么心态（女人养猫有什么坏处）</a></li>
+                        <li class="py-2"><a href="/news/article-48885.htm" title="广州有领养宠物猫的地方吗在哪里啊（广州有领养宠物猫的地方吗在哪里啊电话）">广州有领养宠物猫的地方吗在哪里啊（广州有领养宠物猫的地方吗在哪里啊电话）</a></li>
+                        <li class="py-2"><a href="/news/article-40480.htm" title="动物疫苗生产厂家排名前十名有哪些呢图片（动物疫苗生产厂家排名前十名有哪些呢图片大全）">动物疫苗生产厂家排名前十名有哪些呢图片（动物疫苗生产厂家排名前十名有哪些呢图片大全）</a></li>
+                        <li class="py-2"><a href="/news/article-38502.htm" title="襄阳市养狗规定（襄阳市养狗条例）">襄阳市养狗规定（襄阳市养狗条例）</a></li>
+                        <li class="py-2"><a href="/news/article-37528.htm" title="动物医院看病流程图怎么画（动物医院接诊流程）">动物医院看病流程图怎么画（动物医院接诊流程）</a></li>
+                        <li class="py-2"><a href="/news/article-39008.htm" title="动物疫苗生产厂家排名前十名有哪些品种（动物疫苗有哪些大厂家）">动物疫苗生产厂家排名前十名有哪些品种（动物疫苗有哪些大厂家）</a></li>
+                        <li class="py-2"><a href="/news/article-51468.htm" title="养狗对什么属相的人不好（养狗对什么属相的人不好呀）">养狗对什么属相的人不好（养狗对什么属相的人不好呀）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">66</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+        <!-- footer -->
+    <div class="footer">
+        <!-- tiny-footer -->
+        <div class="container">
+            <div class="row">
+                <div class="tiny-footer">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <p class="tiny-footer-para">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                            <a href="/">IOS Clash节点订阅站</a> 版权所有 Powered by WordPress
+                        </p>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <div class="tiny-section-social">
+                            <div class="">
+                                <ul>
+                                    <li><a href="#"><i class="fa fa-facebook-square"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-twitter-square"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-google-plus-square"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-linkedin-square"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /. tiny-footer -->
+        </div>
+    </div>
+    <!-- /.footer -->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="/assets/website/js/frontend/iosclash/jquery.min.js" type="text/javascript"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="/assets/website/js/frontend/iosclash/bootstrap.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/iosclash/menumaker.js" type="text/javascript"></script>
+    <script type="text/javascript" src="/assets/website/js/frontend/iosclash/jquery.sticky.js"></script>
+    <script type="text/javascript" src="/assets/website/js/frontend/iosclash/sticky-header.js"></script>
+    <script type="text/javascript" src="/assets/website/js/frontend/iosclash/owl.carousel.min.js"></script>
+    <script type="text/javascript" src="/assets/website/js/frontend/iosclash/multiple-carousel.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
