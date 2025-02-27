@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://iosclash.github.io/news/article-63907.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>C++ 标准输入、输出流</title>
+        <meta name="description" content="1、流的概念  C++ 的 I/O 发生在流中，流是由若干字节组成的字节序列 输入流：从设备流向内存的字节流 输出流：从内存流向设备的字节流 标准输入流：从标准输入设备（键盘）流向内存的数据源   &" />
+        <link rel="icon" href="/assets/website/img/iosclash/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="IOS Clash节点订阅站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://iosclash.github.io/news/article-63907.htm" />
+    <meta property="og:site_name" content="IOS Clash节点订阅站" />
+    <meta property="og:title" content="C++ 标准输入、输出流" />
+    <meta property="og:image" content="https://iosclash.github.io/uploads/20240429/5370e6bc559723c55c221659d715f7d0.webp" />
+        <meta property="og:release_date" content="2025-02-27T05:56:21" />
+    <meta property="og:updated_time" content="2025-02-27T05:56:21" />
+        <meta property="og:description" content="1、流的概念  C++ 的 I/O 发生在流中，流是由若干字节组成的字节序列 输入流：从设备流向内存的字节流 输出流：从内存流向设备的字节流 标准输入流：从标准输入设备（键盘）流向内存的数据源   &" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="C++ 标准输入、输出流">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <!-- Bootstrap -->
+    <link href="/assets/website/css/iosclash/bootstrap.min.css" rel="stylesheet">
+    <!-- Style CSS -->
+    <link href="/assets/website/css/iosclash/style.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link href="/assets/website/css/iosclash/owl.carousel.css" rel="stylesheet">
+    <link href="/assets/website/css/iosclash/owl.theme.default.css" rel="stylesheet">
+    <!-- FontAwesome CSS -->
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/iosclash/fontello.css">
+    <link href="/assets/website/css/iosclash/font-awesome.min.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6QH28Z9CLQ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-6QH28Z9CLQ');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!-- top-bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                    <div class="logo">
+                        <a href="/">
+                                                <span>IOS Clash</span>
+                                                </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.top-bar -->
+    <!-- header-section-->
+    <div class="header-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <!-- navigations-->
+                    <div class="navigation">
+                        <div id="navigation">
+                            <ul>
+                                                                <li><a href="/">首页</a></li>
+                                                                <li><a href="/free-nodes/">免费节点</a></li>
+                                                                <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                                                <li><a href="/client.htm">客户端</a></li>
+                                                                <li><a href="/news/">新闻资讯</a></li>
+                                                            </ul>
+                        </div>
+                    </div>
+                    <!-- /.navigations-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /. header-section-->
+    <!-- page-header -->
+    <div class="page-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
+                    <div class="page-section">
+                        <h1 class="page-title">C++ 标准输入、输出流</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="page-breadcrumb">
+                        <ol class="breadcrumb">
+                            <li><a href="/">首页</a></li>
+                            <li><a href="/news/">新闻资讯</a></li>
+                            <li>正文</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.page-header-->
+    <!-- /.page-header-->
+    <div class="space-medium">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="htmledit_views"> <p>1、流的概念</p> <p><img decoding="async" alt="" height="162" src="http://img.555519.xyz/uploads/20230110/6eaf17c0ca09b59aff75f09ff4cb7e45.jpg"></p> <p>C++ 的 I/O 发生在流中，流是由若干字节组成的字节序列</p> <p>输入流：从设备流向内存的字节流</p> <p>输出流：从内存流向设备的字节流</p> <p>标准输入流：从标准输入设备（键盘）流向内存的数据源</p> <p><img fetchpriority="high" decoding="async" alt="" height="238" src="http://img.555519.xyz/uploads/20230110/bfcd98b07853b00d6227637447d7a6ab.jpg"></p> <p><img decoding="async" alt="" height="200" src="http://img.555519.xyz/uploads/20230110/981c43551a5b85149d7370d9deac61a4.jpg"></p> <p>&nbsp;</p> <p>&gt;&gt;不接收空格、回车，以空格、回车做分隔符</p> <p>（一）字符串流：以内存中的string对象/字符数组（c风格字符串）为IO的对象——将数据输出到内存的字符串存储区/从字符串存储区读入数据</p> <p>字符串流类包括：</p> <p>①定义在头文件&lt;sstream&gt;中：istringstream、ostringstream、stringstream，以string对象作为字符串</p> <p>②定义在头文件&lt;strstream&gt;中：istrstream、ostrstream、strstream,以char数组作为字符串</p> <p>使用字符串流类（基于①类）</p> <p>（1）ostringstream类</p> <p>进行格式化输入输出，将各种类型转换为string类型，只支持<span style="color:#ff9900;"><strong>&lt;&lt;</strong></span>操作符</p> <p>流插入运算符&lt;&lt;与ostringstream对象匹配，输出到ostringstream流对象中</p> <pre><code class="language-cpp">#include&lt;sstream&gt; #include&lt;iostream&gt; using namespace std;  int main(){ 	ostringstream oss;//定义一个字符串输出流对象，未初始化 	oss&lt;&lt;1.234;//将1.234输出到oss对象中 ==将1.234.转换成一个字符串 	oss&lt;&lt;" ";//将空格字符串输出到oss对象中==将字符串常量转换为字符串“1.234 ” （1.234末尾加上空格）  	oss&lt;&lt;1234;//字符串：“1.234 1234”  	oss&lt;&lt;endl;// 字符串：“1.234 1234\n” 	cout&lt;&lt;oss.str();//返回oss中的字符串并输出  	oss.str(""); //清空为空字符串  	oss&lt;&lt;3.1415926; 	str2 = oss.str(); //str2复制为“3.1415926”  	return 0; }</code></pre> <p>（2）istringstream类</p> <p>把一个已定义字符串中的以空格隔开的内容提取出来，只支持<span style="color:#ff9900;"><strong>&gt;&gt;</strong></span>操作符</p> <p>流提取运算符&gt;&gt;与istringstream对象匹配，从ostringstream流对象中提取数据输入到内存中</p> <pre><code class="language-cpp">#include&lt;sstream&gt; #include&lt;iostream&gt; using namespace std;  int main(){ 	int a; 	string str1; 	string input = "abc 123 def 456 ghi 789"; 	istringstream iss(input);//通过构造函数对iss进行初始化==iss中存储字符串为input  	while(iss&gt;&gt;str1&gt;&gt;a)	//从iss中提取string类型数据str，提取int型数据a  		cout&lt;&lt;str1&lt;&lt;" "&lt;&lt;a&lt;&lt;endl; 	return 0; }</code></pre> <p>（3）stringstream类</p> <p>支持&lt;&lt;和&gt;&gt;操作符，是istringstream和ostringstream的综合</p> <pre><code class="language-cpp">#include&lt;sstream&gt; #include&lt;iostream&gt; using namespace std;  int main(){ 	int a; 	string input = "abc 123 def 456 ghi 789" ; 	stringstream ss; 	ss&lt;&lt;input; 	while(ss&gt;&gt;str1&gt;&gt;a) 		cout&lt;&lt;str1&lt;&lt;" "&lt;&lt;a&lt;&lt;endl; 	return 0; }</code></pre> <p>字符串流类的构造函数</p> <p>字符串流类常用的成员函数</p> <pre><code class="language-cpp">string str();//返回当前字符串流缓存区的字符串对象副本</code></pre> <pre><code class="language-cpp">void str(const string&amp; s);//复制字符串s内容到字符串流缓存区关联的字符串对象中</code></pre> </p></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-63302.htm">免费领养狗狗正规网站平台深圳官网下载的简单介绍</a></p>
+                                        <p>下一个：<a href="/news/article-63908.htm">动物疫苗价格一览表图片高清大全集 动物疫苗价格一览表图片高清大全集下载</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-48322.htm" title="spring boot 导入导出">spring boot 导入导出</a></li>
+                        <li class="py-2"><a href="/news/article-62102.htm" title="合肥宠物收容中心地址（合肥市宠物收容中心）">合肥宠物收容中心地址（合肥市宠物收容中心）</a></li>
+                        <li class="py-2"><a href="/news/article-30330.htm" title="动物疫苗需要冷藏吗多久可以打（动物疫苗冷冻了还能用吗）">动物疫苗需要冷藏吗多久可以打（动物疫苗冷冻了还能用吗）</a></li>
+                        <li class="py-2"><a href="/news/article-55784.htm" title="Java线程池深入浅出">Java线程池深入浅出</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-1-free-ssr-subscribe.htm" title="「2月1日」最高速度19.4M/S，2025年SSR/Clash/V2ray/Shadowrocket每天更新免费节点订阅链接">「2月1日」最高速度19.4M/S，2025年SSR/Clash/V2ray/Shadowrocket每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-27-shadowrocket-node.htm" title="「1月27日」最高速度20.1M/S，2025年V2ray/Shadowrocket/Clash/SSR每天更新免费节点订阅链接">「1月27日」最高速度20.1M/S，2025年V2ray/Shadowrocket/Clash/SSR每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-29364.htm" title="echarts根据数据动态生成不同条数的折线图">echarts根据数据动态生成不同条数的折线图</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-11-free-subscribe-node.htm" title="「2月11日」最高速度20.3M/S，2025年V2ray/Clash/SSR/Shadowrocket每天更新免费节点订阅链接">「2月11日」最高速度20.3M/S，2025年V2ray/Clash/SSR/Shadowrocket每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-44451.htm" title="成都宠物领养平台怎么样啊（成都宠物领养平台怎么样啊知乎）">成都宠物领养平台怎么样啊（成都宠物领养平台怎么样啊知乎）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-20-free-clash.htm" title="「12月20日」最高速度22.6M/S，2024年Clash/Shadowrocket/SSR/V2ray每天更新免费节点订阅链接">「12月20日」最高速度22.6M/S，2024年Clash/Shadowrocket/SSR/V2ray每天更新免费节点订阅链接</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">81</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+        <!-- footer -->
+    <div class="footer">
+        <!-- tiny-footer -->
+        <div class="container">
+            <div class="row">
+                <div class="tiny-footer">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <p class="tiny-footer-para">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                            <a href="/">IOS Clash节点订阅站</a> 版权所有 Powered by WordPress
+                        </p>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <div class="tiny-section-social">
+                            <div class="">
+                                <ul>
+                                    <li><a href="#"><i class="fa fa-facebook-square"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-twitter-square"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-google-plus-square"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-linkedin-square"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /. tiny-footer -->
+        </div>
+    </div>
+    <!-- /.footer -->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="/assets/website/js/frontend/iosclash/jquery.min.js" type="text/javascript"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="/assets/website/js/frontend/iosclash/bootstrap.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/iosclash/menumaker.js" type="text/javascript"></script>
+    <script type="text/javascript" src="/assets/website/js/frontend/iosclash/jquery.sticky.js"></script>
+    <script type="text/javascript" src="/assets/website/js/frontend/iosclash/sticky-header.js"></script>
+    <script type="text/javascript" src="/assets/website/js/frontend/iosclash/owl.carousel.min.js"></script>
+    <script type="text/javascript" src="/assets/website/js/frontend/iosclash/multiple-carousel.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
