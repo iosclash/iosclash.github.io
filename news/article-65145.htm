@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://iosclash.github.io/news/article-65145.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>5种SpringMvc的异步处理方式你都了解吗？</title>
+        <meta name="description" content="浏览器同步  Callable  CompletableFuture &nbsp;和ListenableFuture  WebAsyncTask  DeferredResult 目录  			   点" />
+        <link rel="icon" href="/assets/website/img/iosclash/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="IOS Clash节点订阅站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://iosclash.github.io/news/article-65145.htm" />
+    <meta property="og:site_name" content="IOS Clash节点订阅站" />
+    <meta property="og:title" content="5种SpringMvc的异步处理方式你都了解吗？" />
+    <meta property="og:image" content="https://iosclash.github.io/uploads/20240429/39660cab7e1fdeb5c6465c4ccdae03ce.webp" />
+        <meta property="og:release_date" content="2025-03-01T06:59:20" />
+    <meta property="og:updated_time" content="2025-03-01T06:59:20" />
+        <meta property="og:description" content="浏览器同步  Callable  CompletableFuture &nbsp;和ListenableFuture  WebAsyncTask  DeferredResult 目录  			   点" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="5种SpringMvc的异步处理方式你都了解吗？">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <!-- Bootstrap -->
+    <link href="/assets/website/css/iosclash/bootstrap.min.css" rel="stylesheet">
+    <!-- Style CSS -->
+    <link href="/assets/website/css/iosclash/style.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link href="/assets/website/css/iosclash/owl.carousel.css" rel="stylesheet">
+    <link href="/assets/website/css/iosclash/owl.theme.default.css" rel="stylesheet">
+    <!-- FontAwesome CSS -->
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/iosclash/fontello.css">
+    <link href="/assets/website/css/iosclash/font-awesome.min.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6QH28Z9CLQ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-6QH28Z9CLQ');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!-- top-bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                    <div class="logo">
+                        <a href="/">
+                                                <span>IOS Clash</span>
+                                                </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.top-bar -->
+    <!-- header-section-->
+    <div class="header-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <!-- navigations-->
+                    <div class="navigation">
+                        <div id="navigation">
+                            <ul>
+                                                                <li><a href="/">首页</a></li>
+                                                                <li><a href="/free-nodes/">免费节点</a></li>
+                                                                <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                                                <li><a href="/client.htm">客户端</a></li>
+                                                                <li><a href="/news/">新闻资讯</a></li>
+                                                            </ul>
+                        </div>
+                    </div>
+                    <!-- /.navigations-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /. header-section-->
+    <!-- page-header -->
+    <div class="page-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
+                    <div class="page-section">
+                        <h1 class="page-title">5种SpringMvc的异步处理方式你都了解吗？</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="page-breadcrumb">
+                        <ol class="breadcrumb">
+                            <li><a href="/">首页</a></li>
+                            <li><a href="/news/">新闻资讯</a></li>
+                            <li>正文</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.page-header-->
+    <!-- /.page-header-->
+    <div class="space-medium">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				  			 <div id="log-box">  				<div id="catalog"><ul id="catalog-ul"> <li><i class="be be-arrowright"></i> <a href="#title-0" title="浏览器同步">浏览器同步</a></li> <li><i class="be be-arrowright"></i> <a href="#title-1" title="Callable">Callable</a></li> <li><i class="be be-arrowright"></i> <a href="#title-2" title="CompletableFuture &nbsp;和ListenableFuture">CompletableFuture &nbsp;和ListenableFuture</a></li> <li><i class="be be-arrowright"></i> <a href="#title-3" title="WebAsyncTask">WebAsyncTask</a></li> <li><i class="be be-arrowright"></i> <a href="#title-4" title="DeferredResult">DeferredResult</a></li> </ul><span class="log-zd"><span class="log-close"><a title="隐藏目录"><i class="be be-cross"></i><strong>目录</strong></a></span></span></div>  			</div> <div id="content_views" class="htmledit_views"> <div id="js_content"> <p>点击蓝色字关注我们！</p> <h3>引言</h3> <p>说到异步大家肯定首先会先想到同步。我们先来看看什么是同步？所谓<strong>同步</strong>，就是发出一个功能调用时，在没有得到结果之前，该调用就不返回或继续执行后续操作。简单来说，同步就是必须一件一件事做，等前一件做完了才能做下一件事。<strong>异步</strong>：异步就相反，调用在发出之后，这个调用就直接返回了，不需要等结果。</p> <span class="directory"></span><h4 id="title-0">浏览器同步</h4> <p><strong>浏览器发起一个request然后会一直待一个响应response，在这期间里面它是阻塞的。</strong> 比如早期我们在我们在逛电商平台的时候买东西我们打开一个商品的页面，大致流程是不是可能是这样，每次打开一个页面都是由一个线程从头到尾来处理，这个请求需要进行数据库的访问需要把商品价格库存啥的返回页面，还需要去调用第三方接口，比如优惠券接口等我们只有等到这些都处理完成后这个线程才会把结果响应给浏览器，在这等结果期间这个线程只能一直在干等着啥事情也不能干。这样的话是不是会有有一定的性能问题。大致的流程如下：<img decoding="async" src="http://img.555519.xyz/uploads/20230118/686d58777c4abaa946ff2cd15c44aeb0.jpg" alt="5种SpringMvc的异步处理方式你都了解吗？"/></p> <h3>浏览器异步</h3> <p>为了解决上面同步阻塞的问题，再<strong>Servlet3.0</strong>发布后，提供了一个新特性：<strong>异步处理请求</strong>。比如我们还是进入商品详情页面，这时候这个前端发起一个请求，然后会有一个线程来执行这个请求，这个请求需要去数据库查询库存、调用第三方接口查询优惠券等。这时候这个线程就不用干等着呢。它的任务到这就完成了，又可以执行下一个任务了。等查询数据库和第三方接口查询优惠券有结果了，这时候会有一个新的线程来把处理结果返回给前端。这样的话线程的工作量是不超级饱和，需要不停的干活，连休息的机会都不给了。</p> <p> <img decoding="async" src="http://img.555519.xyz/uploads/20230118/dc3c53f8e734fbee02add2625399ddd3.jpg" alt="5种SpringMvc的异步处理方式你都了解吗？"/><figcaption>   在这里插入图片描述<br />  </figcaption><ul> <li> <p>这个异步是纯后端的异步，对前端是无感的，异步也并不会带来响应时间上的优化，原来该执行多久照样还是需要执行多久。但是我们的请求线程（Tomcat 线程）为异步servlet之后，我们可以立即返回，依赖于业务的任务用业务线程来执行，也就是说，Tomcat的线程可以立即回收，默认情况下，Tomcat的核心线程是10，最大线程数是200,我们能及时回收线程，也就意味着我们能处理更多的请求，能够增加我们的吞吐量，这也是异步Servlet的主要作用。下面我们就来看看Spring mvc 的几种异步方式吧 https://docs.spring.io/spring-framework/docs/current/reference/html/web.html#mvc-ann-async<img decoding="async" src="http://img.555519.xyz/uploads/20230118/e9714d559b4474050f7894471a037570.jpg" alt="5种SpringMvc的异步处理方式你都了解吗？"/>在这个之前我们还是先简单的回顾下Servlet 3.1的异步：</p> </li> <li> <p>客户端（浏览器、app）发送一个请求</p> </li> <li> <p>Servlet容器分配一个线程来处理容器中的一个servlet</p> </li> <li> <p>servlet调用request.startAsync()开启异步模式，保存AsyncContext, 然后返回。</p> </li> <li> <p>这个servlet请求线程以及所有的过滤器都可以结束，但其响应（response）会等待异步线程处理结束后再返回。</p> </li> <li> <p>其他线程使用保存的AsyncContext来完成响应</p> </li> <li> <p>客户端收到响应<img decoding="async" src="http://img.555519.xyz/uploads/20230118/df0405cccc7261620fad24120da0627e.jpg" alt="5种SpringMvc的异步处理方式你都了解吗？"/></p> </li> </ul> <span class="directory"></span><h4 id="title-1">Callable</h4> <pre class="has"><code class="language-go">&nbsp;/**&nbsp;&nbsp;公众号：java金融 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;使用Callable &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@return &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/ &nbsp;&nbsp;&nbsp;&nbsp;@GetMapping("callable") &nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;Callable&lt;String&gt;&nbsp;callable()&nbsp;{ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println(LocalDateTime.now().toString()&nbsp;+&nbsp;"---&gt;主线程开始"); &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Callable&lt;String&gt;&nbsp;callable&nbsp;=&nbsp;()&nbsp;-&gt;&nbsp;{ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;result&nbsp;=&nbsp;"return&nbsp;callable"; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;执行业务耗时&nbsp;5s &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Thread.sleep(5000); &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println(LocalDateTime.now().toString()&nbsp;+&nbsp;"---&gt;子任务线程("+Thread.currentThread().getName()+")"); &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;result; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println(LocalDateTime.now().toString()&nbsp;+&nbsp;"---&gt;主线程结束"); &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;callable; &nbsp;&nbsp;&nbsp;&nbsp;} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;static&nbsp;String&nbsp;doBusiness()&nbsp;{ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;执行业务耗时&nbsp;10s &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;try&nbsp;{ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Thread.sleep(10000); &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;catch&nbsp;(InterruptedException&nbsp;e)&nbsp;{ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e.printStackTrace(); &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;UUID.randomUUID().toString(); &nbsp;&nbsp;&nbsp;&nbsp;} </code></pre> <ul> <li> <p>控制器先返回一个Callable对象</p> </li> <li> <p>Spring MVC开始进行异步处理，并把该Callable对象提交给另一个独立线程的执行器TaskExecutor处理</p> </li> <li> <p>DispatcherServlet和所有过滤器都退出Servlet容器线程，但此时方法的响应对象仍未返回</p> </li> <li> <p>Callable对象最终产生一个返回结果，此时Spring MVC会重新把请求分派回Servlet容器，恢复处理</p> </li> <li> <p>DispatcherServlet再次被调用，恢复对Callable异步处理所返回结果的处理 上面就是Callable的一个执行流程，下面我们来简单的分析下源码，看看是怎么实现的：我们知道SpringMvc是可以返回json格式数据、或者返回视图页面（html、jsp）等，SpringMvc是怎么实现这个的呢？最主要的一个核心类就是org.springframework.web.method.support.HandlerMethodReturnValueHandler 我们来看看这个类，这个类就是一个接口，总共就两个方法；</p> </li> </ul> <pre class="has"><code class="language-go">boolean&nbsp;supportsReturnType(MethodParameter&nbsp;returnType); void&nbsp;handleReturnValue(@Nullable&nbsp;Object&nbsp;returnValue,&nbsp;MethodParameter&nbsp;returnType,ModelAndViewContainer&nbsp;mavContainer,&nbsp;NativeWebRequest&nbsp;webRequest)&nbsp;throws&nbsp;Exception; </code></pre> <p>上面这个我们的请求是返回Callable这样一个结果的，我们会根据这个返回的类型去找所有实现了HandlerMethodReturnValueHandler 这个接口的实现类，最终我们会根据返回类型通过supportsReturnType这个实现的方法找到一个对应的HandlerMethodReturnValueHandler 实现类，我们根据返回类型是Callable然后就找到了实现类CallableMethodReturnValueHandler。<img decoding="async" src="http://img.555519.xyz/uploads/20230118/3965eee322a90b34f1cd9a047c62bd3f.jpg" alt="5种SpringMvc的异步处理方式你都了解吗？"/>开启异步线程的话也就是在handleReturnValue这个方法里面了，感兴趣的大家可以动手去debug下还是比较好调试的。</p> <span class="directory"></span><h4 id="title-2">CompletableFuture &nbsp;和ListenableFuture</h4> <pre class="has"><code class="language-go">&nbsp;&nbsp;&nbsp;@GetMapping("completableFuture") &nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;CompletableFuture&lt;String&gt;&nbsp;completableFuture()&nbsp;{ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;线程池一般不会放在这里，会使用static声明，这只是演示 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ExecutorService&nbsp;executor&nbsp;=&nbsp;Executors.newCachedThreadPool(); &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println(LocalDateTime.now().toString()&nbsp;+&nbsp;"---&gt;主线程开始"); &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CompletableFuture&lt;String&gt;&nbsp;completableFuture&nbsp;=&nbsp;CompletableFuture.supplyAsync(IndexController::doBusiness,&nbsp;executor); &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println(LocalDateTime.now().toString()&nbsp;+&nbsp;"---&gt;主线程结束"); &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;completableFuture; &nbsp;&nbsp;&nbsp;&nbsp;}  &nbsp;&nbsp;&nbsp;&nbsp;@GetMapping("listenableFuture") &nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;ListenableFuture&lt;String&gt;&nbsp;listenableFuture()&nbsp;{ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;线程池一般不会放在这里，会使用static声明，这只是演示 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ExecutorService&nbsp;executor&nbsp;=&nbsp;Executors.newCachedThreadPool(); &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println(LocalDateTime.now().toString()&nbsp;+&nbsp;"---&gt;主线程开始"); &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ListenableFutureTask&lt;String&gt;&nbsp;listenableFuture&nbsp;=&nbsp;new&nbsp;ListenableFutureTask&lt;&gt;(()-&gt;&nbsp;&nbsp;&nbsp;doBusiness()); &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;executor.execute(listenableFuture); &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println(LocalDateTime.now().toString()&nbsp;+&nbsp;"---&gt;主线程结束"); &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;listenableFuture; &nbsp;&nbsp;&nbsp;&nbsp;} </code></pre> <p>注：<strong>这种方式记得不要使用内置的不要使用内置的 ForkJoinPool线程池，需要自己创建线程池否则会有性能问题</strong></p> <span class="directory"></span><h4 id="title-3">WebAsyncTask</h4> <pre class="has"><code class="language-go">&nbsp;@GetMapping("asynctask") &nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;WebAsyncTask&nbsp;asyncTask()&nbsp;{ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SimpleAsyncTaskExecutor&nbsp;executor&nbsp;=&nbsp;new&nbsp;SimpleAsyncTaskExecutor(); &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println(LocalDateTime.now().toString()&nbsp;+&nbsp;"---&gt;主线程开始"); &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WebAsyncTask&lt;String&gt;&nbsp;task&nbsp;=&nbsp;new&nbsp;WebAsyncTask(1000L,&nbsp;executor,&nbsp;()-&gt;&nbsp;doBusiness()); &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;task.onCompletion(()-&gt;{ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println(LocalDateTime.now().toString()&nbsp;+&nbsp;"---&gt;调用完成"); &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}); &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;task.onTimeout(()-&gt;{ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println("onTimeout"); &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;"onTimeout"; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}); &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println(LocalDateTime.now().toString()&nbsp;+&nbsp;"---&gt;主线程结束"); &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;task; &nbsp;&nbsp;&nbsp;&nbsp;} </code></pre> <span class="directory"></span><h4 id="title-4">DeferredResult</h4> <pre class="has"><code class="language-go">&nbsp;&nbsp;&nbsp;&nbsp;@GetMapping("deferredResult") &nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;DeferredResult&lt;String&gt;&nbsp;deferredResult()&nbsp;{ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println(LocalDateTime.now().toString()&nbsp;+&nbsp;"---&gt;主线程("+Thread.currentThread().getName()+")开始"); &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DeferredResult&lt;String&gt;&nbsp;deferredResult&nbsp;=&nbsp;new&nbsp;DeferredResult&lt;&gt;(); &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CompletableFuture.supplyAsync(()-&gt;&nbsp;doBusiness(),&nbsp;Executors.newFixedThreadPool(5)).whenCompleteAsync((result,&nbsp;throwable)-&gt;{ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(throwable!=null)&nbsp;{ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;deferredResult.setErrorResult(throwable.getMessage()); &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}else&nbsp;{ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;deferredResult.setResult(result); &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}); &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;异步请求超时时调用 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;deferredResult.onTimeout(()-&gt;{ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println(LocalDateTime.now().toString()&nbsp;+&nbsp;"---&gt;onTimeout"); &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}); &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;异步请求完成后调用 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;deferredResult.onCompletion(()-&gt;{ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println(LocalDateTime.now().toString()&nbsp;+&nbsp;"---&gt;onCompletion"); &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}); &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println(LocalDateTime.now().toString()&nbsp;+&nbsp;"---&gt;主线程("+Thread.currentThread().getName()+")结束"); &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;deferredResult; &nbsp;&nbsp;&nbsp;&nbsp;} </code></pre> <ul> <li> <p>上面这几种异步方式都是会等到业务doBusiness执行完之后（10s）才会把response给到前端，执行请求的主线程会立即结束，响应结果会交给另外的线程来返回给前端。</p> </li> <li> <p>这种异步跟下面的这个所谓的假异步是不同的，这种情况是由主线程执行完成之后立马返回值（主线程）给前端，不会等个5s在返回给前端。</p> </li> </ul> <pre class="has"><code class="language-go">&nbsp;&nbsp;&nbsp;&nbsp;@GetMapping("call") &nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;String&nbsp;call()&nbsp;{ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;new&nbsp;Thread(new&nbsp;Runnable()&nbsp;{ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@Override &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;void&nbsp;run()&nbsp;{ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;try&nbsp;{ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Thread.sleep(5000); &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;catch&nbsp;(InterruptedException&nbsp;e)&nbsp;{ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e.printStackTrace(); &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}).start(); &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;"这是个假异步"; &nbsp;&nbsp;&nbsp;&nbsp;} </code></pre> <p>这几种异步方式都跟返回Callable 差不多，都有对应的HandlerMethodReturnValueHandler 实现类，无非就是丰富了自己一些特殊的api、比如超时设置啥的，以及线程池的创建是谁来创建，执行流程基本都是一样的。</p> <h3>总结</h3> <ul> <li> <p>了解spring mvc 的异步编程，对我们后续学习响应式编程、rxjava、webflux等都是有好处的。</p> </li> <li> <p>异步编程可以帮我们高效的利用系统资源。</p> </li> </ul> <h3>结束</h3> <ul> <li> <p>由于自己才疏学浅，难免会有纰漏，假如你发现了错误的地方，还望留言给我指出来,我会对其加以修正。</p> </li> <li> <p>如果你觉得文章还不错，你的转发、分享、赞赏、点赞、留言就是对我最大的鼓励。</p> </li> <li> <p>感谢您的阅读,十分欢迎并感谢您的关注。</p> <p style="text-align: center"></p> </li> </ul> <p>站在巨人的肩膀上摘苹果: https://blog.csdn.net/f641385712/article/details/88692534</p> <p style="text-align: center"></p> <pre class="has"><code class="language-php">最近面试BAT，整理一份面试资料《Java面试BATJ通关手册》，覆盖了Java核心技术、JVM、Java并发、SSM、微服务、数据库、数据结构、等等。 获取方式：点“在看”，关注公众号并回复 666&nbsp;领取，更多内容陆续奉上。 文章有帮助的话，在看，转发吧。 谢谢支持哟 (*^__^*） </code></pre> </div></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-65143.htm">C ++中的搜索建议系统</a></p>
+                                        <p>下一个：<a href="/news/article-65726.htm">ThreadGroup解读</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-21499.htm" title="Python向hdfs写入文件与hadoop命令向hdfs写入文件">Python向hdfs写入文件与hadoop命令向hdfs写入文件</a></li>
+                        <li class="py-2"><a href="/news/article-64512.htm" title="GoLang搭建gin项目">GoLang搭建gin项目</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-24-clash-node-daily-updates.htm" title="「11月24日」最高速度21.2M/S，2024年Clash/SSR/Shadowrocket/V2ray每天更新免费节点订阅链接">「11月24日」最高速度21.2M/S，2024年Clash/SSR/Shadowrocket/V2ray每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-9-clash-v2ray-ss-ssr.htm" title="「2月9日」最高速度18.6M/S，2025年Shadowrocket/Clash/V2ray/SSR每天更新免费节点订阅链接">「2月9日」最高速度18.6M/S，2025年Shadowrocket/Clash/V2ray/SSR每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-59161.htm" title="畜牧兽医站能给猫打疫苗吗（畜牧兽医站能给猫打疫苗吗现在）">畜牧兽医站能给猫打疫苗吗（畜牧兽医站能给猫打疫苗吗现在）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-26-free-v2ray.htm" title="「12月26日」最高速度20M/S，2024年SSR/Shadowrocket/Clash/V2ray每天更新免费节点订阅链接">「12月26日」最高速度20M/S，2024年SSR/Shadowrocket/Clash/V2ray每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-60921.htm" title="动物医院介绍自己的店铺怎么写文案（动物医院招牌图片）">动物医院介绍自己的店铺怎么写文案（动物医院招牌图片）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-8-free-v2ray.htm" title="「11月8日」最高速度20.2M/S，2024年SSR/Shadowrocket/Clash/V2ray每天更新免费节点订阅链接">「11月8日」最高速度20.2M/S，2024年SSR/Shadowrocket/Clash/V2ray每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-54135.htm" title="动物免疫接种的注意事项有哪些?（动物免疫接种的注意事项有哪些呢）">动物免疫接种的注意事项有哪些?（动物免疫接种的注意事项有哪些呢）</a></li>
+                        <li class="py-2"><a href="/news/article-32709.htm" title="动物疫苗接种间隔多久打第二针（动物疫苗接种间隔多久打第二针呢）">动物疫苗接种间隔多久打第二针（动物疫苗接种间隔多久打第二针呢）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">6</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+        <!-- footer -->
+    <div class="footer">
+        <!-- tiny-footer -->
+        <div class="container">
+            <div class="row">
+                <div class="tiny-footer">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <p class="tiny-footer-para">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                            <a href="/">IOS Clash节点订阅站</a> 版权所有 Powered by WordPress
+                        </p>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <div class="tiny-section-social">
+                            <div class="">
+                                <ul>
+                                    <li><a href="#"><i class="fa fa-facebook-square"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-twitter-square"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-google-plus-square"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-linkedin-square"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /. tiny-footer -->
+        </div>
+    </div>
+    <!-- /.footer -->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="/assets/website/js/frontend/iosclash/jquery.min.js" type="text/javascript"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="/assets/website/js/frontend/iosclash/bootstrap.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/iosclash/menumaker.js" type="text/javascript"></script>
+    <script type="text/javascript" src="/assets/website/js/frontend/iosclash/jquery.sticky.js"></script>
+    <script type="text/javascript" src="/assets/website/js/frontend/iosclash/sticky-header.js"></script>
+    <script type="text/javascript" src="/assets/website/js/frontend/iosclash/owl.carousel.min.js"></script>
+    <script type="text/javascript" src="/assets/website/js/frontend/iosclash/multiple-carousel.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>

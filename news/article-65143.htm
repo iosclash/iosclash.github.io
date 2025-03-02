@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://iosclash.github.io/news/article-65143.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>C ++中的搜索建议系统</title>
+        <meta name="description" content="假设我们有一个字符串产品数组和一个名为searchWord的字符串。我们想要设计一个模块，在键入searchWord的每个字符后，最多建议产品列表中的三个产品名称。建议的产品应与searchWord共" />
+        <link rel="icon" href="/assets/website/img/iosclash/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="IOS Clash节点订阅站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://iosclash.github.io/news/article-65143.htm" />
+    <meta property="og:site_name" content="IOS Clash节点订阅站" />
+    <meta property="og:title" content="C ++中的搜索建议系统" />
+    <meta property="og:image" content="https://iosclash.github.io/uploads/20240429/0618d3a8c43254bdbecc016374b34cfa.webp" />
+        <meta property="og:release_date" content="2025-03-01T06:59:20" />
+    <meta property="og:updated_time" content="2025-03-01T06:59:20" />
+        <meta property="og:description" content="假设我们有一个字符串产品数组和一个名为searchWord的字符串。我们想要设计一个模块，在键入searchWord的每个字符后，最多建议产品列表中的三个产品名称。建议的产品应与searchWord共" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="C ++中的搜索建议系统">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <!-- Bootstrap -->
+    <link href="/assets/website/css/iosclash/bootstrap.min.css" rel="stylesheet">
+    <!-- Style CSS -->
+    <link href="/assets/website/css/iosclash/style.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link href="/assets/website/css/iosclash/owl.carousel.css" rel="stylesheet">
+    <link href="/assets/website/css/iosclash/owl.theme.default.css" rel="stylesheet">
+    <!-- FontAwesome CSS -->
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/iosclash/fontello.css">
+    <link href="/assets/website/css/iosclash/font-awesome.min.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6QH28Z9CLQ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-6QH28Z9CLQ');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!-- top-bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                    <div class="logo">
+                        <a href="/">
+                                                <span>IOS Clash</span>
+                                                </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.top-bar -->
+    <!-- header-section-->
+    <div class="header-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <!-- navigations-->
+                    <div class="navigation">
+                        <div id="navigation">
+                            <ul>
+                                                                <li><a href="/">首页</a></li>
+                                                                <li><a href="/free-nodes/">免费节点</a></li>
+                                                                <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                                                <li><a href="/client.htm">客户端</a></li>
+                                                                <li><a href="/news/">新闻资讯</a></li>
+                                                            </ul>
+                        </div>
+                    </div>
+                    <!-- /.navigations-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /. header-section-->
+    <!-- page-header -->
+    <div class="page-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
+                    <div class="page-section">
+                        <h1 class="page-title">C ++中的搜索建议系统</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="page-breadcrumb">
+                        <ol class="breadcrumb">
+                            <li><a href="/">首页</a></li>
+                            <li><a href="/news/">新闻资讯</a></li>
+                            <li>正文</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.page-header-->
+    <!-- /.page-header-->
+    <div class="space-medium">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<p>假设我们有一个字符串产品数组和一个名为searchWord的字符串。我们想要设计一个模块，在键入searchWord的每个字符后，最多建议产品列表中的三个产品名称。建议的产品应与searchWord共同使用前缀。当具有共同前缀的三个以上的产品时，返回三个词典最小的产品。因此，我们必须在键入searchWord的每个字符后找到建议产品的列表。</p> <p>如果输入是：[[“ mobile”，“ mouse”，“ moneypot”，“ monitor”，“ mousepad”]，而searchWord是“ mouse”，则输出将是[[“ mobile”，“ moneypot” ，“显示器”]，[“移动”，“钱罐”，“显示器”]，[“鼠标”，“鼠标垫”]，[“鼠标”，“鼠标垫”]，[“鼠标”，“鼠标垫”]]</p> <p>为了解决这个问题，我们将遵循以下步骤-</p> <ul class="list-paddingleft-2"> <li> <p>定义字符串类型键的映射m和字符串值列表</p> </li> <li> <p>对产品数组p排序</p> </li> <li> <p>当我在0到p – 1的范围内</p> </li> <ul class="list-paddingleft-2" style="list-style-type: square;"> <li> <p>x：= x + p [i，j]</p> </li> <li> <p>如果m [x]的长度&lt;3，则将p [i]插入m [x]列表</p> </li> <li> <p>x：=空字符串</p> </li> <li> <p>对于范围从0到p [i] – 1的长度的j</p> </li> </ul> <ul class="list-paddingleft-2" style="list-style-type: square;"></ul> <li> <p>创建字符串矩阵res，设置temp：=空字符串</p> </li> <li> <p>当我的范围是0到s的大小– 1</p> </li> <ul class="list-paddingleft-2" style="list-style-type: square;"> <li> <p>temp：= temp + s [i]</p> </li> <li> <p>将m [temp]插入res</p> </li> </ul> <li> <p>返回资源</p> </li> </ul> <p>让我们看下面的实现以更好地理解-</p> <h2>示例</h2> <pre>#include&nbsp;&lt;bits/stdc++.h&gt; using&nbsp;namespace&nbsp;std; void&nbsp;print_vector(vector&lt;vector&lt;auto&gt;&nbsp;&gt;&nbsp;v){ &nbsp;&nbsp;&nbsp;cout&nbsp;&lt;&lt;&nbsp;"["; &nbsp;&nbsp;&nbsp;for(int&nbsp;i&nbsp;=&nbsp;0;&nbsp;i&lt;v.size();&nbsp;i++){ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cout&nbsp;&lt;&lt;&nbsp;"["; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for(int&nbsp;j&nbsp;=&nbsp;0;&nbsp;j&nbsp;&lt;v[i].size();&nbsp;j++){ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cout&nbsp;&lt;&lt;&nbsp;v[i][j]&nbsp;&lt;&lt;&nbsp;",&nbsp;"; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} &nbsp;&nbsp;&nbsp;cout&nbsp;&lt;&lt;&nbsp;"],"; &nbsp;&nbsp;&nbsp;} &nbsp;&nbsp;&nbsp;cout&nbsp;&lt;&lt;&nbsp;"]"&lt;&lt;endl; } class&nbsp;Solution&nbsp;{ &nbsp;&nbsp;&nbsp;public: &nbsp;&nbsp;&nbsp;vector&lt;vector&lt;string&gt;&gt;&nbsp;suggestedProducts(vector&lt;string&gt;&amp;&nbsp;p, &nbsp;&nbsp;&nbsp;string&nbsp;s)&nbsp;{ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;map&nbsp;&lt;string,&nbsp;vector&nbsp;&lt;&nbsp;string&nbsp;&gt;&nbsp;&gt;&nbsp;m;; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sort(p.begin(),&nbsp;p.end()); &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for(int&nbsp;i&nbsp;=&nbsp;0;&nbsp;i&nbsp;&lt;&nbsp;p.size();&nbsp;i++){ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;string&nbsp;x&nbsp;=&nbsp;""; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for(int&nbsp;j&nbsp;=&nbsp;0;&nbsp;j&nbsp;&lt;&nbsp;p[i].size();&nbsp;j++){ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x&nbsp;+=&nbsp;p[i][j]; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(m[x].size()&lt;3)m[x].push_back(p[i]); &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vector&nbsp;&lt;&nbsp;vector&nbsp;&lt;string&gt;&nbsp;&gt;&nbsp;res; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;string&nbsp;temp&nbsp;=&nbsp;""; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for(int&nbsp;i&nbsp;=&nbsp;0;&nbsp;i&nbsp;&lt;&nbsp;s.size();&nbsp;i++){ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;temp&nbsp;+=&nbsp;s[i]; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;res.push_back(m[temp]); &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;res; &nbsp;&nbsp;&nbsp;} }; main(){ &nbsp;&nbsp;&nbsp;vector&lt;string&gt;&nbsp;v&nbsp;= &nbsp;&nbsp;&nbsp;{"mobile","mouse","moneypot","monitor","mousepad"}; &nbsp;&nbsp;&nbsp;Solution&nbsp;ob; &nbsp;&nbsp;&nbsp;print_vector(ob.suggestedProducts(v,&nbsp;"mouse")); }</pre> <h2>输入项</h2> <pre>["mobile","mouse","moneypot","monitor","mousepad"] "mouse"</pre> <p>输出结果</p> <pre>[[mobile,&nbsp;moneypot,&nbsp;monitor,&nbsp;],[mobile,&nbsp;moneypot,&nbsp;monitor,&nbsp;],[mouse, mousepad,&nbsp;],[mouse,&nbsp;mousepad,&nbsp;],[mouse,&nbsp;mousepad,&nbsp;],]</pre> <div></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-64513.htm">自己家猫抓出血（自己家猫抓出血狂犬病几乎为0）</a></p>
+                                        <p>下一个：<a href="/news/article-65145.htm">5种SpringMvc的异步处理方式你都了解吗？</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-40961.htm" title="鱼饲料颗粒机多少钱一台小型的（颗粒机鱼饲料配方）">鱼饲料颗粒机多少钱一台小型的（颗粒机鱼饲料配方）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-1-free-v2ray-subscribe.htm" title="「1月1日」最高速度20.7M/S，2025年SSR/Shadowrocket/V2ray/Clash每天更新免费节点订阅链接">「1月1日」最高速度20.7M/S，2025年SSR/Shadowrocket/V2ray/Clash每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-20128.htm" title="动物医院的设计思路（动物医院的设计思路怎么写）">动物医院的设计思路（动物医院的设计思路怎么写）</a></li>
+                        <li class="py-2"><a href="/news/article-44946.htm" title="中国兽药十大名牌厂家排名百度百科图片（国内排名前十的兽药厂家）">中国兽药十大名牌厂家排名百度百科图片（国内排名前十的兽药厂家）</a></li>
+                        <li class="py-2"><a href="/news/article-42461.htm" title="Halo 开源项目学习评论与点赞">Halo 开源项目学习评论与点赞</a></li>
+                        <li class="py-2"><a href="/news/article-59752.htm" title="被猫咬了怎么观察有没有事儿（被猫咬了怎么判断有事没事）">被猫咬了怎么观察有没有事儿（被猫咬了怎么判断有事没事）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-27-shadowrocket-node.htm" title="「12月27日」最高速度19.5M/S，2024年V2ray/Clash/Shadowrocket/SSR每天更新免费节点订阅链接">「12月27日」最高速度19.5M/S，2024年V2ray/Clash/Shadowrocket/SSR每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-54685.htm" title="宠物粮食生意怎么样赚钱快 宠物粮食生意怎么样赚钱快呢">宠物粮食生意怎么样赚钱快 宠物粮食生意怎么样赚钱快呢</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-9-clash-v2ray-ss-ssr.htm" title="「2月9日」最高速度18.6M/S，2025年Shadowrocket/Clash/V2ray/SSR每天更新免费节点订阅链接">「2月9日」最高速度18.6M/S，2025年Shadowrocket/Clash/V2ray/SSR每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-42955.htm" title="为什么代码规范要求SQL语句不要过多的join？">为什么代码规范要求SQL语句不要过多的join？</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">6</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+        <!-- footer -->
+    <div class="footer">
+        <!-- tiny-footer -->
+        <div class="container">
+            <div class="row">
+                <div class="tiny-footer">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <p class="tiny-footer-para">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                            <a href="/">IOS Clash节点订阅站</a> 版权所有 Powered by WordPress
+                        </p>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <div class="tiny-section-social">
+                            <div class="">
+                                <ul>
+                                    <li><a href="#"><i class="fa fa-facebook-square"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-twitter-square"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-google-plus-square"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-linkedin-square"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /. tiny-footer -->
+        </div>
+    </div>
+    <!-- /.footer -->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="/assets/website/js/frontend/iosclash/jquery.min.js" type="text/javascript"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="/assets/website/js/frontend/iosclash/bootstrap.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/iosclash/menumaker.js" type="text/javascript"></script>
+    <script type="text/javascript" src="/assets/website/js/frontend/iosclash/jquery.sticky.js"></script>
+    <script type="text/javascript" src="/assets/website/js/frontend/iosclash/sticky-header.js"></script>
+    <script type="text/javascript" src="/assets/website/js/frontend/iosclash/owl.carousel.min.js"></script>
+    <script type="text/javascript" src="/assets/website/js/frontend/iosclash/multiple-carousel.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
