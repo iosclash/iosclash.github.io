@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://iosclash.github.io/news/article-71556.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>innoDB如何解决幻读详解</title>
+        <meta name="description" content="前天有个去快手面试的小伙伴私信我，他遇到了这样一个问题： “InnoDB如何解决幻读”？ 这个问题确实不是很好回答，在实际应用中，很多同学几乎都不关注数据库的事务隔离性。 所有问题基本就是CRUD，一" />
+        <link rel="icon" href="/assets/website/img/iosclash/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="IOS Clash节点订阅站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://iosclash.github.io/news/article-71556.htm" />
+    <meta property="og:site_name" content="IOS Clash节点订阅站" />
+    <meta property="og:title" content="innoDB如何解决幻读详解" />
+    <meta property="og:image" content="https://iosclash.github.io/uploads/20240429/cf4ad2c6b955ed93335f0c7bb7512499.webp" />
+        <meta property="og:release_date" content="2025-03-11T07:47:20" />
+    <meta property="og:updated_time" content="2025-03-11T07:47:20" />
+        <meta property="og:description" content="前天有个去快手面试的小伙伴私信我，他遇到了这样一个问题： “InnoDB如何解决幻读”？ 这个问题确实不是很好回答，在实际应用中，很多同学几乎都不关注数据库的事务隔离性。 所有问题基本就是CRUD，一" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="innoDB如何解决幻读详解">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <!-- Bootstrap -->
+    <link href="/assets/website/css/iosclash/bootstrap.min.css" rel="stylesheet">
+    <!-- Style CSS -->
+    <link href="/assets/website/css/iosclash/style.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link href="/assets/website/css/iosclash/owl.carousel.css" rel="stylesheet">
+    <link href="/assets/website/css/iosclash/owl.theme.default.css" rel="stylesheet">
+    <!-- FontAwesome CSS -->
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/iosclash/fontello.css">
+    <link href="/assets/website/css/iosclash/font-awesome.min.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6QH28Z9CLQ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-6QH28Z9CLQ');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!-- top-bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                    <div class="logo">
+                        <a href="/">
+                                                <span>IOS Clash</span>
+                                                </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.top-bar -->
+    <!-- header-section-->
+    <div class="header-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <!-- navigations-->
+                    <div class="navigation">
+                        <div id="navigation">
+                            <ul>
+                                                                <li><a href="/">首页</a></li>
+                                                                <li><a href="/free-nodes/">免费节点</a></li>
+                                                                <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                                                <li><a href="/client.htm">客户端</a></li>
+                                                                <li><a href="/news/">新闻资讯</a></li>
+                                                            </ul>
+                        </div>
+                    </div>
+                    <!-- /.navigations-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /. header-section-->
+    <!-- page-header -->
+    <div class="page-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
+                    <div class="page-section">
+                        <h1 class="page-title">innoDB如何解决幻读详解</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="page-breadcrumb">
+                        <ol class="breadcrumb">
+                            <li><a href="/">首页</a></li>
+                            <li><a href="/news/">新闻资讯</a></li>
+                            <li>正文</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.page-header-->
+    <!-- /.page-header-->
+    <div class="space-medium">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<blockquote> <p>前天有个去快手面试的小伙伴私信我，他遇到了这样一个问题： “InnoDB如何解决幻读”？</p> <p>这个问题确实不是很好回答，在实际应用中，很多同学几乎都不关注数据库的事务隔离性。</p> <p>所有问题基本就是CRUD，一把梭~</p> <p>那么今天，我们来看一下 关于“InnoDB如何解决幻读”这个问题，普通人和高手的回答！</p> </blockquote> <p><strong>普通人：</strong></p> <p>嗯，我印象中，幻读是通过MVCC机制来解决的，嗯....</p> <p>MVCC类似于一种乐观锁的机制，通过版本的方式来区分不同的并发事务，避免幻读问题！</p> <p><strong>高手：</strong></p> <p>我会从三个方面来回答：</p> <p>1、 Mysql的事务隔离级别</p> <p>Mysql有四种事务隔离级别，这四种隔离级别代表当存在多个事务并发冲突时，可能出现的脏读、不可重复读、幻读的问题。</p> <p>其中InnoDB在RR的隔离级别下，解决了幻读的问题。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/99e70dc24f013b583987f314be9f8221.jpg" alt="innoDB如何解决幻读详解"></p> <p>2、 什么是幻读？</p> <p>那么， 什么是幻读呢？</p> <p>幻读是指在同一个事务中，前后两次查询相同的范围时，得到的结果不一致</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/fe759bc44f4bb03cd9dba55fd73effc0.jpg" alt="innoDB如何解决幻读详解"></p> <ul> <li>第一个事务里面我们执行了一个范围查询，这个时候满足条件的数据只有一条</li> <li>第二个事务里面，它插入了一行数据，并且提交了</li> <li>接着第一个事务再去查询的时候，得到的结果比第一次查询的结果多出来了一条数据。</li> </ul> <p>所以，幻读会带来数据一致性问题。</p> <p>3、 InnoDB如何解决幻读的问题</p> <p>InnoDB引入了间隙锁和next-key Lock机制来解决幻读问题，为了更清晰的说明这两种锁，我举一个例子：</p> <p>假设现在存在这样一个B+ Tree的索引结构，这个结构中有四个索引元素分别是：1、4、7、10。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/106a7a04358493299494552b1c61c5bf.jpg" alt="innoDB如何解决幻读详解"></p> <p>当我们通过主键索引查询一条记录，并且对这条记录通过for update加锁。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/bc502996d000426ecb7fb9f65d4152d2.jpg" alt="innoDB如何解决幻读详解"></p> <p>这个时候，会产生一个记录锁，也就是行锁，锁定id=1这个索引。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/55da1fe75dc1b791425b91c2003b813a.jpg" alt="innoDB如何解决幻读详解"></p> <p>被锁定的记录在锁释放之前，其他事务无法对这条记录做任何操作。</p> <p>前面我说过对幻读的定义： 幻读是指在同一个事务中，前后两次查询相同的范围时，得到的结果不一致！</p> <p>注意，这里强调的是范围查询，</p> <p>也就是说，InnoDB引擎要解决幻读问题，必须要保证一个点，就是如果一个事务通过这样一条语句进行锁定时。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/c1a84f99c939f728c0c7435c2d6ec846.jpg" alt="innoDB如何解决幻读详解"></p> <p>另外一个事务再执行这样一条insert语句，需要被阻塞，直到前面获得锁的事务释放。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/7a2d7eab839fbe98a69052b4c6d61657.jpg" alt="innoDB如何解决幻读详解"></p> <p>所以，在InnoDB中设计了一种间隙锁，它的主要功能是锁定一段范围内的索引记录</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/69ec685283ba9e74e4c70a86e1ecb316.jpg" alt="innoDB如何解决幻读详解"></p> <p>当对查询范围id&gt;4 and id &lt;7加锁的时候，会针对B+树中（4，7）这个开区间范围的索引加间隙锁。</p> <p>意味着在这种情况下，其他事务对这个区间的数据进行插入、更新、删除都会被锁住。</p> <p>但是，还有另外一种情况，比如像这样</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/ad22ea746d976b29271e9095f128be50.jpg" alt="innoDB如何解决幻读详解"></p> <p>这条查询语句是针对id&gt;4这个条件加锁，那么它需要锁定多个索引区间，所以在这种情况下InnoDB引入了next-key Lock机制。</p> <p>next-key Lock相当于间隙锁和记录锁的合集，记录锁锁定存在的记录行，间隙锁锁住记录行之间的间隙，而next-key Lock锁住的是两者之和。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/3d27d2f93ed06f2acaf99f3fa3bae82e.jpg" alt="innoDB如何解决幻读详解"></p> <p>每个数据行上的非唯一索引列上都会存在一把next-key lock，当某个事务持有该数据行的next-key lock时，会锁住一段左开右闭区间的数据。</p> <p>因此，当通过id&gt;4这样一种范围查询加锁时，会加next-key Lock，锁定的区间范围是：(4, 7] , (7,10],(10,+∞]</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220510/72f766a705011652cfdac2d6248e3619.jpg" alt="innoDB如何解决幻读详解"></p> <p>间隙锁和next-key Lock的区别在于加锁的范围，间隙锁只锁定两个索引之间的引用间隙，而next-key Lock会锁定多个索引区间，它包含记录锁和间隙锁。</p> <p>当我们使用了范围查询，不仅仅命中了Record记录，还包含了Gap间隙，在这种情况下我们使用的就是临键锁，它是MySQL里面默认的行锁算法。</p> <p>4 、总结</p> <p>虽然InnoDB中通过间隙锁的方式解决了幻读问题，但是加锁之后一定会影响到并发性能，因此，如果对性能要求较高的业务场景中，可以把隔离级别设置成RC，这个级别中不存在间隙锁。</p> <p>以上就是我对于innoDB如何解决幻读问题的理解！</p> <p><strong>总结：</strong></p> <p>通过这个面试题可以发现，大厂面试对于基本功的考察还是比较严格的。</p> <p>不过，不管是为了应付面试，还是为以后的职业规划做铺垫， 技术能力的高低都是你在这个行业的核心竞争力。</p> <p>我是Mic，一个工作了14年的Java程序员，咱们下篇文章再见。</p> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-70895.htm">宠物店寄养合同有用吗（宠物店寄养合同范本）</a></p>
+                                        <p>下一个：<a href="/news/article-71557.htm">开一家宠物医院需要什么条件呢知乎（开一家宠物医院需要什么条件呢知乎视频）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-45945.htm" title="Vue3项目中动态组件component的使用">Vue3项目中动态组件component的使用</a></li>
+                        <li class="py-2"><a href="/news/article-55784.htm" title="Java线程池深入浅出">Java线程池深入浅出</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-6-clash-v2ray-ss-ssr.htm" title="「1月6日」最高速度20.8M/S，2025年V2ray/Shadowrocket/SSR/Clash每天更新免费节点订阅链接">「1月6日」最高速度20.8M/S，2025年V2ray/Shadowrocket/SSR/Clash每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-60330.htm" title="HCNP Routing&amp;Switching之代理ARP">HCNP Routing&amp;Switching之代理ARP</a></li>
+                        <li class="py-2"><a href="/news/article-53601.htm" title="JS的循环练习">JS的循环练习</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-13-free-v2ray.htm" title="「2月13日」最高速度19.8M/S，2025年Clash/Shadowrocket/V2ray/SSR每天更新免费节点订阅链接">「2月13日」最高速度19.8M/S，2025年Clash/Shadowrocket/V2ray/SSR每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-3-free-clash-subscribe.htm" title="「2月3日」最高速度18.8M/S，2025年V2ray/SSR/Shadowrocket/Clash每天更新免费节点订阅链接">「2月3日」最高速度18.8M/S，2025年V2ray/SSR/Shadowrocket/Clash每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-54684.htm" title="宠物粮食代工（宠物粮食代工一吨2万一贵吗知乎）">宠物粮食代工（宠物粮食代工一吨2万一贵吗知乎）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-6-free-high-speed-nodes.htm" title="「3月6日」最高速度21.7M/S，2025年SSR/Clash/V2ray/Shadowrocket每天更新免费节点订阅链接">「3月6日」最高速度21.7M/S，2025年SSR/Clash/V2ray/Shadowrocket每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-68947.htm" title="动物疫苗的种类有哪些,各有什么特点呢英语 动物疫苗的种类有哪些,各有什么特点呢英语翻译">动物疫苗的种类有哪些,各有什么特点呢英语 动物疫苗的种类有哪些,各有什么特点呢英语翻译</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">33</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+        <!-- footer -->
+    <div class="footer">
+        <!-- tiny-footer -->
+        <div class="container">
+            <div class="row">
+                <div class="tiny-footer">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <p class="tiny-footer-para">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                            <a href="/">IOS Clash节点订阅站</a> 版权所有 Powered by WordPress
+                        </p>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <div class="tiny-section-social">
+                            <div class="">
+                                <ul>
+                                    <li><a href="#"><i class="fa fa-facebook-square"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-twitter-square"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-google-plus-square"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-linkedin-square"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /. tiny-footer -->
+        </div>
+    </div>
+    <!-- /.footer -->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="/assets/website/js/frontend/iosclash/jquery.min.js" type="text/javascript"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="/assets/website/js/frontend/iosclash/bootstrap.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/iosclash/menumaker.js" type="text/javascript"></script>
+    <script type="text/javascript" src="/assets/website/js/frontend/iosclash/jquery.sticky.js"></script>
+    <script type="text/javascript" src="/assets/website/js/frontend/iosclash/sticky-header.js"></script>
+    <script type="text/javascript" src="/assets/website/js/frontend/iosclash/owl.carousel.min.js"></script>
+    <script type="text/javascript" src="/assets/website/js/frontend/iosclash/multiple-carousel.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
