@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://iosclash.github.io/news/article-75564.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>《易学C++》第15章 再识对象</title>
+        <meta name="description" content="上一章从使用的角度介绍了什么是类和对象，如何使用成员函数。本章将从设计的角度来研究类和对象，探究类的内部。 本章的知识点有：  类的声明与定义方法 访问控制符——公有及私有 成员函数的声明、定义与重载" />
+        <link rel="icon" href="/assets/website/img/iosclash/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="IOS Clash节点订阅站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://iosclash.github.io/news/article-75564.htm" />
+    <meta property="og:site_name" content="IOS Clash节点订阅站" />
+    <meta property="og:title" content="《易学C++》第15章 再识对象" />
+    <meta property="og:image" content="https://iosclash.github.io/uploads/20240429/0eb7e66bdc53ac7987555d99958e035c.webp" />
+        <meta property="og:release_date" content="2025-03-17T09:40:04" />
+    <meta property="og:updated_time" content="2025-03-17T09:40:04" />
+        <meta property="og:description" content="上一章从使用的角度介绍了什么是类和对象，如何使用成员函数。本章将从设计的角度来研究类和对象，探究类的内部。 本章的知识点有：  类的声明与定义方法 访问控制符——公有及私有 成员函数的声明、定义与重载" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="《易学C++》第15章 再识对象">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <!-- Bootstrap -->
+    <link href="/assets/website/css/iosclash/bootstrap.min.css" rel="stylesheet">
+    <!-- Style CSS -->
+    <link href="/assets/website/css/iosclash/style.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link href="/assets/website/css/iosclash/owl.carousel.css" rel="stylesheet">
+    <link href="/assets/website/css/iosclash/owl.theme.default.css" rel="stylesheet">
+    <!-- FontAwesome CSS -->
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/iosclash/fontello.css">
+    <link href="/assets/website/css/iosclash/font-awesome.min.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6QH28Z9CLQ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-6QH28Z9CLQ');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!-- top-bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                    <div class="logo">
+                        <a href="/">
+                                                <span>IOS Clash</span>
+                                                </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.top-bar -->
+    <!-- header-section-->
+    <div class="header-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <!-- navigations-->
+                    <div class="navigation">
+                        <div id="navigation">
+                            <ul>
+                                                                <li><a href="/">首页</a></li>
+                                                                <li><a href="/free-nodes/">免费节点</a></li>
+                                                                <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                                                <li><a href="/client.htm">客户端</a></li>
+                                                                <li><a href="/news/">新闻资讯</a></li>
+                                                            </ul>
+                        </div>
+                    </div>
+                    <!-- /.navigations-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /. header-section-->
+    <!-- page-header -->
+    <div class="page-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
+                    <div class="page-section">
+                        <h1 class="page-title">《易学C++》第15章 再识对象</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="page-breadcrumb">
+                        <ol class="breadcrumb">
+                            <li><a href="/">首页</a></li>
+                            <li><a href="/news/">新闻资讯</a></li>
+                            <li>正文</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.page-header-->
+    <!-- /.page-header-->
+    <div class="space-medium">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="htmledit_views"> </h1> <p>上一章从使用的角度介绍了什么是类和对象，如何使用成员函数。本章将从设计的角度来研究类和对象，探究类的内部。</p> <p>本章的知识点有：</p> <ul> <li>类的声明与定义方法</li> <li>访问控制符——公有及私有</li> <li>成员函数的声明、定义与重载</li> <li>常成员函数的概念</li> <li>快速查看类的方法</li> <li>对象的引用和对象指针</li> </ul> <h2 id="nav_point_247">15.1　类是一种数据类型</h2> <p>大家都知道了数据类型和变量的关系。数据类型是各个变量的归类，而变量则是某个数据类型的具体表现。如int是所有整数的归类，而存有整数221的整型变量a是整型数据的具体表现。那么，变量就可以被认为是数据类型的一个实例（Instance）。各个变量都有它们的属性：内容和占用内存空间等；各个变量都有它们的操作：算术运算或关系运算等。从这个角度来看，类和对象的关系就如同数据类型和变量的关系。所以，不妨将类看作一种自定义的数据类型，那么对象就是一种属于该类型的变量。</p> <h3 id="nav_point_248">15.1.1　类与结构</h3> <p>在第9章学习了结构类型，知道它是一种由用户自己定义的数据类型。虽然能够使用结构刻画现实生活中的东西，却无法让它“动起来”。所有对它的操作都要依赖于为它编写的函数。</p> <p>类与结构是相似的。它也是一种由用户自己定义的数据类型，可以用来刻画现实生活中的东西。不同的是，对它的操作并不是通过普通的函数，而是通过类的成员函数来实现的。</p> <p>下面来看如何定义一个类和它的成员数据。</p> <pre class="代码无行号"><code>class 类名 { 　　数据类型 成员数据1； 　　数据类型 成员数据2； 　　…… }； </code></pre> </p></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-74876.htm">宠物粮生产设备有哪些公司（宠物粮生产设备多少钱）</a></p>
+                                        <p>下一个：<a href="/news/article-75565.htm">动物接种疫苗多少钱一针啊视频教程下载（动物注射疫苗）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-64512.htm" title="GoLang搭建gin项目">GoLang搭建gin项目</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-2-shadowrocket-node.htm" title="「2月2日」最高速度19.1M/S，2025年Shadowrocket/V2ray/SSR/Clash每天更新免费节点订阅链接">「2月2日」最高速度19.1M/S，2025年Shadowrocket/V2ray/SSR/Clash每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-11-free-v2ray.htm" title="「3月11日」最高速度22.3M/S，2025年SSR/Clash/V2ray/Shadowrocket每天更新免费节点订阅链接">「3月11日」最高速度22.3M/S，2025年SSR/Clash/V2ray/Shadowrocket每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-21-free-ssr-subscribe.htm" title="「1月21日」最高速度19.7M/S，2025年Clash/SSR/Shadowrocket/V2ray每天更新免费节点订阅链接">「1月21日」最高速度19.7M/S，2025年Clash/SSR/Shadowrocket/V2ray每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-47405.htm" title="宠物医院消费贵吗（宠物医院收费价目表）">宠物医院消费贵吗（宠物医院收费价目表）</a></li>
+                        <li class="py-2"><a href="/news/article-62103.htm" title="做梦梦见海豹是什么意思啊（梦见小海豹心理学解析）">做梦梦见海豹是什么意思啊（梦见小海豹心理学解析）</a></li>
+                        <li class="py-2"><a href="/news/article-37028.htm" title="做梦梦见抱别的女人睡觉什么意思呀（做梦梦见抱别的女人睡觉什么意思呀）">做梦梦见抱别的女人睡觉什么意思呀（做梦梦见抱别的女人睡觉什么意思呀）</a></li>
+                        <li class="py-2"><a href="/news/article-65145.htm" title="5种SpringMvc的异步处理方式你都了解吗？">5种SpringMvc的异步处理方式你都了解吗？</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-12-free-clash.htm" title="「1月12日」最高速度21.1M/S，2025年Clash/V2ray/Shadowrocket/SSR每天更新免费节点订阅链接">「1月12日」最高速度21.1M/S，2025年Clash/V2ray/Shadowrocket/SSR每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-55244.htm" title="JDK8新特性Optional工具类">JDK8新特性Optional工具类</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">51</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+        <!-- footer -->
+    <div class="footer">
+        <!-- tiny-footer -->
+        <div class="container">
+            <div class="row">
+                <div class="tiny-footer">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <p class="tiny-footer-para">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                            <a href="/">IOS Clash节点订阅站</a> 版权所有 Powered by WordPress
+                        </p>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <div class="tiny-section-social">
+                            <div class="">
+                                <ul>
+                                    <li><a href="#"><i class="fa fa-facebook-square"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-twitter-square"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-google-plus-square"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-linkedin-square"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /. tiny-footer -->
+        </div>
+    </div>
+    <!-- /.footer -->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="/assets/website/js/frontend/iosclash/jquery.min.js" type="text/javascript"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="/assets/website/js/frontend/iosclash/bootstrap.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/iosclash/menumaker.js" type="text/javascript"></script>
+    <script type="text/javascript" src="/assets/website/js/frontend/iosclash/jquery.sticky.js"></script>
+    <script type="text/javascript" src="/assets/website/js/frontend/iosclash/sticky-header.js"></script>
+    <script type="text/javascript" src="/assets/website/js/frontend/iosclash/owl.carousel.min.js"></script>
+    <script type="text/javascript" src="/assets/website/js/frontend/iosclash/multiple-carousel.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
