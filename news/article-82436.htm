@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://iosclash.github.io/news/article-82436.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Pandas之数据读取与储存</title>
+        <meta name="description" content="使用Pandas做数据分析时，首先要读取数据。Pandas常用的读取文件有：  pd.read_csv() 用于读取csv格式文件 pd.read_excel() 用于读取xls和xlsx格式文件 p" />
+        <link rel="icon" href="/assets/website/img/iosclash/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="IOS Clash节点订阅站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://iosclash.github.io/news/article-82436.htm" />
+    <meta property="og:site_name" content="IOS Clash节点订阅站" />
+    <meta property="og:title" content="Pandas之数据读取与储存" />
+    <meta property="og:image" content="https://iosclash.github.io/uploads/20240429/cf4ad2c6b955ed93335f0c7bb7512499.webp" />
+        <meta property="og:release_date" content="2025-03-27T08:13:59" />
+    <meta property="og:updated_time" content="2025-03-27T08:13:59" />
+        <meta property="og:description" content="使用Pandas做数据分析时，首先要读取数据。Pandas常用的读取文件有：  pd.read_csv() 用于读取csv格式文件 pd.read_excel() 用于读取xls和xlsx格式文件 p" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Pandas之数据读取与储存">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <!-- Bootstrap -->
+    <link href="/assets/website/css/iosclash/bootstrap.min.css" rel="stylesheet">
+    <!-- Style CSS -->
+    <link href="/assets/website/css/iosclash/style.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link href="/assets/website/css/iosclash/owl.carousel.css" rel="stylesheet">
+    <link href="/assets/website/css/iosclash/owl.theme.default.css" rel="stylesheet">
+    <!-- FontAwesome CSS -->
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/iosclash/fontello.css">
+    <link href="/assets/website/css/iosclash/font-awesome.min.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6QH28Z9CLQ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-6QH28Z9CLQ');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!-- top-bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                    <div class="logo">
+                        <a href="/">
+                                                <span>IOS Clash</span>
+                                                </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.top-bar -->
+    <!-- header-section-->
+    <div class="header-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <!-- navigations-->
+                    <div class="navigation">
+                        <div id="navigation">
+                            <ul>
+                                                                <li><a href="/">首页</a></li>
+                                                                <li><a href="/free-nodes/">免费节点</a></li>
+                                                                <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                                                <li><a href="/client.htm">客户端</a></li>
+                                                                <li><a href="/news/">新闻资讯</a></li>
+                                                            </ul>
+                        </div>
+                    </div>
+                    <!-- /.navigations-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /. header-section-->
+    <!-- page-header -->
+    <div class="page-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
+                    <div class="page-section">
+                        <h1 class="page-title">Pandas之数据读取与储存</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="page-breadcrumb">
+                        <ol class="breadcrumb">
+                            <li><a href="/">首页</a></li>
+                            <li><a href="/news/">新闻资讯</a></li>
+                            <li>正文</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.page-header-->
+    <!-- /.page-header-->
+    <div class="space-medium">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="htmledit_views"> </h1> <p>使用Pandas做数据分析时，首先要读取数据。Pandas常用的读取文件有：</p> <ul> <li><span style="color:#fe2c24;">pd.read_csv() 用于读取csv格式文件</span></li> <li><span style="color:#fe2c24;">pd.read_excel() 用于读取xls和xlsx格式文件</span></li> <li><span style="color:#fe2c24;">pd.read_json() 用于读取json格式文件</span></li> <li><span style="color:#fe2c24;">pd.read_table() 用于读取txt格式文件</span></li> </ul> <h2><span style="color:#fe2c24;"><strong>CSV文件读取</strong></span></h2> <pre><code>import pandas as pd  df = pd.read_csv("D:/pandas/TOP250.xlsx")#某csv文件</code></pre> <p>首先，调用pandas模块，通过.read_csv()括号内加文件路径读取文件，展示部分结果图，如下：</p> <p><img fetchpriority="high" decoding="async" alt="" height="497" src="http://img.555519.xyz/uploads/20221229/e1a9630ec7d2988edc04c41fcc44816e.jpg"></p> <p>&nbsp;有时，我们并不会读取所有列或所有行，而是有条件的筛选。这时，我们可以在读取时通过增加代码进行筛选。</p> <h3><strong><span style="color:#fe2c24;">一：指定行列</span></strong></h3> <p><span style="color:#fe2c24;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>norws=n 表示读取前n行</strong></span></p> <pre><code>df = pd.read_csv("D:/pandas/TOP250.xlsx",nrows=5)</code></pre> <p>上述代码表示读取csv文件的前5行，得到的结果如下图：</p> <p><img decoding="async" alt="" height="398" src="http://img.555519.xyz/uploads/20221229/a2bcbe4abc66e664489cd3a14426c4f2.jpg"></p> <p><strong><span style="color:#fe2c24;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;skiprows = n,n可以是数值也可以是列表，表示跳过某些行</span></strong></p> <pre><code>df = pd.read_csv("D:/pandas/TOP250.xlsx",skiprows=3) #表示跳过第三行，读取除了第三行以外的行  df = pd.read_csv("D:/pandas/TOP250.xlsx",skiprows=[i for i in range(1,11)]) #表示跳过前10行  df = pd.read_csv("D:/pandas/TOP250.xlsx",skiprows=lambda x: x % 2) #表示跳过偶数行，读取奇数行</code></pre> <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#fe2c24;">&nbsp;&nbsp;<strong>usecols = n,n可以是数值、列表，列表中可以是数值也可以是字段名，表示想要读取的列</strong></span></p> <pre><code>df = pd.read_csv("D:/pandas/TOP250.xlsx",usecols=[0,2,4]) #上述代码表示读取第一、第三和第五列  #假设第一、第三、第五列的列表名分别为： a,b,c。那么也可以如下代码表达： df = pd.read_csv("D:/pandas/TOP250.xlsx",usecols=['a','b','c'])</code></pre> <p><span style="color:#fe2c24;">&nbsp;&nbsp;&nbsp;<strong>index_col = n,可以是数值、列表，列表中可以是数值也可以是字段名，表示将n中字段设置为索引列</strong></span></p> <pre><code>df = pd.read_csv("D:/pandas/TOP250.xlsx",index_col=0) #将第一列作为索引列  df = pd.read_csv("D:/pandas/TOP250.xlsx",index_col='a') #若第一列列名为a，也可以表达为上述代码</code></pre> <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><span style="color:#fe2c24;">dtype = {'a':'b',":"},dtype表示字段格式，其中a表示字段名，b表示字段类型</span></strong></p> <pre><code>df = pd.read_csv("D:/pandas/TOP250.xlsx",dtype={'test1':'str','test2':'int'}) #将test1列设置成字符串格式，将test2列设置成int格式</code></pre> <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#fe2c24;"><strong>parse_data = ['','',...],parse_data表示将字段转化成日期格式</strong></span></p> <pre><code>df = pd.read_csv("D:/pandas/TOP250.xlsx",parse_dates=['date_1']) #表示将date_1的格式转化成日期格式 print(df.dtypes) #结果中有：date_1     datetime64[ns] #说明date_1是日期格式</code></pre> <h2><strong><span style="color:#fe2c24;">二.读取指定文件夹下的文件</span></strong></h2> <p>例如：<span style="color:#fe2c24;">在我的test文件夹中有n个相同类型的xlsx文件，我想将其合并，有如下两种方法</span></p> <p><span style="color:#fe2c24;">方法一：</span></p> <pre><code>import pandas as pd import os  path = 'D:/pandas/test/'  #path文件夹具体位置,文件夹下有你所需的多个xlsx文件  filenames = os.listdir(path) #filename为path下所有的文件的文件名，以列表形式输出  filenames = [i for i in filenames if i.lower().endswith('.xlsx)] #这行代码是为了得到以.xlsx为结尾的文件名，并形成列表  lis = []#创建一个新列表，用于放数据  for i in filenames:     lis.append(pd.read_excel(path + filename)) #遍历文件，通过pd.read_excel读取xlsx文件并通过append合并  df1 = pd.concat(lis) #将列表lis合并生成一个文件  df1.to_excel(存放地址,index=False) #保存文件 </code></pre> <p><span style="color:#fe2c24;">方法二：</span></p> <pre><code>import glob import pandas as pd import os  paths = glob.glob("D:/pandas/test/*.xlsx") #表示读取test文件下所有的.xlsx文件，生成列表  data1 = pd.DataFrame() #创建一个新的DataFrame框架  for path in paths:     data = pd.read_excel(path)     data1 = pd.concat([data1,data]) #遍历文件读取并合并，放入data1中，生成一个新的合并后的文件  df.to_excel(存放地址,index=False)</code></pre> </p></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-81699.htm">广州宠物救助站官网电话 广州宠物救助站官网电话号码</a></p>
+                                        <p>下一个：<a href="/news/article-82437.htm">宠物粮食价格（宠物粮食价格走势图）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-50415.htm" title="动物疫苗间隔时间多长可以打 动物疫苗间隔时间多长可以打第二针">动物疫苗间隔时间多长可以打 动物疫苗间隔时间多长可以打第二针</a></li>
+                        <li class="py-2"><a href="/news/article-47893.htm" title="免费宠物救援中心（免费宠物救援中心上海）">免费宠物救援中心（免费宠物救援中心上海）</a></li>
+                        <li class="py-2"><a href="/news/article-60330.htm" title="HCNP Routing&amp;Switching之代理ARP">HCNP Routing&amp;Switching之代理ARP</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-30-free-shadowrocket-node.htm" title="「1月30日」最高速度22.4M/S，2025年Shadowrocket/Clash/V2ray/SSR每天更新免费节点订阅链接">「1月30日」最高速度22.4M/S，2025年Shadowrocket/Clash/V2ray/SSR每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-69598.htm" title="宠物店领养协议书怎么写范文（宠物店领养是什么意思）">宠物店领养协议书怎么写范文（宠物店领养是什么意思）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-25-clash-node.htm" title="「2月25日」最高速度18.6M/S，2025年SSR/Shadowrocket/Clash/V2ray每天更新免费节点订阅链接">「2月25日」最高速度18.6M/S，2025年SSR/Shadowrocket/Clash/V2ray每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-76240.htm" title="天通苑宠物医院哪家好（天通苑附近宠物寄养）">天通苑宠物医院哪家好（天通苑附近宠物寄养）</a></li>
+                        <li class="py-2"><a href="/news/article-53601.htm" title="JS的循环练习">JS的循环练习</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-6-clash-v2ray-ss-ssr.htm" title="「1月6日」最高速度20.8M/S，2025年V2ray/Shadowrocket/SSR/Clash每天更新免费节点订阅链接">「1月6日」最高速度20.8M/S，2025年V2ray/Shadowrocket/SSR/Clash每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-45435.htm" title="上海宠物医院收费价目表查询（上海良心的宠物医院）">上海宠物医院收费价目表查询（上海良心的宠物医院）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">87</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+        <!-- footer -->
+    <div class="footer">
+        <!-- tiny-footer -->
+        <div class="container">
+            <div class="row">
+                <div class="tiny-footer">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <p class="tiny-footer-para">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                            <a href="/">IOS Clash节点订阅站</a> 版权所有 Powered by WordPress
+                        </p>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <div class="tiny-section-social">
+                            <div class="">
+                                <ul>
+                                    <li><a href="#"><i class="fa fa-facebook-square"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-twitter-square"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-google-plus-square"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-linkedin-square"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /. tiny-footer -->
+        </div>
+    </div>
+    <!-- /.footer -->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="/assets/website/js/frontend/iosclash/jquery.min.js" type="text/javascript"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="/assets/website/js/frontend/iosclash/bootstrap.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/iosclash/menumaker.js" type="text/javascript"></script>
+    <script type="text/javascript" src="/assets/website/js/frontend/iosclash/jquery.sticky.js"></script>
+    <script type="text/javascript" src="/assets/website/js/frontend/iosclash/sticky-header.js"></script>
+    <script type="text/javascript" src="/assets/website/js/frontend/iosclash/owl.carousel.min.js"></script>
+    <script type="text/javascript" src="/assets/website/js/frontend/iosclash/multiple-carousel.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
