@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://iosclash.github.io/news/article-100082.htm" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>vue+echarts实现数据实时更新_vue.js_</title>
+        <meta name="description" content="本文实例为大家分享了vue+echarts实现数据实时更新的具体代码，供大家参考，具体内容如下 今天在管理后台新增一个图表，用了echarts，记录一下 根据数据实时更新 安装  npm instal" />
+        <link rel="icon" href="/assets/website/img/iosclash/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="IOS Clash节点订阅站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://iosclash.github.io/news/article-100082.htm" />
+    <meta property="og:site_name" content="IOS Clash节点订阅站" />
+    <meta property="og:title" content="vue+echarts实现数据实时更新_vue.js_" />
+    <meta property="og:image" content="https://iosclash.github.io/uploads/20240429/5370e6bc559723c55c221659d715f7d0.webp" />
+        <meta property="og:release_date" content="2025-04-20T09:03:12" />
+    <meta property="og:updated_time" content="2025-04-20T09:03:12" />
+        <meta property="og:description" content="本文实例为大家分享了vue+echarts实现数据实时更新的具体代码，供大家参考，具体内容如下 今天在管理后台新增一个图表，用了echarts，记录一下 根据数据实时更新 安装  npm instal" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="vue+echarts实现数据实时更新_vue.js_">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <!-- Bootstrap -->
+    <link href="/assets/website/css/iosclash/bootstrap.min.css" rel="stylesheet">
+    <!-- Style CSS -->
+    <link href="/assets/website/css/iosclash/style.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link href="/assets/website/css/iosclash/owl.carousel.css" rel="stylesheet">
+    <link href="/assets/website/css/iosclash/owl.theme.default.css" rel="stylesheet">
+    <!-- FontAwesome CSS -->
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/iosclash/fontello.css">
+    <link href="/assets/website/css/iosclash/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/website/css/G.css" />
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6QH28Z9CLQ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-6QH28Z9CLQ');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!-- top-bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                    <div class="logo">
+                        <a href="/">
+                                                <span>IOS Clash</span>
+                                                </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.top-bar -->
+    <!-- header-section-->
+    <div class="header-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <!-- navigations-->
+                    <div class="navigation">
+                        <div id="navigation">
+                            <ul>
+                                                                <li><a href="/">首页</a></li>
+                                                                <li><a href="/free-nodes/">免费节点</a></li>
+                                                                <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                                                <li><a href="/client.htm">客户端</a></li>
+                                                                <li><a href="/news/">新闻资讯</a></li>
+                                                            </ul>
+                        </div>
+                    </div>
+                    <!-- /.navigations-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /. header-section-->
+    <!-- page-header -->
+    <div class="page-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
+                    <div class="page-section">
+                        <h1 class="page-title">vue+echarts实现数据实时更新_vue.js_</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="page-breadcrumb">
+                        <ol class="breadcrumb">
+                            <li><a href="/">首页</a></li>
+                            <li><a href="/news/">新闻资讯</a></li>
+                            <li>正文</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.page-header-->
+    <!-- /.page-header-->
+    <div class="space-medium">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                <div class="xcblog-blog-detail">
+                      				  				  				<p>本文实例为大家分享了vue+echarts实现数据实时更新的具体代码，供大家参考，具体内容如下</p> <p>今天在管理后台新增一个图表，用了echarts，记录一下</p> <p>根据数据实时更新</p> <p><strong>安装</strong></p> <div class="ay1code"> <pre class="brush:js;">npm install echarts --save</pre> </div> <p>然后在main.js中配置一下</p> <div class="ay1code"> <pre class="brush:js;">import echarts from 'echarts'  Vue.prototype.$echarts = echarts</pre> </div> <p>可以了，接下来就是在你需要用的页面写了</p> <div class="ay1code"> <pre class="brush:xhtml;">// html 宽高还是尽量固定吧，不然会出现一些奇奇怪怪的问题  &lt;div id="previewChart" :style="{width: '600px', height: '600px'}"&gt;&lt;/div&gt;</pre> </div> <div class="ay1code"> <pre class="brush:js;">data () {      return {          echartUser: '',          echartRegistered: '',          echartOnline: '',      }  }</pre> </div> <div class="ay1code"> <pre class="brush:js;">// js  // 这个是一个漏斗图   drawLine () {         let previewChart = this.$echarts.init(document.getElementById('previewChart'))         previewChart.setOption({             color: ['#4f8f98', '#233541', '#b32124'],             title: { text: '漏斗图' },             tooltip: {                 trigger: 'item',                 formatter: "{a} &lt;br/&gt;{b} : {c}人"             },             toolbox: {                 feature: {                     dataView: {readOnly: false},                     restore: {},                     saveAsImage: {}                 }             },             series: [                 {                     name:'数据统计',                     type:'funnel',                     left: '10%',                     top: 60,                     //x2: 80,                     bottom: 60,                     width: '80%',                     // height: {totalHeight} - y - y2,                     min: 0,                     max: 100,                     minSize: '0%',                     maxSize: '100%',                     sort: 'descending',                     gap: 2,                     label: {                         show: true,                         position: 'inside'                     },                     labelLine: {                         length: 10,                         lineStyle: {                             width: 1,                             type: 'solid'                         }                     },                     itemStyle: {                         borderColor: '#fff',                         borderWidth: 1                     },                     emphasis: {                         label: {                             fontSize: 18                         }                     },                     // 更新数据的时候，更新的是这个位置的数据                     data: [                         {value: this.echartUser, name: '用户人数'},                         {value: this.echartRegistered, name: '注册人数'},                         {value: this.echartOnline, name: '在线听力测试人数'},                     ]                 }             ]       })  },</pre> </div> <div class="ay1code"> <pre class="brush:js;">// 获取数据  getTable () {      let startTime = this.searchMsg.startTime      let endTime = this.searchMsg.endTime      let channel = ''      previewList(startTime, endTime, channel).then(resp =&gt;{          if (resp.errCode == 0) {              // 在这个位置使用nextTick              // 漏斗图数据              this.$nextTick( ()=&gt;{                  this.echartRegistered = resp.data.previewCount.phoneCount                  this.echartUser = resp.data.previewCount.createCount                  this.echartOnline = resp.data.previewCount.testCount                  // 方法一，直接调用前面定义的drawLine（）方法，然后给这个方法传参，然后在方法里面吧需要动态改变的地方替换成传参的这个变量达到动态改变数据的目的                  this.drawLine(this.echartRegistered , this.echartUser, this.echartOnline)                  // 方法二 ，最笨的办法，重新写一遍实例化echarts的方法咯                   let previewChart = this.$echarts.init(document.getElementById('previewChart'))                  previewChart.setOption({                       series: [{                          data: [                             {value: resp.data.previewCount.createCount, name: '用户人数'},                             {value: resp.data.previewCount.phoneCount, name: '注册人数'},                             {value: resp.data.previewCount.testCount, name: '在线听力测试人数'},                          ]                       }]                   })              })          }else {              this.$message.error(resp.msg)          }      })  },</pre> </div> <p>搞定，这样子就不用在去定义watch方法了，简单粗暴的完成了vue + echrats的数据实时更新。</p> 			                </div>
+                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-99245.htm">给猫咪打疫苗打不进去（猫疫苗打进去推不动）</a></p>
+                                        <p>下一个：<a href="/news/article-100083.htm">宠物领养的意义和价值作文（宠物领养启示）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-86007.htm" title="动物疫苗接种时间表最新消息 动物疫苗接种时间表最新消息查询">动物疫苗接种时间表最新消息 动物疫苗接种时间表最新消息查询</a></li>
+                        <li class="py-2"><a href="/news/article-83836.htm" title="上海宠物领养基地有哪些地方（上海有宠物领养的市集活动吗?）">上海宠物领养基地有哪些地方（上海有宠物领养的市集活动吗?）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-6-free-high-speed-nodes.htm" title="「3月6日」最高速度21.7M/S，2025年SSR/Clash/V2ray/Shadowrocket每天更新免费节点订阅链接">「3月6日」最高速度21.7M/S，2025年SSR/Clash/V2ray/Shadowrocket每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-99245.htm" title="给猫咪打疫苗打不进去（猫疫苗打进去推不动）">给猫咪打疫苗打不进去（猫疫苗打进去推不动）</a></li>
+                        <li class="py-2"><a href="/news/article-81698.htm" title="上海宠物领养救助基地（上海宠物领养救助基地有哪些）">上海宠物领养救助基地（上海宠物领养救助基地有哪些）</a></li>
+                        <li class="py-2"><a href="/news/article-76240.htm" title="天通苑宠物医院哪家好（天通苑附近宠物寄养）">天通苑宠物医院哪家好（天通苑附近宠物寄养）</a></li>
+                        <li class="py-2"><a href="/news/article-76239.htm" title="不能养什么狗狗（四种不能养的狗）">不能养什么狗狗（四种不能养的狗）</a></li>
+                        <li class="py-2"><a href="/news/article-71556.htm" title="innoDB如何解决幻读详解">innoDB如何解决幻读详解</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-20-free-shadowrocket-node.htm" title="「3月20日」最高速度18.1M/S，2025年Shadowrocket/Clash/SSR/V2ray每天更新免费节点订阅链接">「3月20日」最高速度18.1M/S，2025年Shadowrocket/Clash/SSR/V2ray每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-5-node-share.htm" title="「3月5日」最高速度22.6M/S，2025年Shadowrocket/V2ray/Clash/SSR每天更新免费节点订阅链接">「3月5日」最高速度22.6M/S，2025年Shadowrocket/V2ray/Clash/SSR每天更新免费节点订阅链接</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">64</span> <a href="/date/2025-04/" title="2025-04 归档">2025-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">90</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+        <!-- footer -->
+    <div class="footer">
+        <!-- tiny-footer -->
+        <div class="container">
+            <div class="row">
+                <div class="tiny-footer">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <p class="tiny-footer-para">
+                                                <p>
+                                                <a href="/">首页</a> |
+                                                <a href="/free-nodes/">免费节点</a> |
+                                                <a href="/paid-subscribe/">推荐机场</a> |
+                                                <a href="/client.htm">客户端</a> |
+                                                <a href="/news/">新闻资讯</a> |
+                                                <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                            <a href="/">IOS Clash节点订阅站</a> 版权所有 Powered by WordPress
+                        </p>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <div class="tiny-section-social">
+                            <div class="">
+                                <ul>
+                                    <li><a href="#"><i class="fa fa-facebook-square"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-twitter-square"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-google-plus-square"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-linkedin-square"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /. tiny-footer -->
+        </div>
+    </div>
+    <!-- /.footer -->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="/assets/website/js/frontend/iosclash/jquery.min.js" type="text/javascript"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="/assets/website/js/frontend/iosclash/bootstrap.min.js" type="text/javascript"></script>
+    <script src="/assets/website/js/frontend/iosclash/menumaker.js" type="text/javascript"></script>
+    <script type="text/javascript" src="/assets/website/js/frontend/iosclash/jquery.sticky.js"></script>
+    <script type="text/javascript" src="/assets/website/js/frontend/iosclash/sticky-header.js"></script>
+    <script type="text/javascript" src="/assets/website/js/frontend/iosclash/owl.carousel.min.js"></script>
+    <script type="text/javascript" src="/assets/website/js/frontend/iosclash/multiple-carousel.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
