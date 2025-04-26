@@ -831,3 +831,7 @@ img { width: auto; max-width: 100%; height: auto; margin: 0; padding: 0; border:
     .testimonial-img { padding-left: 44px; }
     .error { padding-top: 0px; }
 }
+
+.xcblog-blog-detail.xcblog-blog-detail-defined p {font-size: 1.5rem;line-height: 2.2rem;}
+.xcblog-blog-detail.xcblog-blog-detail-defined h2 {font-size: 2.5rem;}
+.xcblog-blog-detail.xcblog-blog-detail-defined h3 {font-size: 2.0rem;}
