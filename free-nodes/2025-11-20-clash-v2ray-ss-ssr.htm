@@ -173,29 +173,9 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
     </div>
 <h4>FAQ</h4>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Surfboard 与 Shadowrocket 有什么区别？</h5></div>
-    <div class="panel-body">
-        两者都是 iOS 上的代理工具。Shadowrocket 功能更全面、更新更频繁，而 Surfboard 以轻量和快速见长。若只需简单分流与节点切换，Surfboard 足以满足日常使用。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Hiddify Next 如何设置用户带宽限制？</h5></div>
-    <div class="panel-body">
-        管理员可为每个用户设置上传和下载带宽上限。超出限制可自动降速或阻止访问，保证服务器资源合理分配，避免单用户占用过多带宽，提高整体公平性和使用效率。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>如何在 Nginx 上为 Vmess/WS 配置反向代理与 TLS？</h5></div>
-    <div class="panel-body">
-        在 Nginx 中配置 HTTPS 站点并将特定路径（如 /ray）反向代理到 V2Ray 的 WebSocket 端口，确保 proxy_set_header 设置正确（Host、X-Real-IP 等）。同时使用 certbot 获取并自动续期 TLS 证书以维护安全。<hr />    </div>
-</div>
-<div class="panel panel-default">
     <div class="panel-heading"><h5>Hiddify Next 如何管理用户流量配额？</h5></div>
     <div class="panel-body">
         管理员可以为每个用户设置上传和下载带宽以及总流量上限。超出限制可自动降速或阻止访问，保证服务器资源合理分配，提高整体网络公平性和用户体验。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Clash 如何通过命令行管理配置？</h5></div>
-    <div class="panel-body">
-        Clash 内置命令行接口，可用于启动、停止、切换配置或查看日志。通过命令行运行 `clash -f config.yaml` 可加载指定配置文件，适合服务器或无人值守场景。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>VLESS + Reality 模式如何隐藏流量特征？</h5></div>
@@ -213,14 +193,34 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
         Sing-box 支持根据端口匹配流量，将不同应用流量分配到指定节点。结合策略组使用，可精准分流，提高访问速度和网络稳定性，优化整体网络体验。<hr />    </div>
 </div>
 <div class="panel panel-default">
+    <div class="panel-heading"><h5>V2Ray 的策略组如何根据延迟自动选择节点？</h5></div>
+    <div class="panel-body">
+        策略组可通过节点延迟测试结果自动选择最优节点。结合路由规则，可保证国内流量直连、海外流量走最佳节点，提高访问速度和连接稳定性，优化整体网络体验。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>如何在 Nginx 上为 Vmess/WS 配置反向代理与 TLS？</h5></div>
+    <div class="panel-body">
+        在 Nginx 中配置 HTTPS 站点并将特定路径（如 /ray）反向代理到 V2Ray 的 WebSocket 端口，确保 proxy_set_header 设置正确（Host、X-Real-IP 等）。同时使用 certbot 获取并自动续期 TLS 证书以维护安全。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Hiddify Next 如何设置用户带宽限制？</h5></div>
+    <div class="panel-body">
+        管理员可为每个用户设置上传和下载带宽上限。超出限制可自动降速或阻止访问，保证服务器资源合理分配，避免单用户占用过多带宽，提高整体公平性和使用效率。<hr />    </div>
+</div>
+<div class="panel panel-default">
     <div class="panel-heading"><h5>Nekobox 是否支持多客户端节点管理？</h5></div>
     <div class="panel-body">
         支持。Nekobox 可以独立管理 Shadowsocks、Clash 等客户端节点，互不干扰。结合策略组，可实现多客户端流量分流和网络优化，提高节点管理效率和使用便利性。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>V2Ray 的策略组如何根据延迟自动选择节点？</h5></div>
+    <div class="panel-heading"><h5>Clash 如何通过命令行管理配置？</h5></div>
     <div class="panel-body">
-        策略组可通过节点延迟测试结果自动选择最优节点。结合路由规则，可保证国内流量直连、海外流量走最佳节点，提高访问速度和连接稳定性，优化整体网络体验。    </div>
+        Clash 内置命令行接口，可用于启动、停止、切换配置或查看日志。通过命令行运行 `clash -f config.yaml` 可加载指定配置文件，适合服务器或无人值守场景。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Surfboard 与 Shadowrocket 有什么区别？</h5></div>
+    <div class="panel-body">
+        两者都是 iOS 上的代理工具。Shadowrocket 功能更全面、更新更频繁，而 Surfboard 以轻量和快速见长。若只需简单分流与节点切换，Surfboard 足以满足日常使用。    </div>
 </div>
 <div class="panel panel-default mt-5">
     <div class="panel-heading">
@@ -249,16 +249,16 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2025-10-25-free-subscribe-node.htm" title="「10月25日」最高速度21.7M/S，2025年Singbox节点/V2ray节点/SSR节点/Shadowrocket节点/Clash节点每天更新免费节点订阅链接">「10月25日」最高速度21.7M/S，2025年Singbox节点/V2ray节点/SSR节点/Shadowrocket节点/Clash节点每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-11-1-shadowrocket-node.htm" title="「11月1日」最高速度19.7M/S，2025年Shadowrocket节点/Clash节点/Singbox节点/SSR节点/V2ray节点每天更新免费节点订阅链接">「11月1日」最高速度19.7M/S，2025年Shadowrocket节点/Clash节点/Singbox节点/SSR节点/V2ray节点每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-10-7-free-high-speed-nodes.htm" title="「10月7日」最高速度22.3M/S，2025年V2ray节点/Singbox节点/Shadowrocket节点/SSR节点/Clash节点每天更新免费节点订阅链接">「10月7日」最高速度22.3M/S，2025年V2ray节点/Singbox节点/Shadowrocket节点/SSR节点/Clash节点每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-10-24-free-shadowrocket-node.htm" title="「10月24日」最高速度22.1M/S，2025年Clash节点/Singbox节点/SSR节点/V2ray节点/Shadowrocket节点每天更新免费节点订阅链接">「10月24日」最高速度22.1M/S，2025年Clash节点/Singbox节点/SSR节点/V2ray节点/Shadowrocket节点每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-11-18-free-v2ray.htm" title="「11月18日」最高速度20M/S，2025年Clash节点/V2ray节点/Shadowrocket节点/SSR节点/Singbox节点每天更新免费节点订阅链接">「11月18日」最高速度20M/S，2025年Clash节点/V2ray节点/Shadowrocket节点/SSR节点/Singbox节点每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-11-19-free-shadowrocket-node.htm" title="「11月19日」最高速度21M/S，2025年SSR节点/Clash节点/V2ray节点/Shadowrocket节点/Singbox节点每天更新免费节点订阅链接">「11月19日」最高速度21M/S，2025年SSR节点/Clash节点/V2ray节点/Shadowrocket节点/Singbox节点每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-11-22-free-node-subscribe-links.htm" title="「11月22日」最高速度19.3M/S，2025年Clash节点/V2ray节点/SSR节点/Singbox节点/Shadowrocket节点每天更新免费节点订阅链接">「11月22日」最高速度19.3M/S，2025年Clash节点/V2ray节点/SSR节点/Singbox节点/Shadowrocket节点每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-10-16-free-v2ray-subscribe.htm" title="「10月16日」最高速度19.2M/S，2025年Shadowrocket节点/V2ray节点/Singbox节点/Clash节点/SSR节点每天更新免费节点订阅链接">「10月16日」最高速度19.2M/S，2025年Shadowrocket节点/V2ray节点/Singbox节点/Clash节点/SSR节点每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-10-12-free-v2ray.htm" title="「10月12日」最高速度18.7M/S，2025年Clash节点/Singbox节点/V2ray节点/SSR节点/Shadowrocket节点每天更新免费节点订阅链接">「10月12日」最高速度18.7M/S，2025年Clash节点/Singbox节点/V2ray节点/SSR节点/Shadowrocket节点每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-11-14-free-v2ray.htm" title="「11月14日」最高速度21.5M/S，2025年V2ray节点/Clash节点/Shadowrocket节点/SSR节点/Singbox节点每天更新免费节点订阅链接">「11月14日」最高速度21.5M/S，2025年V2ray节点/Clash节点/Shadowrocket节点/SSR节点/Singbox节点每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-11-30-clash-node-daily-updates.htm" title="「11月30日」最高速度19M/S，2025年Clash节点/V2ray节点/SSR节点/Singbox节点/Shadowrocket节点每天更新免费节点订阅链接">「11月30日」最高速度19M/S，2025年Clash节点/V2ray节点/SSR节点/Singbox节点/Shadowrocket节点每天更新免费节点订阅链接</a></li>
                         <li class="py-2"><a href="/free-nodes/2025-11-5-clash-windows.htm" title="「11月5日」最高速度18.1M/S，2025年V2ray节点/Shadowrocket节点/Singbox节点/SSR节点/Clash节点每天更新免费节点订阅链接">「11月5日」最高速度18.1M/S，2025年V2ray节点/Shadowrocket节点/Singbox节点/SSR节点/Clash节点每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-11-28-free-node-subscribe-links.htm" title="「11月28日」最高速度20.4M/S，2025年Shadowrocket节点/Clash节点/SSR节点/V2ray节点/Singbox节点每天更新免费节点订阅链接">「11月28日」最高速度20.4M/S，2025年Shadowrocket节点/Clash节点/SSR节点/V2ray节点/Singbox节点每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-11-7-free-shadowrocket-node.htm" title="「11月7日」最高速度22.7M/S，2025年Shadowrocket节点/SSR节点/Clash节点/V2ray节点/Singbox节点每天更新免费节点订阅链接">「11月7日」最高速度22.7M/S，2025年Shadowrocket节点/SSR节点/Clash节点/V2ray节点/Singbox节点每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-11-27-free-shadowrocket-node.htm" title="「11月27日」最高速度18.5M/S，2025年Singbox节点/V2ray节点/SSR节点/Shadowrocket节点/Clash节点每天更新免费节点订阅链接">「11月27日」最高速度18.5M/S，2025年Singbox节点/V2ray节点/SSR节点/Shadowrocket节点/Clash节点每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-12-4-clash-v2ray-ss-ssr.htm" title="「12月4日」最高速度21.5M/S，2025年Clash节点/Shadowrocket节点/SSR节点/Singbox节点/V2ray节点每天更新免费节点订阅链接">「12月4日」最高速度21.5M/S，2025年Clash节点/Shadowrocket节点/SSR节点/Singbox节点/V2ray节点每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-11-9-clash-node.htm" title="「11月9日」最高速度19.9M/S，2025年SSR节点/Singbox节点/Clash节点/Shadowrocket节点/V2ray节点每天更新免费节点订阅链接">「11月9日」最高速度19.9M/S，2025年SSR节点/Singbox节点/Clash节点/Shadowrocket节点/V2ray节点每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-11-15-free-v2ray.htm" title="「11月15日」最高速度19.6M/S，2025年V2ray节点/Clash节点/Shadowrocket节点/SSR节点/Singbox节点每天更新免费节点订阅链接">「11月15日」最高速度19.6M/S，2025年V2ray节点/Clash节点/Shadowrocket节点/SSR节点/Singbox节点每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-11-22-free-node-subscribe-links.htm" title="「11月22日」最高速度19.3M/S，2025年Clash节点/V2ray节点/SSR节点/Singbox节点/Shadowrocket节点每天更新免费节点订阅链接">「11月22日」最高速度19.3M/S，2025年Clash节点/V2ray节点/SSR节点/Singbox节点/Shadowrocket节点每天更新免费节点订阅链接</a></li>
                     </ul>
     </div>
 </div>
@@ -270,10 +270,10 @@ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">25</span> <a href="/date/2025-11/" title="2025-11 归档">2025-11</a></h4>
+                <h4><span class="badge" style="float: right;">4</span> <a href="/date/2025-12/" title="2025-12 归档">2025-12</a></h4>
             </li>
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">26</span> <a href="/date/2025-10/" title="2025-10 归档">2025-10</a></h4>
+                <h4><span class="badge" style="float: right;">23</span> <a href="/date/2025-11/" title="2025-11 归档">2025-11</a></h4>
             </li>
                     </ul>
     </div>
