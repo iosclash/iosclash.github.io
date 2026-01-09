@@ -1,4 +1,4 @@
-# 「1月2日」最高速度18.7M/S，2025年Clash节点/Singbox节点/V2ray节点/Shadowrocket节点/SSR节点每天更新免费节点订阅链接  更新时间 2026-01-02 07:50:33
+# 「1月9日」最高速度20.5M/S，2025年SSR节点/Shadowrocket节点/Singbox节点/Clash节点/V2ray节点每天更新免费节点订阅链接  更新时间 2026-01-09 10:48:11
 所有免费clash节点都爬取自网络，请勿用于非法用途 。节点地址：<a href="https://iosclash.github.io" target="_blank">点击跳转</a>
 
 ## clash使用教程：
@@ -9,23 +9,23 @@
 
 ### 免费Clash节点订阅链接
 
-- https://iosclash.github.io/uploads/2026/01/0-20260102.yaml
-- https://iosclash.github.io/uploads/2026/01/1-20260102.yaml
-- https://iosclash.github.io/uploads/2026/01/2-20260102.yaml
-- https://iosclash.github.io/uploads/2026/01/3-20260102.yaml
-- https://iosclash.github.io/uploads/2026/01/4-20260102.yaml
+- https://iosclash.github.io/uploads/2026/01/0-20260109.yaml
+- https://iosclash.github.io/uploads/2026/01/1-20260109.yaml
+- https://iosclash.github.io/uploads/2026/01/2-20260109.yaml
+- https://iosclash.github.io/uploads/2026/01/3-20260109.yaml
+- https://iosclash.github.io/uploads/2026/01/4-20260109.yaml
 
 ### 免费V2ray节点订阅链接
 
-- https://iosclash.github.io/uploads/2026/01/0-20260102.txt
-- https://iosclash.github.io/uploads/2026/01/1-20260102.txt
-- https://iosclash.github.io/uploads/2026/01/2-20260102.txt
-- https://iosclash.github.io/uploads/2026/01/3-20260102.txt
-- https://iosclash.github.io/uploads/2026/01/4-20260102.txt
+- https://iosclash.github.io/uploads/2026/01/0-20260109.txt
+- https://iosclash.github.io/uploads/2026/01/1-20260109.txt
+- https://iosclash.github.io/uploads/2026/01/2-20260109.txt
+- https://iosclash.github.io/uploads/2026/01/3-20260109.txt
+- https://iosclash.github.io/uploads/2026/01/4-20260109.txt
 
 ### 免费Sing-box节点订阅链接
 
-- https://iosclash.github.io/uploads/2026/01/20260102.json
+- https://iosclash.github.io/uploads/2026/01/20260109.json
 
 ## 更多Clash节点订阅 ：
 
