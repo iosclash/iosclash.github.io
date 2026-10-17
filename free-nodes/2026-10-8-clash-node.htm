@@ -445,29 +445,24 @@ Psiphon 是由加拿大公司开发的网络自由工具，结合 VPN、SSH、HT
     </div>
 <h4>FAQ</h4>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>V2Ray 如何隐藏真实 IP？</h5></div>
+    <div class="panel-heading"><h5>Potatso Lite 是否可导入节点二维码？</h5></div>
     <div class="panel-body">
-        通过启用 TLS、Reality 或 WebSocket + CDN 转发，V2Ray 可有效隐藏真实服务器 IP。这样外部监测只能看到中转节点，从而提升匿名性与安全性。<hr />    </div>
+        支持。用户可扫描节点二维码导入节点信息，也可手动输入节点参数。虽然不支持订阅自动更新，但对于轻量用户来说足够满足日常节点管理和流量分流需求。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Clash 策略组如何实现节点优先级切换？</h5></div>
+    <div class="panel-heading"><h5>SSR 的 UDP 转发功能需要注意什么？</h5></div>
     <div class="panel-body">
-        用户可以在 Clash 策略组中设置节点优先级，结合规则文件自动选择延迟低、稳定性高的节点处理流量。优化网页浏览、视频播放和游戏访问速度，提高整体网络效率。<hr />    </div>
+        SSR 的 UDP 转发需要服务端和客户端同时开启，同时确保服务器防火墙允许 UDP 通信。UDP 流量不可靠，可能在高丢包网络中导致连接中断，需要测试稳定性。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Potatso Lite 是否支持多节点手动管理？</h5></div>
+    <div class="panel-heading"><h5>Surfboard 如何结合策略组实现智能分流？</h5></div>
     <div class="panel-body">
-        支持。用户可以手动输入节点参数或扫描二维码导入节点，并可进行修改或删除。虽然不支持订阅自动更新，但足够满足轻量用户对节点管理和分流的基本需求。<hr />    </div>
+        Surfboard 可根据策略组和规则文件自动选择最优节点处理流量。不同应用或网站可分配不同节点，保证低延迟和高速访问，同时减少手动切换节点的操作。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>Surfboard 的节点策略组如何提升使用体验？</h5></div>
     <div class="panel-body">
         策略组可将节点按延迟、用途或地理位置分类，通过规则自动选择最优节点。用户无需手动切换节点即可获得最佳速度和稳定性，提高浏览和观看流媒体的体验。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Potatso Lite 是否可导入节点二维码？</h5></div>
-    <div class="panel-body">
-        支持。用户可扫描节点二维码导入节点信息，也可手动输入节点参数。虽然不支持订阅自动更新，但对于轻量用户来说足够满足日常节点管理和流量分流需求。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>Shadowrocket 如何实现节点自动切换？</h5></div>
@@ -480,19 +475,24 @@ Psiphon 是由加拿大公司开发的网络自由工具，结合 VPN、SSH、HT
         Matsuri 会自动测试节点延迟，并根据结果排序。用户可以选择延迟最低的节点使用，从而优化访问速度和稳定性，尤其适合游戏、视频和海外网站加速。<hr />    </div>
 </div>
 <div class="panel panel-default">
+    <div class="panel-heading"><h5>V2Ray 如何隐藏真实 IP？</h5></div>
+    <div class="panel-body">
+        通过启用 TLS、Reality 或 WebSocket + CDN 转发，V2Ray 可有效隐藏真实服务器 IP。这样外部监测只能看到中转节点，从而提升匿名性与安全性。<hr />    </div>
+</div>
+<div class="panel panel-default">
     <div class="panel-heading"><h5>V2Ray QUIC 模式在高丢包网络的优势？</h5></div>
     <div class="panel-body">
         QUIC 基于 UDP 支持多路复用和零握手，减少延迟和丢包。适合视频、游戏和即时通讯流量，保证高丢包环境下网络稳定性和访问速度，提高整体体验。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Surfboard 如何结合策略组实现智能分流？</h5></div>
+    <div class="panel-heading"><h5>Clash 策略组如何实现节点优先级切换？</h5></div>
     <div class="panel-body">
-        Surfboard 可根据策略组和规则文件自动选择最优节点处理流量。不同应用或网站可分配不同节点，保证低延迟和高速访问，同时减少手动切换节点的操作。<hr />    </div>
+        用户可以在 Clash 策略组中设置节点优先级，结合规则文件自动选择延迟低、稳定性高的节点处理流量。优化网页浏览、视频播放和游戏访问速度，提高整体网络效率。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>SSR 的 UDP 转发功能需要注意什么？</h5></div>
+    <div class="panel-heading"><h5>Potatso Lite 是否支持多节点手动管理？</h5></div>
     <div class="panel-body">
-        SSR 的 UDP 转发需要服务端和客户端同时开启，同时确保服务器防火墙允许 UDP 通信。UDP 流量不可靠，可能在高丢包网络中导致连接中断，需要测试稳定性。    </div>
+        支持。用户可以手动输入节点参数或扫描二维码导入节点，并可进行修改或删除。虽然不支持订阅自动更新，但足够满足轻量用户对节点管理和分流的基本需求。    </div>
 </div>
 <div class="panel panel-default mt-5">
     <div class="panel-heading">
@@ -540,16 +540,16 @@ Psiphon 是由加拿大公司开发的网络自由工具，结合 VPN、SSH、HT
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/free-ssr-node-2026-9-27.htm" title="「9月27日」最高速度22.8M/S，2025年V2ray节点/Trojan节点/Singbox节点/SSR节点/Shadowrocket节点/Clash节点每天更新免费节点订阅链接">「9月27日」最高速度22.8M/S，2025年V2ray节点/Trojan节点/Singbox节点/SSR节点/Shadowrocket节点/Clash节点每天更新免费节点订阅链接</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-10-4-clash-node.htm" title="「10月4日」最高速度21.7M/S，2025年Clash节点/Trojan节点/Shadowrocket节点/Singbox节点/SSR节点/V2ray节点每天更新免费节点订阅链接">「10月4日」最高速度21.7M/S，2025年Clash节点/Trojan节点/Shadowrocket节点/Singbox节点/SSR节点/V2ray节点每天更新免费节点订阅链接</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-9-2-free-v2ray.htm" title="「9月2日」最高速度21.1M/S，2025年Shadowrocket节点/Clash节点/SSR节点/Singbox节点/Trojan节点/V2ray节点每天更新免费节点订阅链接">「9月2日」最高速度21.1M/S，2025年Shadowrocket节点/Clash节点/SSR节点/Singbox节点/Trojan节点/V2ray节点每天更新免费节点订阅链接</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-9-16-free-v2ray.htm" title="「9月16日」最高速度21.6M/S，2025年Shadowrocket节点/V2ray节点/Trojan节点/SSR节点/Clash节点/Singbox节点每天更新免费节点订阅链接">「9月16日」最高速度21.6M/S，2025年Shadowrocket节点/V2ray节点/Trojan节点/SSR节点/Clash节点/Singbox节点每天更新免费节点订阅链接</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/node-share-links-2026-9-15.htm" title="「9月15日」最高速度21.1M/S，2025年Clash节点/SSR节点/Shadowrocket节点/Trojan节点/V2ray节点/Singbox节点每天更新免费节点订阅链接">「9月15日」最高速度21.1M/S，2025年Clash节点/SSR节点/Shadowrocket节点/Trojan节点/V2ray节点/Singbox节点每天更新免费节点订阅链接</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/free-subscribe-node-2026-10-9.htm" title="「10月9日」最高速度21.9M/S，2025年Singbox节点/V2ray节点/SSR节点/Trojan节点/Shadowrocket节点/Clash节点每天更新免费节点订阅链接">「10月9日」最高速度21.9M/S，2025年Singbox节点/V2ray节点/SSR节点/Trojan节点/Shadowrocket节点/Clash节点每天更新免费节点订阅链接</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/free-clash-subscribe-2026-10-17.htm" title="「10月17日」最高速度19.8M/S，2025年Trojan节点/SSR节点/V2ray节点/Clash节点/Shadowrocket节点/Singbox节点每天更新免费节点订阅链接">「10月17日」最高速度19.8M/S，2025年Trojan节点/SSR节点/V2ray节点/Clash节点/Shadowrocket节点/Singbox节点每天更新免费节点订阅链接</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-10-2-node-share.htm" title="「10月2日」最高速度22.4M/S，2025年Clash节点/SSR节点/Trojan节点/V2ray节点/Singbox节点/Shadowrocket节点每天更新免费节点订阅链接">「10月2日」最高速度22.4M/S，2025年Clash节点/SSR节点/Trojan节点/V2ray节点/Singbox节点/Shadowrocket节点每天更新免费节点订阅链接</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/free-high-speed-nodes-2026-9-7.htm" title="「9月7日」最高速度22.8M/S，2025年Singbox节点/V2ray节点/Clash节点/SSR节点/Shadowrocket节点/Trojan节点每天更新免费节点订阅链接">「9月7日」最高速度22.8M/S，2025年Singbox节点/V2ray节点/Clash节点/SSR节点/Shadowrocket节点/Trojan节点每天更新免费节点订阅链接</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-9-20-clash-node-daily-updates.htm" title="「9月20日」最高速度19.5M/S，2025年Clash节点/SSR节点/Singbox节点/V2ray节点/Shadowrocket节点/Trojan节点每天更新免费节点订阅链接">「9月20日」最高速度19.5M/S，2025年Clash节点/SSR节点/Singbox节点/V2ray节点/Shadowrocket节点/Trojan节点每天更新免费节点订阅链接</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/node-share-links-2026-10-5.htm" title="「10月5日」最高速度19.1M/S，2025年Shadowrocket节点/Clash节点/SSR节点/Trojan节点/Singbox节点/V2ray节点每天更新免费节点订阅链接">「10月5日」最高速度19.1M/S，2025年Shadowrocket节点/Clash节点/SSR节点/Trojan节点/Singbox节点/V2ray节点每天更新免费节点订阅链接</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-9-4-clash-node-daily-updates.htm" title="「9月4日」最高速度21.6M/S，2025年Clash节点/SSR节点/Singbox节点/Shadowrocket节点/V2ray节点/Trojan节点每天更新免费节点订阅链接">「9月4日」最高速度21.6M/S，2025年Clash节点/SSR节点/Singbox节点/Shadowrocket节点/V2ray节点/Trojan节点每天更新免费节点订阅链接</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-10-16-free-ssr-subscribe.htm" title="「10月16日」最高速度19.8M/S，2025年V2ray节点/Trojan节点/Singbox节点/Clash节点/SSR节点/Shadowrocket节点每天更新免费节点订阅链接">「10月16日」最高速度19.8M/S，2025年V2ray节点/Trojan节点/Singbox节点/Clash节点/SSR节点/Shadowrocket节点每天更新免费节点订阅链接</a><hr /></li>
                         <li class="py-2"><a href="/free-nodes/2026-9-14-free-v2ray.htm" title="「9月14日」最高速度19M/S，2025年SSR节点/Clash节点/Trojan节点/Singbox节点/Shadowrocket节点/V2ray节点每天更新免费节点订阅链接">「9月14日」最高速度19M/S，2025年SSR节点/Clash节点/Trojan节点/Singbox节点/Shadowrocket节点/V2ray节点每天更新免费节点订阅链接</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/node-share-links-2026-9-17.htm" title="「9月17日」最高速度21.5M/S，2025年Trojan节点/SSR节点/Clash节点/V2ray节点/Singbox节点/Shadowrocket节点每天更新免费节点订阅链接">「9月17日」最高速度21.5M/S，2025年Trojan节点/SSR节点/Clash节点/V2ray节点/Singbox节点/Shadowrocket节点每天更新免费节点订阅链接</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-9-6-free-node-subscribe.htm" title="「9月6日」最高速度18.6M/S，2025年Singbox节点/Clash节点/Trojan节点/Shadowrocket节点/SSR节点/V2ray节点每天更新免费节点订阅链接">「9月6日」最高速度18.6M/S，2025年Singbox节点/Clash节点/Trojan节点/Shadowrocket节点/SSR节点/V2ray节点每天更新免费节点订阅链接</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-10-8-clash-node.htm" title="「10月8日」最高速度21.1M/S，2025年Clash节点/Trojan节点/Singbox节点/Shadowrocket节点/V2ray节点/SSR节点每天更新免费节点订阅链接">「10月8日」最高速度21.1M/S，2025年Clash节点/Trojan节点/Singbox节点/Shadowrocket节点/V2ray节点/SSR节点每天更新免费节点订阅链接</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/node-share-links-2026-9-15.htm" title="「9月15日」最高速度21.1M/S，2025年Clash节点/SSR节点/Shadowrocket节点/Trojan节点/V2ray节点/Singbox节点每天更新免费节点订阅链接">「9月15日」最高速度21.1M/S，2025年Clash节点/SSR节点/Shadowrocket节点/Trojan节点/V2ray节点/Singbox节点每天更新免费节点订阅链接</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/free-clash-subscribe-2026-10-7.htm" title="「10月7日」最高速度22.4M/S，2025年Shadowrocket节点/Singbox节点/SSR节点/V2ray节点/Trojan节点/Clash节点每天更新免费节点订阅链接">「10月7日」最高速度22.4M/S，2025年Shadowrocket节点/Singbox节点/SSR节点/V2ray节点/Trojan节点/Clash节点每天更新免费节点订阅链接</a><hr /></li>
                     </ul>
     </div>
 </div>
@@ -561,7 +561,7 @@ Psiphon 是由加拿大公司开发的网络自由工具，结合 VPN、SSH、HT
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">9</span> <a href="/date/2026-10/" title="2026-10 归档">2026-10</a></h4>
+                <h4><span class="badge" style="float: right;">16</span> <a href="/date/2026-10/" title="2026-10 归档">2026-10</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">29</span> <a href="/date/2026-09/" title="2026-09 归档">2026-09</a></h4>
